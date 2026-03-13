@@ -122,7 +122,7 @@ function Projects() {
           </svg>
         </div>
       </div>
-      <div className="proj-grid" style={{display:"grid",gridTemplateColumns:"422px 422px",gap:"40px 400px",maxWidth:"1244px",margin:"0 auto"}}>
+      <div className="proj-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"40px 400px",maxWidth:"1244px",margin:"0 auto"}}>
         {PROJECTS.map((p,i) => (
           <ProjectCard key={p.id} project={p} index={i}/>
         ))}
