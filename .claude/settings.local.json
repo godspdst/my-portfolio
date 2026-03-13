@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips -g pixelWidth -g pixelHeight \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/nuleaf-wf-1.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/nuleaf-wf-2.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/portfolio-wf-1.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/portfolio-wf-2.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/the-pit-wf-1.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/the-pit-wf-2.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/the-pit-wf-3.png\")"
+    ]
+  }
+}
