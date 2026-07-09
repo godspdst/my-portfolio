@@ -6,7 +6,7 @@ const PROJECTS = [
   {id:"plume-homepass-landing-page",title:"PLUME HOMEPASS LANDING PAGE",desc:"Landing page redesign for the release of the SuperPod G6",bg:C.cream,dark:true},
   {id:"plume-homepass-online-store",title:"PLUME HOMEPASS ONLINE STORE",desc:"Improvement of Plume HomePass's online shop UX",bg:C.white,dark:true},
   {id:"the-pit",title:"THE PIT",desc:"Social media app for music lovers",bg:"#333333",dark:false},
-  {id:"nuleaf",title:"NULEAF",desc:"Website for improved UX of finding a therapist",bg:"#C8D8C0",dark:true},
+  {id:"cec-work-queue-follow-up-date",title:"CEC WORK QUEUE FOLLOW-UP DATE",desc:"Validated a follow-up date column to stop applications from stalling in a North American equipment lender's queue.",bg:"#333333",dark:false},
   {id:"personal-portfolio",title:"PERSONAL PORTFOLIO",desc:"Updated UX and UI of my personal portfolio website",bg:C.lightBg,dark:true},
 ];
 
