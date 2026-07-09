@@ -30,9 +30,9 @@ const PAGE_CSS = `
     .proc-row{margin-right:-24px!important}
     .process-label{display:none!important}
     .full-photo{height:clamp(200px,45vw,480px)!important}
-    .feat-grid{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:80px!important;padding:32px 24px 48px!important;overflow:hidden!important;max-width:100vw!important}
-    .feat-grid>div{width:36vw!important;margin-top:0!important;margin-left:0!important;max-width:none!important;overflow:hidden!important;min-width:0!important}
-    .feat-grid>div:nth-child(2){margin-left:52vw!important}
+    .feat-grid{display:flex!important;flex-direction:column!important;align-items:center!important;gap:24px!important;padding:32px 24px 48px!important;overflow:hidden!important;max-width:100vw!important}
+    .feat-grid>div{width:80%!important;margin-top:0!important;overflow:hidden!important}
+    .feat-grid>div:nth-child(2){margin-left:0!important}
     .research-row{flex-direction:column!important}
     .research-row>div{padding:40px 24px!important}
     .finding-wrap{padding:48px 24px!important}
