@@ -11,7 +11,7 @@ const PAGE_CSS = `
     .process-section{padding:0 48px 0!important}
     .proc-inner{margin-left:80px!important}
     .full-photo{height:480px!important}
-    .feat-grid{grid-template-columns:1fr 1fr!important;gap:32px!important;padding:60px 48px 80px!important}
+    .feat-grid{grid-template-columns:1fr 1fr!important;gap:32px!important;padding:60px 48px 80px!important;justify-items:center!important}.feat-grid>div{max-width:300px!important}
     .finding-wrap{padding:60px 48px!important}
     .wq-embed{padding:60px 48px 60px!important}
     .comparison-wrap{padding:40px 48px!important}
@@ -30,7 +30,7 @@ const PAGE_CSS = `
     .proc-row{margin-right:-24px!important}
     .process-label{display:none!important}
     .full-photo{height:clamp(200px,45vw,480px)!important}
-    .feat-grid{grid-template-columns:1fr!important;padding:40px 24px 60px!important}
+    .feat-grid{grid-template-columns:1fr!important;padding:40px 24px 60px!important;justify-items:center!important}
     .feat-grid>div{margin-top:0!important}
     .research-row{flex-direction:column!important}
     .research-row>div{padding:40px 24px!important}
