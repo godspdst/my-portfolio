@@ -11,7 +11,7 @@ const PAGE_CSS = `
     .process-section{padding:0 48px 0!important}
     .proc-inner{margin-left:80px!important}
     .full-photo{height:480px!important}
-    .feat-grid{grid-template-columns:1fr 1fr!important;gap:32px!important;padding:60px 48px 80px!important;justify-items:center!important}.feat-grid>div{max-width:300px!important}
+    .feat-grid{grid-template-columns:1fr 1fr!important;gap:32px!important;padding:60px 48px 80px!important}
     .finding-wrap{padding:60px 48px!important}
     .wq-embed{padding:60px 48px 60px!important}
     .comparison-wrap{padding:40px 48px!important}
@@ -30,7 +30,7 @@ const PAGE_CSS = `
     .proc-row{margin-right:-24px!important}
     .process-label{display:none!important}
     .full-photo{height:clamp(200px,45vw,480px)!important}
-    .feat-grid{grid-template-columns:1fr!important;padding:40px 24px 60px!important;justify-items:center!important}
+    .feat-grid{grid-template-columns:1fr!important;padding:40px 24px 60px!important}
     .feat-grid>div{margin-top:0!important}
     .research-row{flex-direction:column!important}
     .research-row>div{padding:40px 24px!important}
@@ -202,8 +202,7 @@ export default function CECCaseStudy() {
 
       {/* HERO PHOTO */}
       <div className="full-photo" style={{width:"100%", height:"800px", overflow:"hidden", background:"#1b1b1b"}}>
-        <img src="<img src={`/images/${project.id}.jpg`} onError={e => { e.target.src = `/images/${project.id}.webp`; e.target.onerror = null; }}
-" alt="Work Queue — the shipped design" style={{width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 30%", display:"block"}}/>
+        <img src="/images/cec-hero.webp" alt="Work Queue — the shipped design" style={{width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 30%", display:"block"}}/>
       </div>
 
       <Rule/>
