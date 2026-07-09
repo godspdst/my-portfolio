@@ -100,7 +100,7 @@ function ProjectCard({project, index}) {
       <div
         onAnimationEnd={()=>setJitter(false)}
         style={{background:project.bg,aspectRatio:"4/3",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden",position:"relative",border:"1px solid #1b1b1b",animation:jitter?"cardJitter 0.4s ease-in-out forwards":"none"}}>
-        <img src={`/images/${project.id}.jpg`} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} alt={project.title}/>
+        <img src={`/images/${project.id}.jpg`} onError={e=>{e.target.src=`/images/${project.id}.webp`;e.target.onerror=null;}} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} alt={project.title}/>
       </div>
       <div style={{marginTop:"25px"}}>
         <p style={{fontFamily:"'Inter',sans-serif",fontSize:"15px",fontWeight:"300",letterSpacing:"0.16em",color:C.textLight,margin:"0 0 16px",textTransform:"uppercase"}}>{project.title}</p>
@@ -151,7 +151,7 @@ function About() {
         </div>
       </div>
       <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"500px",overflow:"hidden",borderBottom:"1px solid #1b1b1b",borderLeft:"1px solid #1b1b1b"}}>
-        <img src="/images/about.jpg" loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover"}} alt="Stephanie Guarino"/>
+        <img src="/images/about.jpg" onError={e=>{e.target.src=`/images/${project.id}.webp`;e.target.onerror=null;}} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover"}} alt="Stephanie Guarino"/>
       </div>
     </section>
   );
