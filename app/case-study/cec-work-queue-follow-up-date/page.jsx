@@ -289,7 +289,7 @@ export default function CECCaseStudy() {
           <h2 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:"#FFFFFF", letterSpacing:"-0.01em", lineHeight:1.1, margin:0}}>work queue before</h2>
         </div>
         <div style={{width:"100%", overflow:"hidden", borderRadius:"12px", boxShadow:"0 8px 48px rgba(0,0,0,0.5)"}}>
-          <img src="/images/cec-before.jpg" alt="Work Queue before" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+          <img src="/images/jd-before.png" alt="Work Queue before" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
         </div>
       </div>
 
@@ -371,7 +371,7 @@ export default function CECCaseStudy() {
           <h2 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:"#FFFFFF", letterSpacing:"-0.01em", lineHeight:1.1, margin:0}}>work queue after</h2>
         </div>
         <div style={{width:"100%", overflow:"hidden", borderRadius:"12px", boxShadow:"0 8px 48px rgba(0,0,0,0.5)"}}>
-          <img src="/images/cec-after.jpg" alt="Work Queue after" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+          <img src="/images/jd-after.png" alt="Work Queue after" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
         </div>
       </div>
 
