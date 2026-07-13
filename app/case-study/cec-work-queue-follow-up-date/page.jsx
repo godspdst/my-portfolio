@@ -198,7 +198,7 @@ export default function CECCaseStudy() {
 
       {/* TITLE */}
       <div className="cs-title" style={{marginTop:"56px", textAlign:"center", padding:"100px 80px", borderBottom:"1px solid #333333"}}>
-        <h1 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:"#FFFFFF", letterSpacing:"-0.02em", lineHeight:1.1, margin:0}}>cec work queue follow-up date</h1>
+        <h1 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:"#FFFFFF", letterSpacing:"-0.02em", lineHeight:1.1, margin:0}}>john deere work queue follow-up date</h1>
       </div>
 
       {/* HERO PHOTO */}
@@ -223,7 +223,7 @@ export default function CECCaseStudy() {
         </div>
         <div>
           <p style={{fontSize:"15px", letterSpacing:"0.1em", color:"#F7ECDC", textTransform:"uppercase", marginBottom:"16px", lineHeight:1.0, fontFamily:"'Inter',sans-serif"}}>THE BRIEF</p>
-          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, fontFamily:"'Inter',sans-serif"}}>Cornerstone Equipment Credit (CEC) needed a way to stop applications from stalling in analysts' queues. A solution had already been scoped. As the sole UX designer embedded with the product and engineering team, I set out to validate it before building it.</p>
+          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, fontFamily:"'Inter',sans-serif"}}>John Deere needed a way to stop applications from stalling in analysts' queues. A solution had already been scoped. As the sole UX designer embedded with the product and engineering team, I set out to validate it before building it.</p>
         </div>
       </div>
 
@@ -262,7 +262,7 @@ export default function CECCaseStudy() {
           <h2 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:"#FFFFFF", letterSpacing:"-0.01em", lineHeight:1.1, margin:0}}>context</h2>
         </div>
         <div style={{maxWidth:"780px", margin:"0 auto"}}>
-          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, fontFamily:"'Inter',sans-serif"}}>Cornerstone Equipment Credit (CEC) is a North American lender, financing commercial and agricultural equipment through a network of dealers. Its credit analysts work inside Credit Hub, reviewing applications and moving each one toward a decision from a shared queue called the Work Queue. Applications that should resolve in hours or days were sitting untouched for weeks, sometimes months.</p>
+          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, fontFamily:"'Inter',sans-serif"}}>John Deere is a North American lender, financing commercial and agricultural equipment through a network of dealers. Its credit analysts work inside Credit Hub, reviewing applications and moving each one toward a decision from a shared queue called the Work Queue. Applications that should resolve in hours or days were sitting untouched for weeks, sometimes months.</p>
         </div>
       </div>
 
