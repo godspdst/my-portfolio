@@ -66,28 +66,6 @@ const STUDIES = {
     screens: ["plume-store-checkout-1.png","plume-store-checkout-2.png","plume-store-checkout-3.png"],
     closingPhoto: "plume-store-closing.jpg",
   },
-  "nuleaf": {
-    title: "nuleaf",
-    responsibilities: ["Product concept","UX & UI design","Research","Brand guide","Design system","Pitch deck design"],
-    goal: "With the rise of Covid, telehealth rapidly sought out. NuLeaf wants to help facilitate the process of finding a match who specializes in the correct fields. My goal was to create an interface that simplifies the process of finding a therapist.",
-    featureImages: ["nuleaf-feature-1.jpg","nuleaf-feature-2.jpg","nuleaf-feature-3.jpg"],
-    heroImage: "nuleaf-hero.jpg",
-    contextPhoto: "nuleaf-context.jpg",
-    process: ["STRATEGY","RESEARCH","WIREFRAME","BRANDING","PROTOTYPE","TEST"],
-    hasResearch: true, numCompetitors: 3,
-    competitorLogos: ["nuleaf-competitor-1.png","nuleaf-competitor-2.png","nuleaf-competitor-3.png"],
-    competitorLogoSizes: [{w:33,h:26},{w:30,h:32.28},{w:40,h:19.84}],
-    researchSummary: "I started with competitive analysis, then conducted a user survey and 5 individual interviews. Out of that, 20 participants expressed pain that they found the process of finding a match who specializes in their condition to be both high in cost and high in difficulty.",
-    researchPhoto: "nuleaf-research.jpg",
-    hasMoodBoard: true, moodBoardImage: "nuleaf-moodboard.jpg", moodBoardDimensions: {w:595, h:688},
-    branding: { colors:["#4a7c59","#8ab4a0","#f0ede8","#333333"], fonts:["Bretheon Regular","Altmer MN Regular"], brandingImage:"nuleaf-branding.png", styleGuideImage:"nuleaf-styleguide.png" },
-    wireframes: ["nuleaf-wf-1.png","nuleaf-wf-2.png"],
-    wireframeStyle: "nuleaf",
-    finalPhoto: null,
-    prototypeTitle: "finding a therapist",
-    screens: [],
-    closingPhoto: "nuleaf-closing.jpg",
-  },
   "personal-portfolio": {
     title: "personal portfolio",
     responsibilities: ["UX & UI design","Research","Brand guide","Design system","Prototype","Implement"],
@@ -101,7 +79,7 @@ const STUDIES = {
     hasMoodBoard: true, moodBoardImage: "portfolio-moodboard.jpg", moodBoardDimensions: {w:768, h:889},
     branding: { colors:["#f3f3fb","#1b1b1b","#888888"], fonts:["Pigeon Italic","Inter Regular"], brandingImage:"portfolio-branding.jpg", styleGuideImage:"portfolio-styleguide.png" },
     wireframes: ["portfolio-wf-1.png","portfolio-wf-2.png"],
-    wireframeStyle: "nuleaf",
+    wireframeStyle: "wide",
     finalPhoto: null,
     prototypeTitle: null,
     screens: [],
@@ -122,8 +100,8 @@ const PAGE_CSS = `
     .feature-scatter{justify-content:center!important;gap:24px!important;padding:40px 48px 56px!important}
     .feat-img-inner{width:clamp(160px,20vw,300px)!important;height:auto!important;aspect-ratio:6/5!important}
     .full-photo{height:480px!important}
-    .wf-item-nuleaf{height:auto!important}
-    .wf-item-nuleaf img{height:auto!important;object-fit:unset!important}
+    .wf-item-wide{height:auto!important}
+    .wf-item-wide img{height:auto!important;object-fit:unset!important}
     .wf-row{gap:24px!important}
     .mood-board-img{max-width:100%!important;width:100%!important;height:auto!important}
     .mood-board-img img{height:auto!important}
@@ -158,10 +136,10 @@ const PAGE_CSS = `
     .content-section > div:first-child{margin-bottom:28px!important}
     .two-col{grid-template-columns:1fr!important;gap:28px!important}
     .wf-grid{grid-template-columns:1fr!important}
-    .wf-nuleaf-outer{width:100%!important;position:static!important;left:auto!important;transform:none!important}
+    .wf-wide-outer{width:100%!important;position:static!important;left:auto!important;transform:none!important}
     .wf-row{flex-direction:column!important;align-items:center!important;gap:16px!important}
-    .wf-item-nuleaf{flex:none!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;align-self:stretch!important;border-radius:12px!important}
-    .wf-item-nuleaf img{height:auto!important}
+    .wf-item-wide{flex:none!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;align-self:stretch!important;border-radius:12px!important}
+    .wf-item-wide img{height:auto!important}
     .wf-section-wrap{padding-bottom:48px!important}
     .wf-item-pit{width:44%!important;height:auto!important}
     .wf-item-pit img{height:auto!important;object-fit:contain!important}
@@ -529,12 +507,12 @@ export default function CaseStudyPage({ params }) {
                 </div>
               ))}
             </div>
-          ) : cs.wireframeStyle === "nuleaf" ? (
+          ) : cs.wireframeStyle === "wide" ? (
             /* 735×641, 40px gap, bleeds off page via 100vw */
-            <div className="wf-nuleaf-outer" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
+            <div className="wf-wide-outer" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
               <div className="wf-row" style={{display:"flex", gap:"40px", justifyContent:"center"}}>
                 {cs.wireframes.map((src,i) => (
-                  <div key={i} className="wf-item-nuleaf" style={{width:"735px", height:"641px", flexShrink:0, overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
+                  <div key={i} className="wf-item-wide" style={{width:"735px", height:"641px", flexShrink:0, overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
                     <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
                   </div>
                 ))}
