@@ -203,7 +203,7 @@ export default function CECCaseStudy() {
 
       {/* HERO PHOTO */}
       <div className="full-photo" style={{width:"100%", height:"800px", overflow:"hidden", background:"#1b1b1b"}}>
-        <img src="/images/cec-hero.jpg" alt="Work Queue — the shipped design" style={{width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 30%", display:"block"}}/>
+        <img src="/images/jd-hero.jpg" alt="Work Queue — the shipped design" style={{width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 30%", display:"block"}}/>
       </div>
 
       <Rule/>
@@ -252,7 +252,7 @@ export default function CECCaseStudy() {
       <Rule/>
 
       {/* PHOTO: Combine harvester */}
-      <FullPhoto src="/images/cec-combine.jpg" alt="Combine harvester" position="50% 40%"/>
+      <FullPhoto src="/images/jd-combine.jpg" alt="Combine harvester" position="50% 40%"/>
 
       <Rule/>
 
@@ -269,7 +269,7 @@ export default function CECCaseStudy() {
       <Rule/>
 
       {/* PHOTO: Farmer */}
-      <FullPhoto src="/images/cec-farmer.jpg" alt="Farmer in field"/>
+      <FullPhoto src="/images/jd-farmer.jpg" alt="Farmer in field"/>
 
       <Rule/>
 
@@ -346,7 +346,7 @@ export default function CECCaseStudy() {
       </div>
 
       {/* PHOTO: Excavators */}
-      <FullPhoto src="/images/cec-excavators.jpg" alt="Row of excavators"/>
+      <FullPhoto src="/images/jd-excavators.jpg" alt="Row of excavators"/>
 
       <Rule/>
 
@@ -362,7 +362,7 @@ export default function CECCaseStudy() {
 
       {/* COMPARISON IMAGE */}
       <div className="comparison-wrap" style={{width:"100%", background:"#333333", display:"flex", justifyContent:"center", alignItems:"center", padding:"60px 80px"}}>
-        <img src="/images/cec-comparison.png" alt="Date vs. day-count comparison" style={{display:"block", maxWidth:"100%"}}/>
+        <img src="/images/jd-comparison.png" alt="Date vs. day-count comparison" style={{display:"block", maxWidth:"100%"}}/>
       </div>
 
       {/* WORK QUEUE AFTER */}

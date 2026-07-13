@@ -6,7 +6,7 @@ const PROJECTS = [
   {id:"plume-homepass-landing-page",title:"PLUME HOMEPASS LANDING PAGE",desc:"Landing page redesign for the release of the SuperPod G6",bg:C.cream,dark:true},
   {id:"plume-homepass-online-store",title:"PLUME HOMEPASS ONLINE STORE",desc:"Improvement of Plume HomePass's online shop UX",bg:C.white,dark:true},
   {id:"the-pit",title:"THE PIT",desc:"Social media app for music lovers",bg:"#333333",dark:false},
-  {id:"cec-work-queue-follow-up-date",title:"JOHN DEERE WORK QUEUE FOLLOW-UP DATE",desc:"Validated a follow-up date column to stop applications from stalling in equipment lender's queue.",bg:"#333333",dark:false},
+  {id:"cec-work-queue-follow-up-date",img:"jd-work-queue-follow-up-date.png",title:"JOHN DEERE WORK QUEUE FOLLOW-UP DATE",desc:"Validated a follow-up date column to stop applications from stalling in equipment lender's queue.",bg:"#333333",dark:false},
   {id:"personal-portfolio",title:"PERSONAL PORTFOLIO",desc:"Updated UX and UI of my personal portfolio website",bg:C.lightBg,dark:true},
 ];
 
@@ -100,7 +100,7 @@ function ProjectCard({project, index}) {
       <div
         onAnimationEnd={()=>setJitter(false)}
         style={{background:project.bg,aspectRatio:"4/3",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden",position:"relative",border:"1px solid #1b1b1b",animation:jitter?"cardJitter 0.4s ease-in-out forwards":"none"}}>
-        <img src={`/images/${project.id}.jpg`} onError={e=>{if(e.target.src.endsWith('.jpg')){e.target.src=`/images/${project.id}.webp`;}else if(e.target.src.endsWith('.webp')){e.target.src=`/images/${project.id}.png`;e.target.onerror=null;}}} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} alt={project.title}/>
+        <img src={project.img?`/images/${project.img}`:`/images/${project.id}.jpg`} onError={e=>{if(e.target.src.endsWith('.jpg')){e.target.src=`/images/${project.id}.webp`;}else if(e.target.src.endsWith('.webp')){e.target.src=`/images/${project.id}.png`;e.target.onerror=null;}}} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} alt={project.title}/>
       </div>
       <div style={{marginTop:"25px"}}>
         <p style={{fontFamily:"'Inter',sans-serif",fontSize:"15px",fontWeight:"300",letterSpacing:"0.16em",color:C.textLight,margin:"0 0 16px",textTransform:"uppercase"}}>{project.title}</p>
