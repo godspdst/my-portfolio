@@ -203,7 +203,7 @@ export default function CECCaseStudy() {
 
       {/* HERO PHOTO */}
       <div className="full-photo" style={{width:"100%", height:"800px", overflow:"hidden", background:"#1b1b1b"}}>
-        <img src="/images/cec-hero.webp" alt="Work Queue — the shipped design" style={{width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 30%", display:"block"}}/>
+        <img src="/images/cec-hero-new.png" alt="Work Queue — the shipped design" style={{width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 30%", display:"block"}}/>
       </div>
 
       <Rule/>
