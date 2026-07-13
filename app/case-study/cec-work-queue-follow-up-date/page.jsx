@@ -127,7 +127,7 @@ function OverdueCard() {
   return (
     <div style={{overflow:"hidden", aspectRatio:"6/5", background:"#F7F4EF", fontFamily:"'Hanken Grotesk',sans-serif", marginTop:"28px", display:"flex", alignItems:"center"}}>
       <div style={{padding:"0 28px", width:"100%"}}>
-        <h1 style={{fontFamily:"Archivo,sans-serif", fontWeight:700, fontSize:"28px", letterSpacing:"-0.012em", color:"#16294A", margin:"0 0 10px", lineHeight:1}}>Work Queue</h1>
+        <h1 style={{fontFamily:"Archivo,sans-serif", fontWeight:700, fontSize:"28px", letterSpacing:"-0.012em", color:"#367C2B", margin:"0 0 10px", lineHeight:1}}>Work Queue</h1>
         <div style={{fontSize:"13px", color:"#847868", display:"flex", alignItems:"center", gap:"10px", flexWrap:"wrap"}}>
           <span>127 applications</span>
           <span style={{color:"#E1DACE"}}>·</span>
