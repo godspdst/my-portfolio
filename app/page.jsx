@@ -151,7 +151,7 @@ function About() {
         </div>
       </div>
       <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"500px",overflow:"hidden",borderBottom:"1px solid #1b1b1b",borderLeft:"1px solid #1b1b1b"}}>
-        <img src="/images/about.jpg" onError={e=>{e.target.src=`/images/${project.id}.webp`;e.target.onerror=null;}} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover"}} alt="Stephanie Guarino"/>
+        <img src="/images/about.png" loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover"}} alt="Stephanie Guarino"/>
       </div>
     </section>
   );
