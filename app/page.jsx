@@ -57,7 +57,7 @@ function Hero() {
   return (
     <section id="home" className="hero-grid" style={{background:C.darkBg,minHeight:"100vh",display:"grid",gridTemplateColumns:"2fr 3fr",paddingTop:"60px"}}>
       <div className="hero-img" style={{position:"relative",minHeight:"calc(100vh - 60px)",overflow:"hidden",borderRight:"1px solid #1b1b1b",borderBottom:"1px solid #1b1b1b"}}>
-        <img src="/images/hero.png" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover"}} alt="Stephanie Guarino"/>
+        <img src="/images/hero.png" style={{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",transform:"scale(1.06)",transformOrigin:"center center"}} alt="Stephanie Guarino"/>
       </div>
       <div className="hero-text" style={{display:"flex",alignItems:"center",padding:"60px 80px 60px 60px",minHeight:"calc(100vh - 60px)"}}>
         <h1 style={{...serif,fontSize:"clamp(40px, 5.9vw, 85px)",color:C.white,lineHeight:1.1,letterSpacing:"-0.025em",margin:0}}>
