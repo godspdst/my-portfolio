@@ -64,7 +64,7 @@ const STUDIES = {
     strategyText: "The core problem wasn't aesthetic. A cluttered store with too many products competing for attention creates decision fatigue, and decision fatigue kills conversions. The strategic direction was restraint: show fewer products at once, clean up the layout and give users a clearer path from browsing to buying. Shopify would give Plume the platform stability they needed.",
     hasResearch: true, numCompetitors: 0,
     researchSummary: "I looked at how comparable e-commerce stores handled product display, navigation structure and checkout flow. The stores converting best were showing just the right amount. Simplified layouts with deliberate hierarchy outperformed dense, feature-heavy pages across the competitive set.",
-    researchPhoto: null,
+    researchPhoto: "plume-store-pod.webp",
     hasBeforeAfter: false,
     hasMoodBoard: false,
     branding: null,
