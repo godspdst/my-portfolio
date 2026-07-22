@@ -86,7 +86,7 @@ const STUDIES = {
     postImplementBeforeAfter: true,
     beforeImage: "plume-store-before.png",
     afterImage: "plume-store-after.png",
-    takeawayText: "The instinct in e-commerce is often to show more: more products, more options, more information. This project was a case for the opposite. Removing friction and reducing choices gave users a faster, clearer path to what they came for. Sometimes the most effective design decision is knowing what to take away.",
+    takeawayText: "The instinct in e-commerce is often to show products, options and information. This project was a case for the opposite. Removing friction and reducing choices gave users a faster, clearer path. Sometimes the most effective decision is knowing what to take away.",
     closingPhoto: "plume-store-closing.jpg",
   },
   "personal-portfolio": {
