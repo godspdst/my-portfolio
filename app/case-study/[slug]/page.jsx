@@ -65,6 +65,7 @@ const STUDIES = {
     hasResearch: true, numCompetitors: 0,
     researchSummary: "I looked at how comparable e-commerce stores handled product display, navigation structure and checkout flow. The stores converting best were showing just the right amount. Simplified layouts with deliberate hierarchy outperformed dense, feature-heavy pages across the competitive set.",
     researchPhoto: "plume-store-pod.webp",
+    researchPhotoGrayscale: true,
     hasBeforeAfter: false,
     hasMoodBoard: false,
     branding: null,
@@ -209,11 +210,11 @@ function Rule() {
   return <div style={{width:"100%", height:"1px", background:"#333333"}}/>;
 }
 
-function FullPhoto({ src, alt="", height="400px" }) {
+function FullPhoto({ src, alt="", height="400px", grayscale=false }) {
   return (
     <div className="full-photo" style={{width:"100%", height, overflow:"hidden", background:"#333333", display:"flex", alignItems:"center", justifyContent:"center"}}>
       {src
-        ? <img src={`/images/${src}`} alt={alt} loading="lazy" style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
+        ? <img src={`/images/${src}`} alt={alt} loading="lazy" style={{width:"100%", height:"100%", objectFit:"cover", display:"block", filter:grayscale?"grayscale(1)":"none"}}/>
         : <span style={{color:"#333333", fontSize:"10px", letterSpacing:"0.16em"}}>[ PHOTO ]</span>
       }
     </div>
@@ -434,7 +435,7 @@ export default function CaseStudyPage({ params }) {
             <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.researchSummary}</p>
           )}
         </div>
-        {cs.researchPhoto && <FullPhoto src={cs.researchPhoto} alt="Research" height="650px"/>}
+        {cs.researchPhoto && <FullPhoto src={cs.researchPhoto} alt="Research" height="650px" grayscale={!!cs.researchPhotoGrayscale}/>}
       </>)}
 
       {/* 9 · BEFORE / AFTER */}
