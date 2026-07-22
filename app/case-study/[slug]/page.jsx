@@ -528,7 +528,9 @@ export default function CaseStudyPage({ params }) {
           <div className="content-section" style={{padding:"72px 80px 50px"}}>
             <div className="wf-title" style={{textAlign:"center"}}><SectionTitle>wireframes</SectionTitle></div>
           </div>
-          <FullPhoto src={cs.wireframeBeforeImage} alt="Before" height="650px"/>
+          <div style={{width:"100%", overflow:"hidden", background:"#333333"}}>
+            <img src={`/images/${cs.wireframeBeforeImage}`} alt="Before" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+          </div>
           {(cs.wireframeText || cs.wireframes.length > 0) && (
             <div className="content-section wf-section-wrap" style={{padding:"72px 80px"}}>
               {cs.wireframeText && (
@@ -662,7 +664,11 @@ export default function CaseStudyPage({ params }) {
           <div className="content-section" style={{padding:"72px 80px 50px"}}>
             <div style={{textAlign:"center"}}><SectionTitle>implement</SectionTitle></div>
           </div>
-          {cs.implementAfterImage && <FullPhoto src={cs.implementAfterImage} alt="After" height="650px"/>}
+          {cs.implementAfterImage && (
+            <div style={{width:"100%", overflow:"hidden", background:"#333333"}}>
+              <img src={`/images/${cs.implementAfterImage}`} alt="After" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+            </div>
+          )}
           {cs.implementStyleGuideImage && (
             <div style={{padding:"72px 80px"}}>
               <img src={`/images/${cs.implementStyleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block", maxWidth:"960px", margin:"0 auto"}}/>
