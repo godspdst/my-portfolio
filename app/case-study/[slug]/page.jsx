@@ -524,52 +524,15 @@ export default function CaseStudyPage({ params }) {
       {/* 13 · WIREFRAMES */}
       {(cs.wireframes.length > 0 || cs.wireframeText || cs.wireframeBeforeImage) && (<>
         <Rule/>
-        {cs.wireframeBeforeImage ? (<>
-          <div className="content-section" style={{padding:"72px 80px 50px"}}>
-            <div className="wf-title" style={{textAlign:"center"}}><SectionTitle>wireframes</SectionTitle></div>
-          </div>
-          <div style={{width:"100%", overflow:"hidden", background:"#333333"}}>
-            <img src={`/images/${cs.wireframeBeforeImage}`} alt="Before" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-          </div>
-          {(cs.wireframeText || cs.wireframes.length > 0) && (
-            <div className="content-section wf-section-wrap" style={{padding:"72px 80px"}}>
-              {cs.wireframeText && (
-                <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto", marginBottom: cs.wireframes.length > 0 ? "48px" : 0}}>{cs.wireframeText}</p>
-              )}
-              {cs.wireframes.length > 0 && (cs.wireframeStyle === "the-pit" ? (
-                <div style={{display:"flex", gap:"30px", justifyContent:"center"}}>
-                  {cs.wireframes.map((src,i) => (
-                    <div key={i} className="wf-item-pit" style={{width:"337px", height:"727px", flexShrink:0, overflow:"hidden", background:"#333333"}}>
-                      <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
-                    </div>
-                  ))}
-                </div>
-              ) : cs.wireframeStyle === "wide" ? (
-                <div className="wf-wide-outer" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
-                  <div className="wf-row" style={{display:"flex", gap:"40px", justifyContent:"center"}}>
-                    {cs.wireframes.map((src,i) => (
-                      <div key={i} className="wf-item-wide" style={{width:"735px", height:"641px", flexShrink:0, overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
-                        <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="wf-grid" style={{display:"grid", gridTemplateColumns:`repeat(${cs.wireframes.length},1fr)`, gap:"20px", maxWidth:"960px", margin:"0 auto"}}>
-                  {cs.wireframes.map((src,i) => (
-                    <div key={i} style={{background:"#333333", overflow:"hidden"}}>
-                      <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          )}
-        </>) : (
         <div className="content-section wf-section-wrap" style={{padding:"72px 80px"}}>
           <div className="wf-title" style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>wireframes</SectionTitle></div>
           {cs.wireframeText && (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto", marginBottom: cs.wireframes.length > 0 ? "48px" : 0}}>{cs.wireframeText}</p>
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto", marginBottom:(cs.wireframeBeforeImage || cs.wireframes.length > 0) ? "48px" : 0}}>{cs.wireframeText}</p>
+          )}
+          {cs.wireframeBeforeImage && (
+            <div style={{overflow:"hidden", background:"#333333"}}>
+              <img src={`/images/${cs.wireframeBeforeImage}`} alt="Before" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+            </div>
           )}
           {cs.wireframes.length > 0 && (cs.wireframeStyle === "the-pit" ? (
             /* 337×727, 30px gap, 3 images centered */
@@ -602,7 +565,6 @@ export default function CaseStudyPage({ params }) {
             </div>
           ))}
         </div>
-        )}
       </>)}
 
       {/* 14 · FINAL PHOTO */}
@@ -660,18 +622,19 @@ export default function CaseStudyPage({ params }) {
       {/* 17 · IMPLEMENT */}
       {(cs.implementText || cs.implementAfterImage || cs.implementScreens?.length > 0) && (<>
         <Rule/>
-        {(cs.implementAfterImage || cs.implementStyleGuideImage || cs.implementScreens?.length > 0) ? (<>
-          <div className="content-section" style={{padding:"72px 80px 50px"}}>
-            <div style={{textAlign:"center"}}><SectionTitle>implement</SectionTitle></div>
-          </div>
+        <div className="content-section" style={{padding:"72px 80px"}}>
+          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>implement</SectionTitle></div>
+          {cs.implementText && (
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin: (cs.implementAfterImage || cs.implementStyleGuideImage || cs.implementScreens?.length > 0) ? "0 auto 48px" : "0 auto"}}>{cs.implementText}</p>
+          )}
           {cs.implementAfterImage && (
-            <div style={{width:"100%", overflow:"hidden", background:"#333333"}}>
+            <div style={{overflow:"hidden", background:"#333333", marginBottom: (cs.implementStyleGuideImage || cs.implementScreens?.length > 0) ? "48px" : 0}}>
               <img src={`/images/${cs.implementAfterImage}`} alt="After" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
             </div>
           )}
           {cs.implementStyleGuideImage && (
-            <div style={{padding:"72px 80px"}}>
-              <img src={`/images/${cs.implementStyleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block", maxWidth:"960px", margin:"0 auto"}}/>
+            <div style={{overflow:"hidden", background:"#333333", maxWidth:"960px", margin: cs.implementScreens?.length > 0 ? "0 auto 48px" : "0 auto"}}>
+              <img src={`/images/${cs.implementStyleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
             </div>
           )}
           {cs.implementScreens?.length > 0 && (
@@ -685,17 +648,7 @@ export default function CaseStudyPage({ params }) {
               </div>
             </div>
           )}
-          {cs.implementText && (
-            <div style={{padding:"72px 80px"}}>
-              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.implementText}</p>
-            </div>
-          )}
-        </>) : (
-          <div className="content-section" style={{padding:"72px 80px"}}>
-            <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>implement</SectionTitle></div>
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.implementText}</p>
-          </div>
-        )}
+        </div>
       </>)}
 
       {/* 18 · TAKEAWAY */}
