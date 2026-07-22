@@ -27,22 +27,29 @@ const STUDIES = {
   },
   "plume-homepass-landing-page": {
     title: "plume homepass landing page",
-    responsibilities: ["UX & UI design","Competitive research","Design system","Pitch deck design","Negotiating hand-off"],
-    goal: "With the arrival of Plume HomePass's newest product, the SuperPod G6, my goal was to refresh the landing page to mirror the new product. Users are requested to create a store to compare their products against each other.",
+    responsibilities: ["UX & UI design","Competitive research","Design system","Prototype","Developer handoff"],
+    goal: "With the launch of Plume HomePass's newest product, the SuperPod G6, the landing page needed to do two things: introduce the new product and help users understand which SuperPod was right for them. Awareness alone wasn't enough. Users needed guidance to make a confident purchase.",
     featureImages: ["plume-landing-feature-1.jpg","plume-landing-feature-2.jpg","plume-landing-feature-3.jpg"],
     heroImage: "plume-landing-hero.jpg",
     contextPhoto: "plume-landing-context.jpg",
     process: ["STRATEGY","RESEARCH","WIREFRAME","PROTOTYPE","TEST","IMPLEMENT"],
+    hasStrategy: true,
+    strategyText: "The existing landing page put the burden of comparison on the user. They had to browse the lineup, compare differences between products and decide. But for the SuperPod, the right choice depends on home size, internet speed and the user's number of IoT devices. The strategic direction was to shift from a passive display to active guidance.",
     hasResearch: true, numCompetitors: 2, competitorLogos: ["plume-competitor-eero.png","plume-competitor-nest.png"], competitorLogoSizes: [{w:50,h:25},{w:30,h:12.92}],
-    researchSummary: "When I began my competitive research for this project, I looked at our competitor's sites to compare choices against each other, giving users a menu for what devices met their needs. To differentiate Plume, I decided to incorporate a quiz where users input their data and are suggested SuperPods to cater to their needs.",
+    competitiveAnalysisText: null,
+    researchSummary: "I examined how competitors structured their product pages and how they handled comparison, decision support and purchase flow. Most relied on static spec tables that assumed users already knew what they were looking for. The opportunity for Plume was to meet users where they were: uncertain, comparing options, needing a recommendation rather than a data dump.",
     researchPhoto: "plume-landing-research.jpg",
     hasMoodBoard: false,
     branding: null,
     hasUIKit: true, uiKitImage: "plume-landing-uikit.png",
     wireframes: [],
+    wireframeText: "With the direction set, I created landing page wireframes. These led with the SuperPod G6 and integrated the configurator as the primary decisioning tool. The page structure moved users from awareness to action.",
     finalPhoto: null,
     prototypeTitle: "product configurator",
+    prototypeText: "I extended Plume's existing design system while building out the new landing page with the configurator section. I added a few new components in Figma to support the new product.",
     screens: ["plume-landing-screen-1.png","plume-landing-screen-2.png","plume-landing-screen-3.png"],
+    testText: "Plume's user research team ran A/B testing with real users, comparing the configurator experience against unassisted browsing. Users strongly preferred the guided approach; they were given a recommendation and no longer had to compare specs on their own. They moved through their decision faster and with more confidence. The data validated the core strategic bet: guidance over browsing.",
+    implementText: "I handed off the designs to the development team, talking through the prototype, clarifying interaction details and aligning on what would ship. The landing page launched with a modified configurator section—a common constraint of the development process. The guided recommendation approach remained the foundation of the final landing page.",
     closingPhoto: "plume-landing-closing.jpg",
   },
   "plume-homepass-online-store": {
@@ -369,10 +376,10 @@ export default function CaseStudyPage({ params }) {
               </svg>
             </div>
           </div>
-          <div className="two-col" style={{display:"grid", gridTemplateColumns:"200px 1fr", gap:"64px", maxWidth:"960px", margin:"0 auto", alignItems:"start"}}>
+          <div className="two-col" style={{display:"grid", gridTemplateColumns:cs.competitiveAnalysisText?"1fr 1fr":"200px 1fr", gap:"64px", maxWidth:"960px", margin:"0 auto", alignItems:"start"}}>
             <div>
               <ColLabel>COMPETITIVE ANALYSIS</ColLabel>
-              <div style={{display:"flex", gap:"12px", flexWrap:"wrap"}}>
+              <div style={{display:"flex", gap:"12px", flexWrap:"wrap", marginBottom:cs.competitiveAnalysisText?"16px":"0"}}>
                 {Array(cs.numCompetitors).fill(0).map((_,i) => (
                   <div key={i} style={{width:"50px", height:"50px", borderRadius:"50%", background:"#F3F3FB", border:"1px solid rgba(243,243,251,0.3)", overflow:"hidden", display:"flex", alignItems:"center", justifyContent:"center"}}>
                     {cs.competitorLogos && cs.competitorLogos[i]
@@ -382,6 +389,9 @@ export default function CaseStudyPage({ params }) {
                   </div>
                 ))}
               </div>
+              {cs.competitiveAnalysisText && (
+                <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", margin:0}}>{cs.competitiveAnalysisText}</p>
+              )}
             </div>
             <div>
               <ColLabel>FINDINGS</ColLabel>
@@ -415,10 +425,14 @@ export default function CaseStudyPage({ params }) {
         <Rule/>
         <div className="content-section" style={{padding:"72px 80px"}}>
           <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>strategy</SectionTitle></div>
-          <div className="two-col" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"60px", maxWidth:"960px", margin:"0 auto"}}>
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>I began my process researching design portfolios that I loved and compiled a list of things that conveyed the feelings I was going for: elegant yet approachable.</p>
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>While narrowing the colors for my portfolio, I used AI to translate the images I chose from a color palette. I found a mood board and style guide that perfectly conveyed the feelings I wanted to capture.</p>
-          </div>
+          {cs.strategyText ? (
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.strategyText}</p>
+          ) : (
+            <div className="two-col" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"60px", maxWidth:"960px", margin:"0 auto"}}>
+              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>I began my process researching design portfolios that I loved and compiled a list of things that conveyed the feelings I was going for: elegant yet approachable.</p>
+              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>While narrowing the colors for my portfolio, I used AI to translate the images I chose from a color palette. I found a mood board and style guide that perfectly conveyed the feelings I wanted to capture.</p>
+            </div>
+          )}
         </div>
       </>)}
 
@@ -494,11 +508,14 @@ export default function CaseStudyPage({ params }) {
       )}
 
       {/* 13 · WIREFRAMES */}
-      {cs.wireframes.length > 0 && (<>
+      {(cs.wireframes.length > 0 || cs.wireframeText) && (<>
         <Rule/>
         <div className="content-section wf-section-wrap" style={{padding:"72px 80px"}}>
           <div className="wf-title" style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>wireframes</SectionTitle></div>
-          {cs.wireframeStyle === "the-pit" ? (
+          {cs.wireframeText && (
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto", marginBottom: cs.wireframes.length > 0 ? "48px" : 0}}>{cs.wireframeText}</p>
+          )}
+          {cs.wireframes.length > 0 && (cs.wireframeStyle === "the-pit" ? (
             /* 337×727, 30px gap, 3 images centered */
             <div style={{display:"flex", gap:"30px", justifyContent:"center"}}>
               {cs.wireframes.map((src,i) => (
@@ -527,7 +544,7 @@ export default function CaseStudyPage({ params }) {
                 </div>
               ))}
             </div>
-          )}
+          ))}
         </div>
       </>)}
 
@@ -539,6 +556,9 @@ export default function CaseStudyPage({ params }) {
         <Rule/>
         <div className="content-section proto-section" style={{padding:"72px 80px"}}>
           <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>{cs.prototypeTitle}</SectionTitle></div>
+          {cs.prototypeText && (
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto 48px"}}>{cs.prototypeText}</p>
+          )}
           {(cs.prototypeTitle === "shopify checkout flow" || cs.prototypeTitle === "product configurator") ? (
             /* full source width, sides overflow off page edges */
             <div className="proto-overflow-wrap" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
@@ -571,7 +591,25 @@ export default function CaseStudyPage({ params }) {
         </div>
       </>)}
 
-      {/* 16 · CLOSING PHOTO */}
+      {/* 16 · TEST */}
+      {cs.testText && (<>
+        <Rule/>
+        <div className="content-section" style={{padding:"72px 80px"}}>
+          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>test</SectionTitle></div>
+          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.testText}</p>
+        </div>
+      </>)}
+
+      {/* 17 · IMPLEMENT */}
+      {cs.implementText && (<>
+        <Rule/>
+        <div className="content-section" style={{padding:"72px 80px"}}>
+          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>implement</SectionTitle></div>
+          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.implementText}</p>
+        </div>
+      </>)}
+
+      {/* 18 · CLOSING PHOTO */}
       <FullPhoto src={cs.closingPhoto} alt="Closing" height="650px"/>
 
       {/* 17 · CTA */}
