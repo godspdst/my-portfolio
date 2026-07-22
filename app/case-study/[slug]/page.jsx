@@ -53,24 +53,34 @@ const STUDIES = {
     closingPhoto: "plume-landing-closing.jpg",
   },
   "plume-homepass-online-store": {
-    title: "plume homepass online store",
-    responsibilities: ["UX & UI design","Shopify redesign","Deploy to Shopify","Pitch deck design","Negotiating hand-off"],
-    goal: "Plume wanted to migrate their already-building e-commerce store to Shopify. They also requested to simplify their shop page, making it easier for users to navigate.",
+    title: "plume homepass ecommerce store",
+    responsibilities: ["UX & UI design","Shopify redesign","Competitive research","Prototype","Developer handoff"],
+    goal: "Plume HomePass had an existing e-commerce store that wasn't working hard enough. The visual design felt off-brand, the navigation was difficult to move through and the product display was cluttered enough to slow users down before they ever reached checkout. Plume needed the store migrated to Shopify and simplified in a way that actually converted.",
     featureImages: ["plume-store-feature-1.jpg","plume-store-feature-2.jpg","plume-store-feature-3.jpg"],
     heroImage: "plume-store-hero.jpg",
     contextPhoto: "plume-store-mid.jpg",
-    process: ["STRATEGY","WIREFRAME","PROTOTYPE","TEST","IMPLEMENT"],
-    hasResearch: false,
-    hasBeforeAfter: true,
-    beforeImage: "plume-store-before.png",
-    afterImage: "plume-store-after.png",
-    midPhoto: "plume-store-mid.jpg",
+    process: ["STRATEGY","RESEARCH","WIREFRAME","PROTOTYPE","TEST","IMPLEMENT"],
+    hasStrategy: true,
+    strategyText: "The core problem wasn't aesthetic. A cluttered store with too many products competing for attention creates decision fatigue, and decision fatigue kills conversions. The strategic direction was restraint: show fewer products at once, clean up the layout and give users a clearer path from browsing to buying. Shopify would give Plume the platform stability they needed. The design would give their users the clarity they didn't have.",
+    hasResearch: true, numCompetitors: 0,
+    researchSummary: "I looked at how comparable e-commerce stores handled product display, navigation structure and checkout flow. The pattern was consistent: the stores converting best weren't showing the most, they were showing the right amount. Simplified layouts with deliberate hierarchy outperformed dense, feature-heavy pages across the competitive set. That finding sharpened the direction and gave the simplification strategy a defensible foundation.",
+    researchPhoto: null,
+    hasBeforeAfter: false,
     hasMoodBoard: false,
-    branding: { colors:["#6b5ce7","#a8a8b3","#f0f0f0","#1b1b1b"], fonts:["Wigrum Regular","Wigrum Bold"], hasStyleGuide:true, styleGuideImage:"plume-store-styleguide.png" },
+    branding: null,
     wireframes: [],
+    wireframeBeforeImage: "plume-store-before.png",
+    wireframeText: "With the strategic direction established, I wireframed a store structure that reduced visual noise at every level: fewer products surfaced at once, a cleaner category structure and a layout that moved users toward checkout rather than around it. The before state showed exactly what we were solving for: a page asking users to do too much work just to find what they needed.",
     finalPhoto: null,
-    prototypeTitle: "shopify checkout flow",
-    screens: ["plume-store-checkout-1.png","plume-store-checkout-2.png","plume-store-checkout-3.png"],
+    prototypeTitle: null,
+    prototypeText: "I extended Plume's existing design system to build out the redesigned store in Figma, adding components as needed to support the Shopify environment and the simplified product display. The prototype was built to handoff fidelity: detailed enough that developers could build directly from the files without ambiguity.",
+    screens: [],
+    testText: "Plume's team tested the redesigned store with real users before launch. The simplified layout and reduced product density tested well: users moved through the store more fluidly and reached checkout with less friction. The feedback validated the core strategic bet that restraint, not abundance, was the right direction.",
+    implementText: "I handed off Figma files directly to the development team, who built and deployed the store to Shopify. The launch was clean. Conversion rates increased enough that Plume decided to roll the same design approach across their other brands. I designed for those brands too.",
+    implementAfterImage: "plume-store-after.png",
+    implementStyleGuideImage: "plume-store-styleguide.png",
+    implementScreens: ["plume-store-checkout-1.png","plume-store-checkout-2.png","plume-store-checkout-3.png"],
+    takeawayText: "The instinct in e-commerce is often to show more: more products, more options, more information. This project was a case for the opposite. Removing friction and reducing choices gave users a faster, clearer path to what they came for. Sometimes the most effective design decision is knowing what to take away.",
     closingPhoto: "plume-store-closing.jpg",
   },
   "personal-portfolio": {
@@ -364,7 +374,23 @@ export default function CaseStudyPage({ params }) {
       {/* 6 · CONTEXT PHOTO */}
       <FullPhoto src={cs.contextPhoto} alt="Context" height="650px"/>
 
-      {/* 7 · RESEARCH */}
+      {/* 7 · STRATEGY */}
+      {cs.hasStrategy && (<>
+        <Rule/>
+        <div className="content-section" style={{padding:"72px 80px"}}>
+          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>strategy</SectionTitle></div>
+          {cs.strategyText ? (
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.strategyText}</p>
+          ) : (
+            <div className="two-col" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"60px", maxWidth:"960px", margin:"0 auto"}}>
+              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>I began my process researching design portfolios that I loved and compiled a list of things that conveyed the feelings I was going for: elegant yet approachable.</p>
+              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>While narrowing the colors for my portfolio, I used AI to translate the images I chose from a color palette. I found a mood board and style guide that perfectly conveyed the feelings I wanted to capture.</p>
+            </div>
+          )}
+        </div>
+      </>)}
+
+      {/* 8 · RESEARCH */}
       {cs.hasResearch && (<>
         <Rule/>
         <div className="content-section" style={{padding:"72px 80px"}}>
@@ -376,33 +402,37 @@ export default function CaseStudyPage({ params }) {
               </svg>
             </div>
           </div>
-          <div className="two-col" style={{display:"grid", gridTemplateColumns:cs.competitiveAnalysisText?"1fr 1fr":"200px 1fr", gap:"64px", maxWidth:"960px", margin:"0 auto", alignItems:"start"}}>
-            <div>
-              <ColLabel>COMPETITIVE ANALYSIS</ColLabel>
-              <div style={{display:"flex", gap:"12px", flexWrap:"wrap", marginBottom:cs.competitiveAnalysisText?"16px":"0"}}>
-                {Array(cs.numCompetitors).fill(0).map((_,i) => (
-                  <div key={i} style={{width:"50px", height:"50px", borderRadius:"50%", background:"#F3F3FB", border:"1px solid rgba(243,243,251,0.3)", overflow:"hidden", display:"flex", alignItems:"center", justifyContent:"center"}}>
-                    {cs.competitorLogos && cs.competitorLogos[i]
-                      ? <img src={`/images/${cs.competitorLogos[i]}`} alt={`Competitor ${i+1}`} style={{width:cs.competitorLogoSizes?.[i]?.w?`${cs.competitorLogoSizes[i].w}px`:"100%", height:cs.competitorLogoSizes?.[i]?.h?`${cs.competitorLogoSizes[i].h}px`:"100%", objectFit:"contain"}}/>
-                      : null
-                    }
-                  </div>
-                ))}
+          {cs.numCompetitors > 0 ? (
+            <div className="two-col" style={{display:"grid", gridTemplateColumns:cs.competitiveAnalysisText?"1fr 1fr":"200px 1fr", gap:"64px", maxWidth:"960px", margin:"0 auto", alignItems:"start"}}>
+              <div>
+                <ColLabel>COMPETITIVE ANALYSIS</ColLabel>
+                <div style={{display:"flex", gap:"12px", flexWrap:"wrap", marginBottom:cs.competitiveAnalysisText?"16px":"0"}}>
+                  {Array(cs.numCompetitors).fill(0).map((_,i) => (
+                    <div key={i} style={{width:"50px", height:"50px", borderRadius:"50%", background:"#F3F3FB", border:"1px solid rgba(243,243,251,0.3)", overflow:"hidden", display:"flex", alignItems:"center", justifyContent:"center"}}>
+                      {cs.competitorLogos && cs.competitorLogos[i]
+                        ? <img src={`/images/${cs.competitorLogos[i]}`} alt={`Competitor ${i+1}`} style={{width:cs.competitorLogoSizes?.[i]?.w?`${cs.competitorLogoSizes[i].w}px`:"100%", height:cs.competitorLogoSizes?.[i]?.h?`${cs.competitorLogoSizes[i].h}px`:"100%", objectFit:"contain"}}/>
+                        : null
+                      }
+                    </div>
+                  ))}
+                </div>
+                {cs.competitiveAnalysisText && (
+                  <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", margin:0}}>{cs.competitiveAnalysisText}</p>
+                )}
               </div>
-              {cs.competitiveAnalysisText && (
-                <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", margin:0}}>{cs.competitiveAnalysisText}</p>
-              )}
+              <div>
+                <ColLabel>FINDINGS</ColLabel>
+                <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>{cs.researchSummary}</p>
+              </div>
             </div>
-            <div>
-              <ColLabel>FINDINGS</ColLabel>
-              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>{cs.researchSummary}</p>
-            </div>
-          </div>
+          ) : (
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.researchSummary}</p>
+          )}
         </div>
-        <FullPhoto src={cs.researchPhoto} alt="Research" height="650px"/>
+        {cs.researchPhoto && <FullPhoto src={cs.researchPhoto} alt="Research" height="650px"/>}
       </>)}
 
-      {/* 8 · BEFORE / AFTER */}
+      {/* 9 · BEFORE / AFTER */}
       {cs.hasBeforeAfter && (<>
         <Rule/>
         <div className="content-section" style={{padding:"72px 80px"}}>
@@ -418,22 +448,6 @@ export default function CaseStudyPage({ params }) {
           </div>
         </div>
         <FullPhoto src={cs.midPhoto} alt="Mid section" height="650px"/>
-      </>)}
-
-      {/* 9 · STRATEGY */}
-      {cs.hasStrategy && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>strategy</SectionTitle></div>
-          {cs.strategyText ? (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.strategyText}</p>
-          ) : (
-            <div className="two-col" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"60px", maxWidth:"960px", margin:"0 auto"}}>
-              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>I began my process researching design portfolios that I loved and compiled a list of things that conveyed the feelings I was going for: elegant yet approachable.</p>
-              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>While narrowing the colors for my portfolio, I used AI to translate the images I chose from a color palette. I found a mood board and style guide that perfectly conveyed the feelings I wanted to capture.</p>
-            </div>
-          )}
-        </div>
       </>)}
 
       {/* 10 · MOOD BOARD */}
@@ -508,8 +522,48 @@ export default function CaseStudyPage({ params }) {
       )}
 
       {/* 13 · WIREFRAMES */}
-      {(cs.wireframes.length > 0 || cs.wireframeText) && (<>
+      {(cs.wireframes.length > 0 || cs.wireframeText || cs.wireframeBeforeImage) && (<>
         <Rule/>
+        {cs.wireframeBeforeImage ? (<>
+          <div className="content-section" style={{padding:"72px 80px 50px"}}>
+            <div className="wf-title" style={{textAlign:"center"}}><SectionTitle>wireframes</SectionTitle></div>
+          </div>
+          <FullPhoto src={cs.wireframeBeforeImage} alt="Before" height="650px"/>
+          {(cs.wireframeText || cs.wireframes.length > 0) && (
+            <div className="content-section wf-section-wrap" style={{padding:"72px 80px"}}>
+              {cs.wireframeText && (
+                <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto", marginBottom: cs.wireframes.length > 0 ? "48px" : 0}}>{cs.wireframeText}</p>
+              )}
+              {cs.wireframes.length > 0 && (cs.wireframeStyle === "the-pit" ? (
+                <div style={{display:"flex", gap:"30px", justifyContent:"center"}}>
+                  {cs.wireframes.map((src,i) => (
+                    <div key={i} className="wf-item-pit" style={{width:"337px", height:"727px", flexShrink:0, overflow:"hidden", background:"#333333"}}>
+                      <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
+                    </div>
+                  ))}
+                </div>
+              ) : cs.wireframeStyle === "wide" ? (
+                <div className="wf-wide-outer" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
+                  <div className="wf-row" style={{display:"flex", gap:"40px", justifyContent:"center"}}>
+                    {cs.wireframes.map((src,i) => (
+                      <div key={i} className="wf-item-wide" style={{width:"735px", height:"641px", flexShrink:0, overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
+                        <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="wf-grid" style={{display:"grid", gridTemplateColumns:`repeat(${cs.wireframes.length},1fr)`, gap:"20px", maxWidth:"960px", margin:"0 auto"}}>
+                  {cs.wireframes.map((src,i) => (
+                    <div key={i} style={{background:"#333333", overflow:"hidden"}}>
+                      <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+        </>) : (
         <div className="content-section wf-section-wrap" style={{padding:"72px 80px"}}>
           <div className="wf-title" style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>wireframes</SectionTitle></div>
           {cs.wireframeText && (
@@ -546,20 +600,21 @@ export default function CaseStudyPage({ params }) {
             </div>
           ))}
         </div>
+        )}
       </>)}
 
       {/* 14 · FINAL PHOTO */}
       {cs.finalPhoto && <FullPhoto src={cs.finalPhoto} alt="Final design" height="650px"/>}
 
       {/* 15 · PROTOTYPE */}
-      {cs.prototypeTitle && cs.screens.length > 0 && (<>
+      {((cs.prototypeTitle && cs.screens.length > 0) || cs.prototypeText) && (<>
         <Rule/>
         <div className="content-section proto-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>{cs.prototypeTitle}</SectionTitle></div>
+          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>{cs.prototypeTitle || "prototype"}</SectionTitle></div>
           {cs.prototypeText && (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto 48px"}}>{cs.prototypeText}</p>
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin: cs.prototypeTitle && cs.screens.length > 0 ? "0 auto 48px" : "0 auto"}}>{cs.prototypeText}</p>
           )}
-          {(cs.prototypeTitle === "shopify checkout flow" || cs.prototypeTitle === "product configurator") ? (
+          {cs.screens.length > 0 && ((cs.prototypeTitle === "shopify checkout flow" || cs.prototypeTitle === "product configurator") ? (
             /* full source width, sides overflow off page edges */
             <div className="proto-overflow-wrap" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
               <div className="proto-overflow-row" style={{display:"flex", justifyContent:"center", gap:"30px"}}>
@@ -587,7 +642,7 @@ export default function CaseStudyPage({ params }) {
                 </div>
               ))}
             </div>
-          )}
+          ))}
         </div>
       </>)}
 
@@ -601,15 +656,52 @@ export default function CaseStudyPage({ params }) {
       </>)}
 
       {/* 17 · IMPLEMENT */}
-      {cs.implementText && (<>
+      {(cs.implementText || cs.implementAfterImage || cs.implementScreens?.length > 0) && (<>
+        <Rule/>
+        {(cs.implementAfterImage || cs.implementStyleGuideImage || cs.implementScreens?.length > 0) ? (<>
+          <div className="content-section" style={{padding:"72px 80px 50px"}}>
+            <div style={{textAlign:"center"}}><SectionTitle>implement</SectionTitle></div>
+          </div>
+          {cs.implementAfterImage && <FullPhoto src={cs.implementAfterImage} alt="After" height="650px"/>}
+          {cs.implementStyleGuideImage && (
+            <div style={{padding:"72px 80px"}}>
+              <img src={`/images/${cs.implementStyleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block", maxWidth:"960px", margin:"0 auto"}}/>
+            </div>
+          )}
+          {cs.implementScreens?.length > 0 && (
+            <div className="proto-overflow-wrap" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
+              <div className="proto-overflow-row" style={{display:"flex", justifyContent:"center", gap:"30px"}}>
+                {cs.implementScreens.map((src,i) => (
+                  <div key={i} className="proto-overflow-item" style={{width:"700px", height:"652px", flexShrink:0, overflow:"hidden"}}>
+                    <img src={`/images/${src}`} alt={`Screen ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {cs.implementText && (
+            <div style={{padding:"72px 80px"}}>
+              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.implementText}</p>
+            </div>
+          )}
+        </>) : (
+          <div className="content-section" style={{padding:"72px 80px"}}>
+            <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>implement</SectionTitle></div>
+            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.implementText}</p>
+          </div>
+        )}
+      </>)}
+
+      {/* 18 · TAKEAWAY */}
+      {cs.takeawayText && (<>
         <Rule/>
         <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>implement</SectionTitle></div>
-          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.implementText}</p>
+          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>takeaway</SectionTitle></div>
+          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.takeawayText}</p>
         </div>
       </>)}
 
-      {/* 18 · CLOSING PHOTO */}
+      {/* 19 · CLOSING PHOTO */}
       <FullPhoto src={cs.closingPhoto} alt="Closing" height="650px"/>
 
       {/* 17 · CTA */}
