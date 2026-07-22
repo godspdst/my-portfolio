@@ -69,17 +69,22 @@ const STUDIES = {
     hasMoodBoard: false,
     branding: null,
     wireframes: [],
-    wireframeBeforeImage: "plume-store-before.png",
+    wireframeBeforeImage: null,
     wireframeText: "I created store wireframes that reduced visual noise. Fewer products surfaced at once, there was a cleaner category structure and I adjusted the layout to move users toward checkout. The before state showed a page asking users to do too much work to find what they needed.",
+    styleGuideImage: "plume-store-styleguide.png",
     finalPhoto: null,
     prototypeTitle: null,
     prototypeText: "I extended Plume's existing design system to build out the redesigned store in Figma, adding components as needed to support the Shopify environment and the simplified product display. The prototype was built to handoff fidelity: detailed enough that developers could build directly from the files without ambiguity.",
     screens: [],
+    postPrototypeScreens: ["plume-store-checkout-1.png","plume-store-checkout-2.png","plume-store-checkout-3.png"],
     testText: "Plume's user research team tested the new store with real users before launch. Users moved through the store more fluidly and reached checkout with less friction. The feedback validated that restraint was the right direction.",
     implementText: "I handed off Figma files directly to the development team, who built and deployed the store to Shopify. Conversion rates increased enough that Plume decided to roll the same design approach across their other brands, which I also designed.",
-    implementAfterImage: "plume-store-after.png",
-    implementStyleGuideImage: "plume-store-styleguide.png",
-    implementScreens: ["plume-store-checkout-1.png","plume-store-checkout-2.png","plume-store-checkout-3.png"],
+    implementAfterImage: null,
+    implementStyleGuideImage: null,
+    implementScreens: [],
+    postImplementBeforeAfter: true,
+    beforeImage: "plume-store-before.png",
+    afterImage: "plume-store-after.png",
     takeawayText: "The instinct in e-commerce is often to show more: more products, more options, more information. This project was a case for the opposite. Removing friction and reducing choices gave users a faster, clearer path to what they came for. Sometimes the most effective design decision is knowing what to take away.",
     closingPhoto: "plume-store-closing.jpg",
   },
@@ -567,6 +572,17 @@ export default function CaseStudyPage({ params }) {
         </div>
       </>)}
 
+      {/* 13.5 · STYLE GUIDE (after wireframes) */}
+      {cs.styleGuideImage && (<>
+        <Rule/>
+        <div className="content-section" style={{padding:"72px 80px"}}>
+          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>style guide</SectionTitle></div>
+          <div style={{maxWidth:"960px", margin:"0 auto", overflow:"hidden", background:"#333333"}}>
+            <img src={`/images/${cs.styleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+          </div>
+        </div>
+      </>)}
+
       {/* 14 · FINAL PHOTO */}
       {cs.finalPhoto && <FullPhoto src={cs.finalPhoto} alt="Final design" height="650px"/>}
 
@@ -610,6 +626,22 @@ export default function CaseStudyPage({ params }) {
         </div>
       </>)}
 
+      {/* 15.5 · POST-PROTOTYPE SCREENS (after prototype) */}
+      {cs.postPrototypeScreens?.length > 0 && (<>
+        <Rule/>
+        <div className="content-section" style={{padding:"72px 80px"}}>
+          <div className="proto-overflow-wrap" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
+            <div className="proto-overflow-row" style={{display:"flex", justifyContent:"center", gap:"30px"}}>
+              {cs.postPrototypeScreens.map((src,i) => (
+                <div key={i} className="proto-overflow-item" style={{width:"700px", height:"652px", flexShrink:0, overflow:"hidden"}}>
+                  <img src={`/images/${src}`} alt={`Screen ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </>)}
+
       {/* 16 · TEST */}
       {cs.testText && (<>
         <Rule/>
@@ -648,6 +680,23 @@ export default function CaseStudyPage({ params }) {
               </div>
             </div>
           )}
+        </div>
+      </>)}
+
+      {/* 17.5 · POST-IMPLEMENT BEFORE/AFTER */}
+      {cs.postImplementBeforeAfter && cs.beforeImage && (<>
+        <Rule/>
+        <div className="content-section" style={{padding:"72px 80px"}}>
+          <div className="before-after-grid" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"40px", maxWidth:"1360px", margin:"0 auto"}}>
+            {[["BEFORE", cs.beforeImage],["AFTER", cs.afterImage]].map(([label, src]) => (
+              <div key={label}>
+                <p className="before-after-label" style={{fontSize:"clamp(28px, 3.9vw, 56px)", fontWeight:"400", lineHeight:1.04, letterSpacing:"-0.02em", color:"#F3F3FB", marginBottom:"16px", textAlign:"center", fontFamily:"'Inter',sans-serif"}}>{label}</p>
+                <div style={{overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
+                  {src && <img src={`/images/${src}`} alt={label} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </>)}
 
