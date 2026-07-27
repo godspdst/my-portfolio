@@ -19,6 +19,14 @@ const PAGE_CSS = `
     65%{transform:translateY(-.05em) rotate(-12deg) scale(0.85)}
   }
   .dz-sparkle:hover{animation:dz-sparkle 0.6s ease-in-out infinite}
+  @keyframes dz-jiggle{
+    0%,100%{transform:translateY(-.06em) rotate(-4deg)}
+    20%{transform:translateY(-.06em) rotate(-14deg)}
+    40%{transform:translateY(-.06em) rotate(8deg)}
+    60%{transform:translateY(-.06em) rotate(-10deg)}
+    80%{transform:translateY(-.06em) rotate(6deg)}
+  }
+  .dz-jiggle:hover{animation:dz-jiggle 0.35s ease-in-out infinite}
   .cta-btn-fill:hover{background:#ee6fb5!important;color:#2b1f1c!important}
   .cta-btn-outline:hover{background:#f4611c!important;color:#2b1f1c!important}
   .top5-link:hover .top5-title{color:#c23d86}
@@ -58,7 +66,7 @@ function Hero() {
           </span>
           <span style={{display:"block"}}>
             sound{" "}
-            <img src="/assets/doodle-amp.png" alt="&"
+            <img src="/assets/doodle-amp.png" alt="&" className="dz-jiggle"
               style={{display:"inline-block",verticalAlign:"middle",width:".86em",height:".86em",imageRendering:"pixelated",margin:"0 .05em",transform:"translateY(-.06em) rotate(-4deg)",border:"none"}}
               onError={e=>e.currentTarget.style.display="none"}
             />{" "}vision
