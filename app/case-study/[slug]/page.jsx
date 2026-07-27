@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import { C, serif, BASE_CSS, Nav, EMAIL, LINKEDIN } from "../../shared";
+import { C, BASE_CSS, Header, SiteFooter, EMAIL, LINKEDIN } from "../../shared";
 
 const STUDIES = {
   "the-pit": {
     title: "the pit app",
-    responsibilities: ["App design","UX Strategy","Research","Prototyping","Branding","Design System"],
+    role: "app design & ux strategy — concept to prototype",
+    responsibilities: ["research","prototyping","branding","design system"],
+    outcome: "a 0→1 social platform for music lovers — brand, system & product",
     goal: "The Pit is a social media platform built for music lovers that allows users to discover music, share what they're listening to, and connect with other fans who share the same musical interests and passions around the world.",
     featureImages: ["the-pit-feature-1.png","the-pit-feature-2.jpg","the-pit-feature-3.jpg"],
     heroImage: "the-pit-hero.jpg",
-    contextPhoto: "the-pit-context.jpg",
+    contextPhoto: null,
     process: ["STRATEGY","RESEARCH","WIREFRAME","BRANDING","PROTOTYPE","TEST"],
     hasResearch: true, numCompetitors: 3,
     competitorLogos: ["the-pit-competitor-1.png","the-pit-competitor-2.png","the-pit-competitor-3.png"],
@@ -17,17 +19,20 @@ const STUDIES = {
     researchSummary: "To understand the space I was entering, I conducted competitive analysis across existing social and music platforms with 5 or more users. I created a survey to better understand what people were currently using to discover and share music with their friends.",
     researchPhoto: "the-pit-research.jpg",
     hasMoodBoard: true, moodBoardImage: "the-pit-moodboard.jpg",
-    branding: { colors:["#1a1a1a","#f5f5f5","#e8c84a"], fonts:["Roboto Mono Bold","Roboto Mono Regular"], brandingImage:"the-pit-branding.jpg", styleGuideImage:"the-pit-styleguide.png" },
+    branding: null,
     wireframes: ["the-pit-wf-1.png","the-pit-wf-2.png","the-pit-wf-3.png"],
     wireframeStyle: "the-pit",
     finalPhoto: "the-pit-final.jpg",
     prototypeTitle: "follow and message a user",
     screens: ["the-pit-screen-1.png","the-pit-screen-2.png","the-pit-screen-3.png"],
-    closingPhoto: "the-pit-closing.jpg",
+    closingPhoto: null,
+    nextSlug: "plume-homepass-landing-page", nextTitle: "Plume HomePass Landing Page",
   },
   "plume-homepass-landing-page": {
     title: "plume homepass landing page",
-    responsibilities: ["UX & UI design","Competitive research","Design system","Prototype","Developer handoff"],
+    role: "ux & ui designer",
+    responsibilities: ["competitive research","design system","prototype","developer handoff"],
+    outcome: "A/B testing confirmed users preferred guided recommendations over unassisted browsing—moving through decisions faster and with more confidence.",
     goal: "With the launch of Plume HomePass's newest product, the SuperPod G6, the landing page needed to do two things: introduce the new product and help users understand which SuperPod was right for them. Awareness alone wasn't enough. Users needed guidance to make a confident purchase.",
     featureImages: ["plume-landing-feature-1.jpg","plume-landing-feature-2.jpg","plume-landing-feature-3.jpg"],
     heroImage: "plume-landing-hero.jpg",
@@ -50,15 +55,18 @@ const STUDIES = {
     screens: ["plume-landing-screen-1.png","plume-landing-screen-2.png","plume-landing-screen-3.png"],
     testText: "Plume's user research team ran A/B testing with real users, comparing the configurator experience against unassisted browsing. Users strongly preferred the guided approach; they were given a recommendation and no longer had to compare specs on their own. They moved through their decision faster and with more confidence. The data validated the core strategic bet: guidance over browsing.",
     implementText: "I handed off the designs to the development team, talking through the prototype, clarifying interaction details and aligning on what would ship. The landing page launched with a modified configurator section—a common constraint of the development process. The guided recommendation approach remained the foundation of the final landing page.",
-    closingPhoto: "plume-landing-closing.jpg",
+    closingPhoto: null,
+    nextSlug: "plume-homepass-online-store", nextTitle: "Plume HomePass Ecommerce Store",
   },
   "plume-homepass-online-store": {
     title: "plume homepass ecommerce store",
-    responsibilities: ["UX & UI design","Shopify redesign","Competitive research","Prototype","Developer handoff"],
+    role: "ux & ui design — shopify migration through dev handoff",
+    responsibilities: ["shopify redesign","competitive research","prototype","developer handoff"],
+    outcome: "conversion rose enough that Plume rolled the approach across its other brands",
     goal: "Plume HomePass had an existing e-commerce store that wasn't working hard enough. The visual design felt off-brand, the navigation was difficult to move through and the product display was cluttered enough to slow users down before they ever reached checkout. Plume needed the store migrated to Shopify and simplified in a way that actually converted.",
     featureImages: ["plume-store-feature-1.jpg","plume-store-feature-2.jpg","plume-store-feature-3.jpg"],
     heroImage: "plume-store-hero.jpg",
-    contextPhoto: "plume-store-mid.jpg",
+    contextPhoto: null,
     process: ["STRATEGY","RESEARCH","WIREFRAME","PROTOTYPE","TEST","IMPLEMENT"],
     hasStrategy: true,
     strategyText: "The core problem wasn't aesthetic. A cluttered store with too many products competing for attention creates decision fatigue, and decision fatigue kills conversions. The strategic direction was restraint: show fewer products at once, clean up the layout and give users a clearer path from browsing to buying. Shopify would give Plume the platform stability they needed.",
@@ -87,11 +95,14 @@ const STUDIES = {
     beforeImage: "plume-store-before.png",
     afterImage: "plume-store-after.png",
     takeawayText: "The instinct in e-commerce is often to show products, options and information. This project was a case for the opposite. Removing friction and reducing choices gave users a faster, clearer path. Sometimes the most effective decision is knowing what to take away.",
-    closingPhoto: "plume-store-closing.jpg",
+    closingPhoto: null,
+    nextSlug: "the-pit", nextTitle: "The Pit App",
   },
   "personal-portfolio": {
     title: "personal portfolio",
+    role: "Designer & Developer",
     responsibilities: ["UX & UI design","Research","Brand guide","Design system","Prototype","Implement"],
+    outcome: "A portfolio that reflects my design philosophy and showcases my process end-to-end.",
     goal: "Creating a portfolio for any designer is an intimidating yet exciting task. This is the documentation of my design vision and process. I wanted to create something elegant, refined and approachable. My goal was to take all I had from the past few years and mold it into a website. A big deal, right?",
     featureImages: ["portfolio-feature-1.jpg","portfolio-feature-2.jpg","portfolio-feature-3.jpg"],
     heroImage: "portfolio-hero.jpg",
@@ -107,203 +118,88 @@ const STUDIES = {
     prototypeTitle: null,
     screens: [],
     closingPhoto: "portfolio-closing.jpg",
+    nextSlug: "jd-work-queue-follow-up-date", nextTitle: "John Deere Work Queue",
   },
 };
 
+const PROCESS_COLORS = [C.blue, C.pink, C.tangerine, C.blue, C.pink, C.tangerine];
+
 const PAGE_CSS = `
   ${BASE_CSS}
-  .proc-row:hover { background:#333333; }
-  @media(max-width:1400px){
-    .before-after-grid{grid-template-columns:1fr 1fr!important}
-  }
-  @media(max-width:1100px){
-    .content-section{padding:60px 48px!important}
-    .content-section > div:first-child{margin-bottom:36px!important}
-    .overview-grid{gap:48px!important;padding:60px 48px!important}
-    .feature-scatter{justify-content:center!important;gap:24px!important;padding:40px 48px 56px!important}
-    .feat-img-inner{width:clamp(160px,20vw,300px)!important;height:auto!important;aspect-ratio:6/5!important}
-    .full-photo{height:480px!important}
-    .wf-item-wide{height:auto!important}
-    .wf-item-wide img{height:auto!important;object-fit:unset!important}
-    .wf-row{gap:24px!important}
-    .mood-board-img{max-width:100%!important;width:100%!important;height:auto!important}
-    .mood-board-img img{height:auto!important}
-    .wf-item-pit{width:23vw!important;height:auto!important}
-    .wf-item-pit img{height:auto!important}
-    .proto-phone-item{width:23vw!important;height:auto!important}
-    .proto-phone-item img{height:auto!important;object-fit:contain!important}
-    .proto-overflow-item{width:min(500px,45vw)!important;height:auto!important}
-    .proto-section{padding-bottom:32px!important}
-    .process-section{padding:0 48px 0!important}
-    .proc-inner{margin-left:80px!important}
-    .cs-title{padding:72px 48px!important}
-    .cta-section{padding:100px 48px 80px!important}
-    .footer-links{padding:36px 48px!important}
-    .footer-copy{padding:20px 48px!important}
-  }
-  @media(max-width:900px){
-    .before-after-grid{grid-template-columns:1fr!important}
+  .section-card{background:${C.card};border-radius:12px;border:1.5px solid ${C.ink};overflow:hidden;margin-bottom:24px;}
+  .section-header{padding:9px 18px;border-bottom:1.5px solid ${C.ink};}
+  .section-body{padding:18px 22px;}
+  .proc-tile{border-radius:12px;border:1.5px solid ${C.ink};overflow:hidden;transition:transform 0.2s;}
+  .proc-tile:hover{transform:translateY(-3px);}
+  .cs-img{border:1.5px solid ${C.ink};border-radius:8px;overflow:hidden;display:block;}
+  .cs-img img{width:100%;height:100%;object-fit:cover;display:block;border:none;border-radius:0;}
+  .before-after-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:1024px){
+    .proc-strip{grid-template-columns:repeat(3,1fr)!important}
+    .meta-cards{grid-template-columns:1fr!important}
   }
   @media(max-width:768px){
-    .desk-nav{display:none!important} .mob-btn{display:flex!important}
-    .cs-title{padding:40px 24px 36px!important}
-    .overview-grid{grid-template-columns:1fr!important;gap:36px!important;padding:48px 24px!important}
-    .feature-scatter{padding:32px 24px 48px!important;flex-direction:column!important;gap:12px!important;align-items:flex-start!important}
-    .feature-scatter .feat-img{width:40%!important;margin-top:0!important;margin-left:0!important}
-    .feature-scatter .feat-img-right{margin-left:60%!important}
-    .feat-img-inner{width:100%!important;aspect-ratio:6/5!important;height:auto!important}
-    .process-section{padding:0 24px 0!important}
-    .proc-inner{margin-left:0!important;padding-bottom:0!important}
-    .proc-row{margin-right:-24px!important}
-    .content-section{padding:48px 24px!important}
-    .content-section > div:first-child{margin-bottom:28px!important}
-    .two-col{grid-template-columns:1fr!important;gap:28px!important}
-    .wf-grid{grid-template-columns:1fr!important}
-    .wf-wide-outer{width:100%!important;position:static!important;left:auto!important;transform:none!important}
-    .wf-row{flex-direction:column!important;align-items:center!important;gap:16px!important}
-    .wf-item-wide{flex:none!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;align-self:stretch!important;border-radius:12px!important}
-    .wf-item-wide img{height:auto!important}
-    .wf-section-wrap{padding-bottom:48px!important}
-    .wf-item-pit{width:44%!important;height:auto!important}
-    .wf-item-pit img{height:auto!important;object-fit:contain!important}
-    .proto-grid{grid-template-columns:1fr!important}
-    .brand-row{flex-direction:column!important;gap:32px!important}
+    .cs-page-wrap{padding:32px 24px!important}
+    .proc-strip{grid-template-columns:1fr 1fr!important}
+    .feature-row{flex-direction:column!important;gap:16px!important}
+    .feature-row>div{width:100%!important;margin-top:0!important}
     .before-after-grid{grid-template-columns:1fr!important}
-    .before-after-label{font-size:32px!important}
-    .full-photo{height:clamp(200px,45vw,650px)!important}
-    .ui-kit-section{padding:48px 24px 0!important;overflow:hidden!important}
-    .ui-kit-inner{position:static!important;left:auto!important;transform:none!important;width:auto!important;margin:0 -24px!important}
-    .ui-kit-img-box{height:260px!important}
-    .proto-overflow-wrap{width:100%!important;position:static!important;left:auto!important;transform:none!important;overflow:visible!important}
-    .proto-overflow-row{flex-direction:column!important;align-items:center!important;gap:16px!important}
-    .proto-overflow-item{width:100%!important;height:auto!important}
-    .proto-overflow-item img{height:auto!important}
-    .proto-phone-item{width:44%!important;height:auto!important}
-    .proto-phone-item img{height:auto!important;object-fit:contain!important}
-    .mood-board-img{max-width:100%!important;width:100%!important;height:auto!important}
-    .mood-board-img img{height:auto!important}
-    .cta-section{padding:80px 24px!important}
-    .footer-links{padding:32px 24px!important;flex-wrap:wrap!important;justify-content:center!important;gap:12px 16px!important}
-    .footer-links > div{display:contents!important}
-    .footer-copy{padding:16px 24px!important}
+    .wf-row{flex-direction:column!important;gap:16px!important}
+    .wf-item-wide{width:100%!important;height:auto!important}
+    .wf-item-pit{width:44%!important}
+    .proto-phone-row{gap:12px!important}
+    .proto-phone-item{width:28%!important}
+    .two-col{grid-template-columns:1fr!important}
   }
   @media(max-width:480px){
-    .process-label{display:none!important}
+    .proc-strip{grid-template-columns:1fr!important}
   }
 `;
 
-/* ── HELPER COMPONENTS ────────────────────────────────── */
+/* ── HELPERS ─────────────────────────────────────────── */
 
-function SectionTitle({ children, light=true }) {
+function SectionCard({ headerColor = C.blue, eyebrow, children }) {
+  const headerText = headerColor === C.blue ? C.paper : C.ink;
   return (
-    <h2 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:light?C.white:C.midGray, letterSpacing:"-0.01em", lineHeight:1.1, margin:0}}>
-      {children}
-    </h2>
+    <div className="section-card">
+      <div className="section-header" style={{background:headerColor}}>
+        <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"13.5px",fontWeight:800,color:headerText}}>{eyebrow}</span>
+      </div>
+      <div className="section-body">{children}</div>
+    </div>
   );
+}
+
+function BodyText({ children, style={} }) {
+  return <p style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"clamp(15px,1.8vw,18px)",color:C.ink,lineHeight:1.65,margin:0,...style}}>{children}</p>;
 }
 
 function ColLabel({ children }) {
-  return <p style={{fontSize:"15px", letterSpacing:"0.1em", color:"#F7ECDC", textTransform:"uppercase", marginBottom:"16px", lineHeight:1.0, fontFamily:"'Inter',sans-serif"}}>{children}</p>;
+  return <p style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"11px",fontWeight:500,letterSpacing:"0.1em",textTransform:"uppercase",color:C.muted,marginBottom:"12px"}}>{children}</p>;
 }
 
-function Rule() {
-  return <div style={{width:"100%", height:"1px", background:"#333333"}}/>;
-}
-
-function FullPhoto({ src, alt="", height="400px", grayscale=false }) {
+function FullImg({ src, alt="", height="480px", grayscale=false }) {
+  if (!src) return null;
   return (
-    <div className="full-photo" style={{width:"100%", height, overflow:"hidden", background:"#333333", display:"flex", alignItems:"center", justifyContent:"center"}}>
-      {src
-        ? <img src={`/images/${src}`} alt={alt} loading="lazy" style={{width:"100%", height:"100%", objectFit:"cover", display:"block", filter:grayscale?"grayscale(1)":"none"}}/>
-        : <span style={{color:"#333333", fontSize:"10px", letterSpacing:"0.16em"}}>[ PHOTO ]</span>
-      }
+    <div className="cs-img" style={{width:"100%",height,marginBottom:"24px"}}>
+      <img src={`/images/${src}`} alt={alt} loading="lazy" style={{filter:grayscale?"grayscale(1)":"none"}}/>
     </div>
   );
 }
 
-/* ── FEATURE SCATTER — loose collage layout ───────────── */
-function FeatureScatter({ images }) {
-  if (!images || images.length === 0) return null;
-  const [img1, img2, img3] = images;
+function FeatureRow({ images }) {
+  if (!images?.length) return null;
+  const offsets = [0, 40, 16];
   return (
-    <div className="feature-scatter" style={{
-      padding:"48px 80px 64px",
-      display:"flex",
-      justifyContent:"space-between",
-      alignItems:"flex-start",
-      position:"relative",
-      background:C.darkBg,
-      gap:"20px",
-      flexWrap:"wrap",
-    }}>
-      {/* Left — top-aligned */}
-      <div className="feat-img" style={{flexShrink:0}}>
-        <div className="feat-img-inner" style={{width:"300px", height:"250px", background:"#333333", overflow:"hidden"}}>
-          <img src={`/images/${img1}`} alt="Feature 1" loading="lazy" style={{width:"100%", height:"100%", display:"block", objectFit:"cover"}}/>
+    <div className="feature-row" style={{display:"flex",gap:"16px",justifyContent:"center",alignItems:"flex-start",padding:"8px 0 24px"}}>
+      {images.map((src,i) => (
+        <div key={i} style={{flex:"0 0 30%",marginTop:`${offsets[i]||0}px`}}>
+          <div className="cs-img" style={{aspectRatio:"6/5",overflow:"hidden"}}>
+            <img src={`/images/${src}`} alt={`Feature ${i+1}`} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block",border:"none",borderRadius:0}}/>
+          </div>
         </div>
-      </div>
-      {/* Center — offset right */}
-      <div className="feat-img feat-img-right" style={{flexShrink:0, marginTop:"60px"}}>
-        <div className="feat-img-inner" style={{width:"300px", height:"250px", background:"#333333", overflow:"hidden"}}>
-          <img src={`/images/${img2}`} alt="Feature 2" loading="lazy" style={{width:"100%", height:"100%", display:"block", objectFit:"cover"}}/>
-        </div>
-      </div>
-      {/* Right — offset slightly */}
-      <div className="feat-img" style={{flexShrink:0, marginTop:"20px"}}>
-        <div className="feat-img-inner" style={{width:"300px", height:"250px", background:"#333333", overflow:"hidden"}}>
-          <img src={`/images/${img3}`} alt="Feature 3" loading="lazy" style={{width:"100%", height:"100%", display:"block", objectFit:"cover"}}/>
-        </div>
-      </div>
+      ))}
     </div>
-  );
-}
-
-/* ── TALK DESIGN CTA ──────────────────────────────────── */
-function TalkDesign() {
-  const [hov, setHov] = useState(false);
-  return (
-    <div className="cta-section" style={{background:C.darkBg, padding:"120px 80px 100px", textAlign:"center", borderTop:"1px solid #333333"}}>
-      <a href={`mailto:${EMAIL}`} style={{textDecoration:"none", display:"inline-block"}}
-        onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}>
-        <h2 style={{...serif, fontSize:"clamp(48px, 8.9vw, 128px)", color:hov?C.lavender:C.white, lineHeight:0.95, letterSpacing:"-0.02em", margin:0, transition:"color 0.3s"}}>
-          Talk{" "}
-          <span style={{position:"relative", display:"inline-block"}}>
-            design
-            <svg style={{position:"absolute", top:"100%", marginTop:"6px", left:0, width:"100%", overflow:"visible", pointerEvents:"none"}} height="10" viewBox="0 0 200 10" fill="none" preserveAspectRatio="none">
-              <path d="M2 6 C40 2, 90 9, 130 4 C165 1, 185 8, 198 5" stroke="#1b1b1b" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.6"/>
-            </svg>
-          </span>
-          <br/>to me.
-        </h2>
-      </a>
-    </div>
-  );
-}
-
-/* ── CASE STUDY FOOTER ────────────────────────────────── */
-function CaseStudyFooter() {
-  return (
-    <footer className="site-footer">
-      <div className="footer-links" style={{background:"#E6DFF1", padding:"50px 80px", display:"flex", justifyContent:"space-between", alignItems:"center", borderTop:"1px solid #1b1b1b"}}>
-        <div style={{display:"flex", gap:"24px", flexWrap:"wrap"}}>
-          {["home","about","process","projects","contact"].map(l => (
-            <a key={l} href={l==="home"?"/":"/#"+l}
-              style={{fontFamily:"'Inter',sans-serif", fontSize:"16px", color:"#333333", textDecoration:"none", letterSpacing:"0.05em", transition:"opacity 0.2s"}}
-              onMouseEnter={e=>e.target.style.opacity="0.7"}
-              onMouseLeave={e=>e.target.style.opacity="1"}>{l}</a>
-          ))}
-        </div>
-        <a href={LINKEDIN} target="_blank" rel="noopener noreferrer"
-          style={{fontFamily:"'Inter',sans-serif", fontSize:"16px", color:"#333333", textDecoration:"none", letterSpacing:"0.05em", transition:"opacity 0.2s"}}
-          onMouseEnter={e=>e.target.style.opacity="0.7"}
-          onMouseLeave={e=>e.target.style.opacity="1"}>linkedin</a>
-      </div>
-      <div className="footer-copy" style={{background:"#333333", padding:"20px 80px"}}>
-        <p style={{fontFamily:"'Inter',sans-serif", fontSize:"16px", color:"#EBE6E0", margin:0, textAlign:"center"}}>
-          ©2026 Stephanie Guarino. All Rights Reserved. Designed and developed by Stephanie Guarino.
-        </p>
-      </div>
-    </footer>
   );
 }
 
@@ -313,411 +209,325 @@ export default function CaseStudyPage({ params }) {
   const cs = STUDIES[slug];
 
   if (!cs) return (
-    <div style={{background:C.darkBg, minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", color:C.textMuted, fontFamily:"'Inter',sans-serif", gap:"8px"}}>
-      Case study not found. <a href="/" style={{color:C.white}}>← Go home</a>
+    <div style={{background:C.paper,minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column",gap:"12px"}}>
+      <p style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"24px",fontWeight:700,color:C.ink}}>Case study not found.</p>
+      <a href="/" style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"15px",color:C.blue,textDecoration:"underline"}}>← Go home</a>
     </div>
   );
 
   return (
-    <div style={{background:C.darkBg, fontFamily:"'Inter',sans-serif"}}>
+    <div style={{background:C.paper}}>
       <style>{PAGE_CSS}</style>
-      <Nav isCaseStudy/>
+      <Header/>
 
-      {/* 1 · TITLE */}
-      <div className="cs-title" style={{marginTop:"56px", textAlign:"center", padding:"100px 80px 100px", borderBottom:"1px solid #333333"}}>
-        <h1 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:C.white, letterSpacing:"-0.02em", lineHeight:1.1, margin:0}}>
-          {cs.title}
-        </h1>
-      </div>
+      <main className="cs-page-wrap" style={{padding:"48px 28px 80px",maxWidth:"1700px",margin:"0 auto"}}>
 
-      {/* 2 · HERO IMAGE */}
-      <FullPhoto src={cs.heroImage} alt={cs.title} height="650px"/>
+        {/* 1 · EYEBROW + HEADLINE */}
+        <div style={{font:`500 12px 'IBM Plex Mono',monospace`,letterSpacing:"2px",textTransform:"uppercase",color:C.blue,marginBottom:"16px"}}>case study</div>
+        <h1 style={{
+          fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",
+          fontSize:"76px",fontWeight:800,lineHeight:1,
+          letterSpacing:"-2.2px",color:C.ink,
+          marginBottom:"36px",maxWidth:"1000px",
+        }}>{cs.title}</h1>
 
-      {/* 3 · OVERVIEW */}
-      <Rule/>
-      <div className="overview-grid" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"80px", padding:"72px 80px", maxWidth:"1200px", margin:"0 auto"}}>
-        <div>
-          <ColLabel>RESPONSIBILITIES</ColLabel>
-          <ul style={{listStyle:"none", display:"flex", flexDirection:"column", gap:"10px"}}>
-            {cs.responsibilities.map((r,i) => (
-              <li key={i} style={{display:"flex", alignItems:"center", gap:"16px", fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>
-                <span style={{width:"4px", height:"4px", background:C.textMuted, borderRadius:"50%", flexShrink:0}}/>{r}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <ColLabel>THE GOAL</ColLabel>
-          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>{cs.goal}</p>
-        </div>
-      </div>
-
-      {/* 4 · FEATURE IMAGES — scattered collage */}
-      <FeatureScatter images={cs.featureImages}/>
-
-      {/* 5 · PROCESS — hand-drawn circles with vertical label */}
-      <Rule/>
-      <div className="process-section" style={{padding:"0 80px 0", position:"relative", borderTop:"1px solid #F3F3FB"}}>
-        <div className="process-label" style={{position:"absolute", left:"-20px", top:"50%", transform:"translateY(-50%) rotate(-90deg)", ...serif, fontSize:"clamp(40px, 5.9vw, 85px)", letterSpacing:"-0em", color:C.textLight, whiteSpace:"nowrap", opacity:0.9}}>
-          process
-        </div>
-        <div className="proc-inner" style={{borderLeft:"1px solid #F3F3FB", marginLeft:"100px"}}>
-          {cs.process.map((step,i) => (
-            <div key={i} className="proc-row" style={{display:"flex", alignItems:"center", gap:"40px", padding:"0 40px 0 50px", marginRight:"-80px", borderBottom: i < cs.process.length - 1 ? "1px solid #F3F3FB" : "none", cursor:"default", transition:"background 0.2s"}}>
-              <div style={{position:"relative", width:"clamp(72px, 10vw, 148px)", height:"clamp(72px, 10vw, 148px)", flexShrink:0, display:"flex", alignItems:"center", justifyContent:"center"}}>
-                <svg style={{position:"absolute", inset:0, width:"100%", height:"100%", overflow:"visible"}} viewBox="0 0 80 80" fill="none">
-                  <path d="M40 5 C57 4, 75 18, 75 40 C75 62, 57 76, 40 75 C23 74, 5 62, 6 40 C7 18, 23 4, 40 5 Z"
-                    stroke={C.textLight} strokeWidth="1.2" fill={C.darkBg} strokeLinecap="round" opacity="0.6"/>
-                </svg>
-                <span style={{fontFamily:"'Pigeon','Cormorant Garamond',Georgia,serif", fontSize:"clamp(40px, 5.9vw, 85px)", color:C.textLight, lineHeight:1, position:"relative", zIndex:1}}>{i+1}</span>
-              </div>
-              <span style={{fontFamily:"'Inter',sans-serif", fontSize:"clamp(24px, 3.9vw, 56px)", fontWeight:"600", letterSpacing:"-0.02em", color:C.textLight, textTransform:"uppercase", lineHeight:1.04}}>{step}</span>
+        {/* 2 · META CARDS */}
+        <div className="meta-cards" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"16px",marginBottom:"32px",maxWidth:"920px"}}>
+          {[
+            { label:"role", value:cs.role || "product designer", headerColor:C.blue, textColor:C.paper },
+            { label:"responsibilities", value:cs.responsibilities.join(", "), headerColor:C.pink, textColor:C.ink },
+            { label:"outcome", value:cs.outcome || cs.goal.slice(0,120)+"…", headerColor:C.tangerine, textColor:C.ink },
+          ].map(({label,value,headerColor,textColor},i) => (
+            <div key={label} style={{background:C.card,borderRadius:"10px",border:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
+              <div style={{background:headerColor,color:textColor,padding:"7px 14px",fontWeight:800,fontSize:"12px"}}>{label}</div>
+              <div style={{padding:"12px 14px",fontSize:"13.5px",lineHeight:1.5}}>{value}</div>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* 6 · CONTEXT PHOTO */}
-      <FullPhoto src={cs.contextPhoto} alt="Context" height="650px"/>
+        {/* 3 · HERO IMAGE */}
+        <FullImg src={cs.heroImage} alt={cs.title} height="520px"/>
 
-      {/* 7 · STRATEGY */}
-      {cs.hasStrategy && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>strategy</SectionTitle></div>
-          {cs.strategyText ? (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.strategyText}</p>
-          ) : (
-            <div className="two-col" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"60px", maxWidth:"960px", margin:"0 auto"}}>
-              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>I began my process researching design portfolios that I loved and compiled a list of things that conveyed the feelings I was going for: elegant yet approachable.</p>
-              <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>While narrowing the colors for my portfolio, I used AI to translate the images I chose from a color palette. I found a mood board and style guide that perfectly conveyed the feelings I wanted to capture.</p>
-            </div>
-          )}
-        </div>
-      </>)}
+        {/* 4 · THE GOAL */}
+        <SectionCard headerColor={C.blue} eyebrow="the goal">
+          <BodyText>{cs.goal}</BodyText>
+        </SectionCard>
 
-      {/* 8 · RESEARCH */}
-      {cs.hasResearch && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}>
-            <div style={{position:"relative", display:"inline-block"}}>
-              <SectionTitle>research</SectionTitle>
-              <svg style={{position:"absolute", bottom:"-8px", left:0, width:"100%", overflow:"visible", pointerEvents:"none"}} height="12" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
-                <path d="M2 8 C40 3, 90 11, 130 5 C165 1, 185 10, 198 6" stroke="#1b1b1b" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.7"/>
-              </svg>
-            </div>
+        {/* 6 · PROCESS STRIP */}
+        <div style={{marginBottom:"32px"}}>
+          <p style={{font:`500 12px 'IBM Plex Mono',monospace`,letterSpacing:"2px",textTransform:"uppercase",color:C.blue,marginBottom:"16px"}}>the process</p>
+          <div className="proc-strip" style={{display:"grid",gridTemplateColumns:`repeat(${Math.min(cs.process.length,6)},1fr)`,gap:"10px"}}>
+            {cs.process.map((step,i) => {
+              const bg = PROCESS_COLORS[i%6];
+              return (
+                <div key={i} className="proc-tile"
+                  style={{
+                    background:bg,
+                    color:bg===C.blue?C.paper:C.ink,
+                    textAlign:"center",padding:"16px 8px",
+                    border:`1.5px solid ${C.ink}`,borderRadius:"10px",
+                  }}>
+                  <span style={{display:"block",fontWeight:800,fontSize:"26px",fontFamily:"'Bricolage Grotesque',sans-serif"}}>{i+1}</span>
+                  <span style={{display:"block",fontWeight:600,fontSize:"12.5px",marginTop:"2px"}}>{step.toLowerCase()}</span>
+                </div>
+              );
+            })}
           </div>
-          {cs.numCompetitors > 0 ? (
-            <div className="two-col" style={{display:"grid", gridTemplateColumns:cs.competitiveAnalysisText?"1fr 1fr":"200px 1fr", gap:"64px", maxWidth:"960px", margin:"0 auto", alignItems:"start"}}>
-              <div>
-                <ColLabel>COMPETITIVE ANALYSIS</ColLabel>
-                <div style={{display:"flex", gap:"12px", flexWrap:"wrap", marginBottom:cs.competitiveAnalysisText?"16px":"0"}}>
-                  {Array(cs.numCompetitors).fill(0).map((_,i) => (
-                    <div key={i} style={{width:"50px", height:"50px", borderRadius:"50%", background:"#F3F3FB", border:"1px solid rgba(243,243,251,0.3)", overflow:"hidden", display:"flex", alignItems:"center", justifyContent:"center"}}>
-                      {cs.competitorLogos && cs.competitorLogos[i]
-                        ? <img src={`/images/${cs.competitorLogos[i]}`} alt={`Competitor ${i+1}`} style={{width:cs.competitorLogoSizes?.[i]?.w?`${cs.competitorLogoSizes[i].w}px`:"100%", height:cs.competitorLogoSizes?.[i]?.h?`${cs.competitorLogoSizes[i].h}px`:"100%", objectFit:"contain"}}/>
-                        : null
-                      }
+        </div>
+
+        {/* 7 · CONTEXT PHOTO */}
+        <FullImg src={cs.contextPhoto} alt="Context" height="480px"/>
+
+        {/* 8 · STRATEGY */}
+        {cs.hasStrategy && (
+          <SectionCard headerColor={C.tangerine} eyebrow="strategy">
+            {cs.strategyText ? (
+              <BodyText>{cs.strategyText}</BodyText>
+            ) : (
+              <div className="two-col" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"32px"}}>
+                <BodyText>I began my process researching design portfolios that I loved and compiled a list of things that conveyed the feelings I was going for: elegant yet approachable.</BodyText>
+                <BodyText>While narrowing the colors for my portfolio, I used AI to translate the images I chose from a color palette. I found a mood board and style guide that perfectly conveyed the feelings I wanted to capture.</BodyText>
+              </div>
+            )}
+          </SectionCard>
+        )}
+
+        {/* 9 · RESEARCH */}
+        {cs.hasResearch && (
+          <SectionCard headerColor={C.pink} eyebrow="research">
+            {cs.numCompetitors > 0 ? (
+              <div className="two-col" style={{display:"grid",gridTemplateColumns:cs.competitiveAnalysisText?"1fr 1fr":"160px 1fr",gap:"40px",alignItems:"start"}}>
+                <div>
+                  <ColLabel>competitive analysis</ColLabel>
+                  <div style={{display:"flex",gap:"10px",flexWrap:"wrap",marginBottom:"12px"}}>
+                    {Array(cs.numCompetitors).fill(0).map((_,i) => (
+                      <div key={i} style={{width:"44px",height:"44px",borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,overflow:"hidden",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                        {cs.competitorLogos?.[i] && (
+                          <img src={`/images/${cs.competitorLogos[i]}`} alt={`Competitor ${i+1}`} style={{width:cs.competitorLogoSizes?.[i]?.w?`${cs.competitorLogoSizes[i].w}px`:"80%",height:cs.competitorLogoSizes?.[i]?.h?`${cs.competitorLogoSizes[i].h}px`:"80%",objectFit:"contain",border:"none",borderRadius:0}}/>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <ColLabel>findings</ColLabel>
+                  <BodyText>{cs.researchSummary}</BodyText>
+                </div>
+              </div>
+            ) : (
+              <BodyText>{cs.researchSummary}</BodyText>
+            )}
+          </SectionCard>
+        )}
+        {cs.hasResearch && cs.researchPhoto && <FullImg src={cs.researchPhoto} alt="Research" height="480px" grayscale={!!cs.researchPhotoGrayscale}/>}
+
+        {/* 10 · MOOD BOARD */}
+        {cs.hasMoodBoard && cs.moodBoardImage && (
+          <SectionCard headerColor={C.blue} eyebrow="mood board">
+            <div style={{maxWidth:"600px",margin:"0 auto"}}>
+              <div className="cs-img" style={{aspectRatio:"4/5",overflow:"hidden"}}>
+                <img src={`/images/${cs.moodBoardImage}`} alt="Mood board" loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block",border:"none",borderRadius:0}}/>
+              </div>
+            </div>
+          </SectionCard>
+        )}
+
+        {/* 11 · BRANDING */}
+        {cs.branding && (
+          <SectionCard headerColor={C.pink} eyebrow="branding">
+            {cs.branding.styleGuideImage ? (
+              <div className="cs-img" style={{overflow:"hidden"}}>
+                <img src={`/images/${cs.branding.styleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
+              </div>
+            ) : (
+              <div style={{display:"flex",gap:"48px",flexWrap:"wrap",alignItems:"flex-start"}}>
+                <div>
+                  <ColLabel>colors</ColLabel>
+                  <div style={{display:"flex",gap:"8px"}}>
+                    {cs.branding.colors.map((hex,i) => (
+                      <div key={i} style={{width:"28px",height:"28px",borderRadius:"50%",background:hex,border:`1.5px solid ${C.ink}`}}/>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <ColLabel>typography</ColLabel>
+                  {cs.branding.fonts.map((f,i) => <p key={i} style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"15px",color:C.ink,margin:"0 0 4px"}}>{f}</p>)}
+                </div>
+                {cs.branding.brandingImage && (
+                  <div>
+                    <ColLabel>logo</ColLabel>
+                    <img src={`/images/${cs.branding.brandingImage}`} alt="Branding" style={{maxHeight:"52px",width:"auto",objectFit:"contain",border:"none",borderRadius:0}}/>
+                  </div>
+                )}
+              </div>
+            )}
+          </SectionCard>
+        )}
+
+        {/* 12 · UI KIT */}
+        {cs.hasUIKit && cs.uiKitImage && (
+          <div className="section-card" style={{marginBottom:"24px"}}>
+            <div className="section-header" style={{background:C.tangerine,borderBottom:"none"}}>
+              <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"13.5px",fontWeight:800,color:C.ink}}>UI kit</span>
+            </div>
+            <img src={`/images/${cs.uiKitImage}`} alt="UI Kit" loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
+          </div>
+        )}
+
+        {/* 13 · WIREFRAMES */}
+        {(cs.wireframes?.length > 0 || cs.wireframeText || cs.wireframeBeforeImage) && (
+          <SectionCard headerColor={C.blue} eyebrow="wireframes">
+            {cs.wireframeText && <BodyText style={{marginBottom:cs.wireframes?.length > 0 ? "24px" : 0}}>{cs.wireframeText}</BodyText>}
+            {cs.wireframeBeforeImage && (
+              <div className="cs-img" style={{overflow:"hidden",marginTop:"16px"}}>
+                <img src={`/images/${cs.wireframeBeforeImage}`} alt="Before" loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
+              </div>
+            )}
+            {cs.wireframes?.length > 0 && (
+              <div style={{marginTop: cs.wireframeText ? "24px" : 0}}>
+                {cs.wireframeStyle === "the-pit" ? (
+                  <div style={{display:"flex",gap:"16px",justifyContent:"center",flexWrap:"wrap"}}>
+                    {cs.wireframes.map((src,i) => (
+                      <div key={i} className="wf-item-pit" style={{width:"280px",flexShrink:0,overflow:"hidden",aspectRatio:"337/727",border:`1.5px solid ${C.ink}`,borderRadius:"36px"}}>
+                        <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%",height:"100%",objectFit:"cover",display:"block",border:"none",borderRadius:0}}/>
+                      </div>
+                    ))}
+                  </div>
+                ) : cs.wireframeStyle === "wide" ? (
+                  <div className="wf-row" style={{display:"flex",gap:"16px",justifyContent:"center",flexWrap:"wrap"}}>
+                    {cs.wireframes.map((src,i) => (
+                      <div key={i} className="wf-item-wide cs-img" style={{flex:"0 0 calc(50% - 8px)",overflow:"hidden",aspectRatio:"735/641"}}>
+                        <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%",height:"100%",objectFit:"cover",display:"block",border:"none",borderRadius:0}}/>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{display:"grid",gridTemplateColumns:`repeat(${cs.wireframes.length},1fr)`,gap:"16px"}}>
+                    {cs.wireframes.map((src,i) => (
+                      <div key={i} className="cs-img" style={{overflow:"hidden"}}>
+                        <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </SectionCard>
+        )}
+
+        {/* 13.5 · STYLE GUIDE (standalone) */}
+        {cs.styleGuideImage && (
+          <SectionCard headerColor={C.pink} eyebrow="style guide">
+            <div className="cs-img" style={{overflow:"hidden",border:"none",borderRadius:0}}>
+              <img src={`/images/${cs.styleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
+            </div>
+          </SectionCard>
+        )}
+
+        {/* 14 · FINAL PHOTO */}
+        {cs.finalPhoto && <FullImg src={cs.finalPhoto} alt="Final design" height="480px"/>}
+
+        {/* 15 · PROTOTYPE */}
+        {((cs.prototypeTitle && cs.screens?.length > 0) || cs.prototypeText) && (
+          <SectionCard headerColor={C.tangerine} eyebrow={cs.prototypeTitle || "prototype"}>
+            {cs.prototypeText && <BodyText style={{marginBottom: cs.screens?.length > 0 ? "24px" : 0}}>{cs.prototypeText}</BodyText>}
+            {cs.screens?.length > 0 && (
+              (cs.prototypeTitle === "follow and message a user") ? (
+                <div className="proto-phone-row" style={{display:"flex",gap:"16px",justifyContent:"center",flexWrap:"wrap"}}>
+                  {cs.screens.map((src,i) => (
+                    <div key={i} className="proto-phone-item" style={{width:"240px",flexShrink:0,overflow:"hidden",aspectRatio:"337/726",border:`1.5px solid ${C.ink}`,borderRadius:"36px"}}>
+                      <img src={`/images/${src}`} alt={`Screen ${i+1}`} style={{width:"100%",height:"100%",objectFit:"cover",display:"block",border:"none",borderRadius:0}}/>
                     </div>
                   ))}
                 </div>
-                {cs.competitiveAnalysisText && (
-                  <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", margin:0}}>{cs.competitiveAnalysisText}</p>
-                )}
-              </div>
-              <div>
-                <ColLabel>FINDINGS</ColLabel>
-                <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif"}}>{cs.researchSummary}</p>
-              </div>
-            </div>
-          ) : (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.researchSummary}</p>
-          )}
-        </div>
-        {cs.researchPhoto && <FullPhoto src={cs.researchPhoto} alt="Research" height="650px" grayscale={!!cs.researchPhotoGrayscale}/>}
-      </>)}
-
-      {/* 9 · BEFORE / AFTER */}
-      {cs.hasBeforeAfter && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div className="before-after-grid" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"40px", maxWidth:"1360px", margin:"0 auto"}}>
-            {[["BEFORE", cs.beforeImage],["AFTER", cs.afterImage]].map(([label, src]) => (
-              <div key={label}>
-                <p className="before-after-label" style={{fontSize:"clamp(28px, 3.9vw, 56px)", fontWeight:"400", lineHeight:1.04, letterSpacing:"-0.02em", color:"#F3F3FB", marginBottom:"16px", textAlign:"center", fontFamily:"'Inter',sans-serif"}}>{label}</p>
-                <div style={{overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
-                  {src && <img src={`/images/${src}`} alt={label} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>}
+              ) : (
+                <div style={{display:"flex",gap:"16px",flexWrap:"wrap",justifyContent:"center"}}>
+                  {cs.screens.map((src,i) => (
+                    <div key={i} className="cs-img" style={{flex:"0 0 calc(33% - 11px)",overflow:"hidden",minWidth:"200px"}}>
+                      <img src={`/images/${src}`} alt={`Screen ${i+1}`} loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
+                    </div>
+                  ))}
                 </div>
+              )
+            )}
+          </SectionCard>
+        )}
+
+        {/* 15.5 · POST-PROTOTYPE SCREENS */}
+        {cs.postPrototypeScreens?.length > 0 && (
+          <div style={{display:"flex",gap:"16px",flexWrap:"wrap",justifyContent:"center",marginBottom:"24px"}}>
+            {cs.postPrototypeScreens.map((src,i) => (
+              <div key={i} className="cs-img" style={{flex:"0 0 calc(33% - 11px)",overflow:"hidden",minWidth:"220px"}}>
+                <img src={`/images/${src}`} alt={`Screen ${i+1}`} loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
               </div>
             ))}
           </div>
-        </div>
-        <FullPhoto src={cs.midPhoto} alt="Mid section" height="650px"/>
-      </>)}
+        )}
 
-      {/* 10 · MOOD BOARD */}
-      {cs.hasMoodBoard && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>mood board</SectionTitle></div>
-          {(() => { const mbW = cs.moodBoardDimensions?.w || 595; const mbH = cs.moodBoardDimensions?.h || 763; return (
-          <div className="mood-board-img" style={{width:`${mbW}px`, height:`${mbH}px`, margin:"0 auto", overflow:"hidden", background:"#333333"}}>
-            {cs.moodBoardImage && <img src={`/images/${cs.moodBoardImage}`} alt="Mood board" loading="lazy" style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>}
-          </div>
-          ); })()}
-        </div>
-      </>)}
+        {/* 16 · TEST */}
+        {cs.testText && (
+          <SectionCard headerColor={C.blue} eyebrow="test">
+            <BodyText>{cs.testText}</BodyText>
+          </SectionCard>
+        )}
 
-      {/* 11 · BRANDING / STYLE GUIDE */}
-      {cs.branding && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          {cs.branding.styleGuideImage ? (
-            <>
-              <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>{cs.branding.hasStyleGuide ? "style guide" : "branding"}</SectionTitle></div>
-              <div style={{maxWidth:"960px", margin:"0 auto", overflow:"hidden", background:"#333333"}}>
-                <img src={`/images/${cs.branding.styleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
+        {/* 17 · IMPLEMENT */}
+        {(cs.implementText || cs.implementAfterImage || cs.implementScreens?.length > 0) && (
+          <SectionCard headerColor={C.pink} eyebrow="implement">
+            {cs.implementText && <BodyText style={{marginBottom: (cs.implementAfterImage || cs.implementScreens?.length > 0) ? "24px" : 0}}>{cs.implementText}</BodyText>}
+            {cs.implementAfterImage && (
+              <div className="cs-img" style={{overflow:"hidden",marginBottom:"16px"}}>
+                <img src={`/images/${cs.implementAfterImage}`} alt="After" loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>
               </div>
-            </>
-          ) : (
-            <>
-              <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>branding</SectionTitle></div>
-              <div className="brand-row" style={{display:"flex", gap:"72px", flexWrap:"wrap", maxWidth:"900px", margin:"0 auto", alignItems:"flex-start"}}>
-                <div>
-                  <ColLabel>COLORS</ColLabel>
-                  <div style={{display:"flex", gap:"10px"}}>
-                    {cs.branding.colors.map((hex,i) => (
-                      <div key={i} style={{width:"30px", height:"30px", borderRadius:"50%", background:hex, border:"1px solid #333333"}}/>
-                    ))}
+            )}
+          </SectionCard>
+        )}
+
+        {/* 17.5 · POST-IMPLEMENT BEFORE/AFTER */}
+        {cs.postImplementBeforeAfter && cs.beforeImage && (
+          <div style={{marginBottom:"24px"}}>
+            <div className="before-after-grid">
+              {[["before",cs.beforeImage],["after",cs.afterImage]].map(([label,src]) => (
+                <div key={label}>
+                  <p style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"20px",fontWeight:700,color:C.ink,marginBottom:"10px",textAlign:"center",textTransform:"uppercase",letterSpacing:"-0.01em"}}>{label}</p>
+                  <div className="cs-img" style={{overflow:"hidden",borderRadius:0}}>
+                    {src && <img src={`/images/${src}`} alt={label} loading="lazy" style={{width:"100%",height:"auto",display:"block",border:"none",borderRadius:0}}/>}
                   </div>
-                </div>
-                <div>
-                  <ColLabel>LOGO / BRANDING</ColLabel>
-                  {cs.branding.brandingImage
-                    ? <img src={`/images/${cs.branding.brandingImage}`} alt="Branding" style={{maxHeight:"60px", width:"auto", objectFit:"contain"}}/>
-                    : <div style={{background:"#333333", padding:"10px 20px", display:"inline-flex", minWidth:"72px", minHeight:"44px", alignItems:"center", justifyContent:"center", color:"#555", fontSize:"10px"}}>[ LOGO ]</div>
-                  }
-                </div>
-                <div>
-                  <ColLabel>TYPOGRAPHY</ColLabel>
-                  <div style={{display:"flex", flexDirection:"column", gap:"8px"}}>
-                    {cs.branding.fonts.map((f,i) => (
-                      <p key={i} style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, margin:0, fontFamily:"'Inter',sans-serif"}}>{f}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-      </>)}
-
-      {/* 12 · UI KIT */}
-      {cs.hasUIKit && (
-        <div className="ui-kit-section" style={{background:C.lightBg, padding:"72px 80px 0"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}>
-            <h2 style={{...serif, fontSize:"clamp(40px, 5.9vw, 85px)", color:C.midGray, margin:0}}>UI kit</h2>
-          </div>
-          <div className="ui-kit-inner" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw"}}>
-            <div className="ui-kit-img-box" style={{height:"492px", overflow:"hidden", background:"#e8e8e8"}}>
-              {cs.uiKitImage && <img src={`/images/${cs.uiKitImage}`} alt="UI Kit" loading="lazy" style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 13 · WIREFRAMES */}
-      {(cs.wireframes.length > 0 || cs.wireframeText || cs.wireframeBeforeImage) && (<>
-        <Rule/>
-        <div className="content-section wf-section-wrap" style={{padding:"72px 80px"}}>
-          <div className="wf-title" style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>wireframes</SectionTitle></div>
-          {cs.wireframeText && (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto", marginBottom:(cs.wireframeBeforeImage || cs.wireframes.length > 0) ? "48px" : 0}}>{cs.wireframeText}</p>
-          )}
-          {cs.wireframeBeforeImage && (
-            <div style={{overflow:"hidden", background:"#333333"}}>
-              <img src={`/images/${cs.wireframeBeforeImage}`} alt="Before" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-            </div>
-          )}
-          {cs.wireframes.length > 0 && (cs.wireframeStyle === "the-pit" ? (
-            /* 337×727, 30px gap, 3 images centered */
-            <div style={{display:"flex", gap:"30px", justifyContent:"center"}}>
-              {cs.wireframes.map((src,i) => (
-                <div key={i} className="wf-item-pit" style={{width:"337px", height:"727px", flexShrink:0, overflow:"hidden", background:"#333333"}}>
-                  <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
-                </div>
-              ))}
-            </div>
-          ) : cs.wireframeStyle === "wide" ? (
-            /* 735×641, 40px gap, bleeds off page via 100vw */
-            <div className="wf-wide-outer" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
-              <div className="wf-row" style={{display:"flex", gap:"40px", justifyContent:"center"}}>
-                {cs.wireframes.map((src,i) => (
-                  <div key={i} className="wf-item-wide" style={{width:"735px", height:"641px", flexShrink:0, overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
-                    <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            /* default grid */
-            <div className="wf-grid" style={{display:"grid", gridTemplateColumns:`repeat(${cs.wireframes.length},1fr)`, gap:"20px", maxWidth:"960px", margin:"0 auto"}}>
-              {cs.wireframes.map((src,i) => (
-                <div key={i} style={{background:"#333333", overflow:"hidden"}}>
-                  <img src={`/images/${src}`} alt={`Wireframe ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </>)}
-
-      {/* 13.5 · STYLE GUIDE (after wireframes) */}
-      {cs.styleGuideImage && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>style guide</SectionTitle></div>
-          <div style={{maxWidth:"960px", margin:"0 auto", overflow:"hidden", background:"#333333"}}>
-            <img src={`/images/${cs.styleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-          </div>
-        </div>
-      </>)}
-
-      {/* 14 · FINAL PHOTO */}
-      {cs.finalPhoto && <FullPhoto src={cs.finalPhoto} alt="Final design" height="650px"/>}
-
-      {/* 15 · PROTOTYPE */}
-      {((cs.prototypeTitle && cs.screens.length > 0) || cs.prototypeText) && (<>
-        <Rule/>
-        <div className="content-section proto-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>{cs.prototypeTitle || "prototype"}</SectionTitle></div>
-          {cs.prototypeText && (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin: cs.prototypeTitle && cs.screens.length > 0 ? "0 auto 48px" : "0 auto"}}>{cs.prototypeText}</p>
-          )}
-          {cs.screens.length > 0 && ((cs.prototypeTitle === "shopify checkout flow" || cs.prototypeTitle === "product configurator") ? (
-            /* full source width, sides overflow off page edges */
-            <div className="proto-overflow-wrap" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
-              <div className="proto-overflow-row" style={{display:"flex", justifyContent:"center", gap:"30px"}}>
-                {cs.screens.map((src,i) => (
-                  <div key={i} className="proto-overflow-item" style={{width:"700px", height:"652px", flexShrink:0, overflow:"hidden"}}>
-                    <img src={`/images/${src}`} alt={`Screen ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : cs.prototypeTitle === "follow and message a user" ? (
-            /* 337×726, 30px gap, 3 images centered */
-            <div className="proto-phone-row" style={{display:"flex", gap:"30px", justifyContent:"center"}}>
-              {cs.screens.map((src,i) => (
-                <div key={i} className="proto-phone-item" style={{width:"337px", height:"726px", flexShrink:0, overflow:"hidden", background:"#333333"}}>
-                  <img src={`/images/${src}`} alt={`Screen ${i+1}`} style={{width:"100%", height:"100%", objectFit:"cover", display:"block"}}/>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="proto-grid" style={{display:"grid", gridTemplateColumns:`repeat(${cs.screens.length},1fr)`, gap:"16px", maxWidth:"880px", margin:"0 auto"}}>
-              {cs.screens.map((src,i) => (
-                <div key={i} style={{background:"#333333", borderRadius:"12px", overflow:"hidden"}}>
-                  <img src={`/images/${src}`} alt={`Screen ${i+1}`} style={{width:"100%", height:"auto", display:"block", borderRadius:"12px"}}/>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </>)}
-
-      {/* 15.5 · POST-PROTOTYPE SCREENS (after prototype) */}
-      {cs.postPrototypeScreens?.length > 0 && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div className="proto-overflow-wrap" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
-            <div className="proto-overflow-row" style={{display:"flex", justifyContent:"center", gap:"30px"}}>
-              {cs.postPrototypeScreens.map((src,i) => (
-                <div key={i} className="proto-overflow-item" style={{width:"700px", height:"652px", flexShrink:0, overflow:"hidden"}}>
-                  <img src={`/images/${src}`} alt={`Screen ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </>)}
+        )}
 
-      {/* 16 · TEST */}
-      {cs.testText && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>test</SectionTitle></div>
-          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.testText}</p>
-        </div>
-      </>)}
+        {/* 18 · TAKEAWAY */}
+        {cs.takeawayText && (
+          <SectionCard headerColor={C.tangerine} eyebrow="takeaway">
+            <BodyText>{cs.takeawayText}</BodyText>
+          </SectionCard>
+        )}
 
-      {/* 17 · IMPLEMENT */}
-      {(cs.implementText || cs.implementAfterImage || cs.implementScreens?.length > 0) && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>implement</SectionTitle></div>
-          {cs.implementText && (
-            <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin: (cs.implementAfterImage || cs.implementStyleGuideImage || cs.implementScreens?.length > 0) ? "0 auto 48px" : "0 auto"}}>{cs.implementText}</p>
-          )}
-          {cs.implementAfterImage && (
-            <div style={{overflow:"hidden", background:"#333333", marginBottom: (cs.implementStyleGuideImage || cs.implementScreens?.length > 0) ? "48px" : 0}}>
-              <img src={`/images/${cs.implementAfterImage}`} alt="After" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-            </div>
-          )}
-          {cs.implementStyleGuideImage && (
-            <div style={{overflow:"hidden", background:"#333333", maxWidth:"960px", margin: cs.implementScreens?.length > 0 ? "0 auto 48px" : "0 auto"}}>
-              <img src={`/images/${cs.implementStyleGuideImage}`} alt="Style guide" loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-            </div>
-          )}
-          {cs.implementScreens?.length > 0 && (
-            <div className="proto-overflow-wrap" style={{position:"relative", left:"50%", transform:"translateX(-50%)", width:"100vw", overflow:"hidden"}}>
-              <div className="proto-overflow-row" style={{display:"flex", justifyContent:"center", gap:"30px"}}>
-                {cs.implementScreens.map((src,i) => (
-                  <div key={i} className="proto-overflow-item" style={{width:"700px", height:"652px", flexShrink:0, overflow:"hidden"}}>
-                    <img src={`/images/${src}`} alt={`Screen ${i+1}`} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>
-                  </div>
-                ))}
+        {/* 19 · CLOSING PHOTO */}
+        <FullImg src={cs.closingPhoto} alt="Closing" height="480px"/>
+
+        {/* 20 · NEXT UP */}
+        {cs.nextSlug && (
+          <a href={`/case-study/${cs.nextSlug}`} style={{display:"block",textDecoration:"none"}}>
+            <div style={{background:C.card,borderRadius:"12px",border:`1.5px solid ${C.ink}`,overflow:"hidden",transition:"transform 0.22s, box-shadow 0.22s"}}
+              onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow=`5px 5px 0 ${C.ink}`;}}
+              onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
+              <div style={{background:C.blue,padding:"12px 24px",borderBottom:`1.5px solid ${C.ink}`}}>
+                <span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"11px",fontWeight:500,color:C.white,letterSpacing:"0.1em",textTransform:"uppercase"}}>next up</span>
+              </div>
+              <div style={{padding:"24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"16px"}}>
+                <h3 style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"24px",fontWeight:700,color:C.ink,margin:0,letterSpacing:"-0.02em"}}>{cs.nextTitle}</h3>
+                <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"22px",color:C.blue,flexShrink:0}}>→</span>
               </div>
             </div>
-          )}
-        </div>
-      </>)}
+          </a>
+        )}
+      </main>
 
-      {/* 17.5 · POST-IMPLEMENT BEFORE/AFTER */}
-      {cs.postImplementBeforeAfter && cs.beforeImage && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div className="before-after-grid" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"40px", maxWidth:"1360px", margin:"0 auto"}}>
-            {[["BEFORE", cs.beforeImage],["AFTER", cs.afterImage]].map(([label, src]) => (
-              <div key={label}>
-                <p className="before-after-label" style={{fontSize:"clamp(28px, 3.9vw, 56px)", fontWeight:"400", lineHeight:1.04, letterSpacing:"-0.02em", color:"#F3F3FB", marginBottom:"16px", textAlign:"center", fontFamily:"'Inter',sans-serif"}}>{label}</p>
-                <div style={{overflow:"hidden", background:"#333333", borderRadius:"12px"}}>
-                  {src && <img src={`/images/${src}`} alt={label} loading="lazy" style={{width:"100%", height:"auto", display:"block"}}/>}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </>)}
-
-      {/* 18 · TAKEAWAY */}
-      {cs.takeawayText && (<>
-        <Rule/>
-        <div className="content-section" style={{padding:"72px 80px"}}>
-          <div style={{textAlign:"center", marginBottom:"50px"}}><SectionTitle>takeaway</SectionTitle></div>
-          <p style={{fontSize:"clamp(16px, 2.5vw, 24px)", color:"#F3F3FB", lineHeight:1.6, letterSpacing:0, fontFamily:"'Inter',sans-serif", maxWidth:"960px", margin:"0 auto"}}>{cs.takeawayText}</p>
-        </div>
-      </>)}
-
-      {/* 19 · CLOSING PHOTO */}
-      <FullPhoto src={cs.closingPhoto} alt="Closing" height="650px"/>
-
-      {/* 17 · CTA */}
-      <TalkDesign/>
-
-      {/* 18 · FOOTER */}
-      <CaseStudyFooter/>
+      <SiteFooter/>
     </div>
   );
 }

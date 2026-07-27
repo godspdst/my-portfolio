@@ -1,133 +1,218 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 /* ── PALETTE ─────────────────────────────────────────── */
 export const C = {
-  darkBg:"#333333", darkerBg:"#333333", lightBg:"#F3F3FB",
-  cream:"#F7ECDC", lavender:"#E6DFF1", white:"#FFFFFF",
-  black:"#333333", midGray:"#333333", textLight:"#EBEBEB", textMuted:"#888888",
+  ink:       "#2b1f1c",
+  paper:     "#f5efe3",
+  card:      "#fbf6ea",
+  blue:      "#3d55f0",
+  pink:      "#ee6fb5",
+  magenta:   "#c23d86",
+  tangerine: "#f4611c",
+  muted:     "#8a7566",
+  footerDim: "#d9e0ff",
+  white:     "#ffffff",
 };
 
-/* ── TYPOGRAPHY ──────────────────────────────────────── */
-export const serif = { fontFamily:"'Pigeon','Cormorant Garamond',Georgia,serif", fontStyle:"italic" };
-
 /* ── SITE CONFIG ─────────────────────────────────────── */
-export const NAV = ["home","about","process","projects","contact"];
 export const EMAIL = "stephanie.a.guarino@gmail.com";
 export const LINKEDIN = "https://www.linkedin.com/in/stephanie-guarino/";
 
-/* ── BASE CSS (shared reset + fonts + keyframes) ─────── */
+/* ── BASE CSS ────────────────────────────────────────── */
 export const BASE_CSS = `
-  @font-face {
-    font-family: 'Pigeon';
-    src: url('/fonts/Pigeon.otf') format('opentype');
-    font-weight: normal;
-    font-style: italic;
-  }
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:${C.darkBg};font-family:'Inter',sans-serif;overflow-x:hidden}
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  body{
+    background:${C.paper};
+    color:${C.ink};
+    font-family:'Inter Tight',sans-serif;
+    overflow-x:hidden;
+    cursor:url('/assets/cursor-pink.png') 2 2, auto;
+  }
+  a{color:${C.ink};cursor:url('/assets/cursor-pink.png') 2 2,pointer;}
+  a:hover{color:${C.magenta};}
+  button,[role=button]{cursor:url('/assets/cursor-pink.png') 2 2,pointer;}
+  h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  @keyframes dz-spin{from{transform:translateY(-.05em) rotate(-8deg)}to{transform:translateY(-.05em) rotate(352deg)}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  #site-header{--hb-pad:19px;--nav-pad:12px;--nav-gap:9px;transition:transform .3s ease;}
+  #site-header.shrunk{--hb-pad:12px;--nav-pad:8px;--nav-gap:6px}
+  #site-header.header-hidden{transform:translateY(-110%);}
 `;
 
 /* ── MARQUEE ─────────────────────────────────────────── */
 export function Marquee() {
-  const t = "I DON'T KNOW WHERE I'M GOING FROM HERE, BUT I CAN PROMISE IT WON'T BE BORING. —DAVID BOWIE";
+  const quote = "\u201CI don\u2019t know where I\u2019m going from here, but I can promise it won\u2019t be boring.\u201D \u2014David Bowie\u00a0\u00a0";
+  const items = Array(4).fill(quote);
   return (
-    <div style={{background:"#333333",overflow:"hidden",whiteSpace:"nowrap",padding:"30px 0",borderTop:"1px solid #1b1b1b",borderBottom:"1px solid #1b1b1b"}}>
-      <div style={{display:"inline-block",animation:"marquee 35s linear infinite",fontSize:"11px",letterSpacing:"0.08em",color:"#F7ECDC",fontFamily:"'Inter',sans-serif"}}>
-        {Array(8).fill(t).join("   ·   ")}
+    <div style={{overflow:"hidden",padding:"16px 0",background:C.pink,borderTop:`1.5px solid ${C.ink}`,borderBottom:`1.5px solid ${C.ink}`}}>
+      <div style={{display:"flex",whiteSpace:"nowrap",animation:"mq 32s linear infinite",width:"max-content"}}>
+        {items.map((s,i) => (
+          <span key={i} style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:600,fontSize:"23px",letterSpacing:"-.2px",color:C.ink}}>
+            {s}<span style={{color:C.blue}}>✳</span>&nbsp;&nbsp;
+          </span>
+        ))}
       </div>
     </div>
   );
 }
 
-/* ── NAV ─────────────────────────────────────────────── */
-export function Nav({ isCaseStudy = false, activePage = "home" }) {
-  const [open, setOpen] = useState(false);
-  const [hovLink, setHovLink] = useState(null);
-  const linkHref = (l) => {
-    if (isCaseStudy) return l === "home" ? "/" : `/#${l}`;
-    return `#${l}`;
-  };
+/* ── HEADER ──────────────────────────────────────────── */
+export function Header({ activePage = "home" }) {
+  const [shrunk, setShrunk] = useState(false);
+  const lastY = useRef(0);
+  const hiddenAt = useRef(0);
+
+  useEffect(() => {
+    const el = document.getElementById("site-header");
+    if (!el) return;
+    const onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      el.classList.toggle("shrunk", y > 40);
+      setShrunk(y > 40);
+      if (y < 80) {
+        el.classList.remove("header-hidden");
+        lastY.current = y;
+        hiddenAt.current = y;
+      } else if (el.classList.contains("header-hidden")) {
+        // Track the highest point reached while hidden
+        if (y > hiddenAt.current) hiddenAt.current = y;
+        // Only show after scrolling up 60px from peak
+        if (y < hiddenAt.current - 60) {
+          el.classList.remove("header-hidden");
+          lastY.current = y;
+        }
+      } else {
+        // Header visible — hide after 48px of downward scroll
+        if (y > lastY.current + 48) {
+          el.classList.add("header-hidden");
+          hiddenAt.current = y;
+        }
+        lastY.current = y;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navLinks = [
+    { label: "home",     href: "/" },
+    { label: "projects", href: "/projects" },
+    { label: "about",    href: "/about" },
+    { label: "contact",  href: "/contact" },
+  ];
+
   return (
-    <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:200,background:"#333333",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"17px 40px",borderBottom:"1px solid #1b1b1b"}}>
-      <a href={isCaseStudy ? "/" : "#home"} style={{...serif,fontSize:"22px",color:"#F3F3FB",textDecoration:"none",display:"inline-block",width:"30.46px",height:"27px",lineHeight:"27px"}}>sG</a>
-      <div className="desk-nav" style={{display:"flex",gap:"28px",fontSize:"16px",letterSpacing:"0.06em",fontFamily:"'Inter',sans-serif"}}>
-        {NAV.map(l => (
-          <a key={l} href={linkHref(l)}
-            style={{
-              color:"#F7ECDC",
-              textDecoration:"none",
-              border: hovLink === l ? "1px solid #F7ECDC" : "1px solid transparent",
-              borderRadius:"20px",
-              padding:"4px 14px",
-              margin:"-4px -14px",
-              transition:"border-color 0.25s ease",
-            }}
-            onMouseEnter={()=>setHovLink(l)}
-            onMouseLeave={()=>setHovLink(null)}>{l}</a>
-        ))}
-      </div>
-      <button className="mob-btn" onClick={()=>setOpen(!open)}
-        style={{background:"none",border:"none",cursor:"pointer",display:"none",flexDirection:"column",gap:"5px",padding:"4px"}}>
-        {[0,1,2].map(i=>(
-          <span key={i} style={{display:"block",width:"22px",height:"1.5px",background:"#F7ECDC",opacity:open&&i===1?0:1,transition:"opacity 0.2s"}}/>
-        ))}
-      </button>
-      {open && (
-        <div style={{position:"absolute",top:"100%",left:0,right:0,background:C.darkBg,padding:"24px 40px",display:"flex",flexDirection:"column",gap:"20px",borderBottom:"1px solid #333333"}}>
-          {NAV.map(l=>(
-            <a key={l} href={linkHref(l)} onClick={()=>setOpen(false)}
-              style={{color:"#F7ECDC",textDecoration:"none",fontFamily:"'Inter',sans-serif",fontSize:"16px"}}>{l}</a>
-          ))}
+    <div id="site-header" style={{position:"sticky",top:0,zIndex:200,background:C.paper,maxWidth:"100%"}}>
+      <div style={{maxWidth:"1700px",margin:"0 auto",padding:"12px 28px 10px"}}>
+        {/* Branding pill */}
+        <div style={{
+          display:"flex",justifyContent:"space-between",alignItems:"center",
+          border:`1.5px solid ${C.ink}`,borderRadius:"999px",
+          padding:`var(--hb-pad,19px) 24px`,
+          transition:"padding .25s ease",
+          marginBottom:"10px",
+        }}>
+          <a href="/" style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",textDecoration:"none",color:C.ink}}>
+            stephanie guarino <span style={{color:C.tangerine}}>✳</span>
+          </a>
+          <span style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",color:C.magenta}}>product designer</span>
         </div>
-      )}
-    </nav>
+        {/* Blue nav pill */}
+        <nav style={{
+          display:"flex",gap:"var(--nav-gap,9px)",
+          background:C.blue,borderRadius:"999px",
+          padding:`var(--nav-pad,12px) 10px`,
+          alignItems:"center",
+          transition:"padding .25s ease, gap .25s ease",
+        }}>
+          {navLinks.map(({label, href}) => {
+            const isActive = activePage === label;
+            return (
+              <a key={label} href={href}
+                style={{
+                  fontWeight: isActive ? 700 : 600,
+                  fontSize:"13px",letterSpacing:"-.2px",
+                  color: isActive ? C.blue : C.paper,
+                  background: isActive ? C.paper : "transparent",
+                  textDecoration:"none",
+                  padding:"7px 18px",
+                  borderRadius:"999px",
+                  transition:"background .15s, color .15s",
+                }}
+                onMouseEnter={e=>{ if(!isActive){ e.currentTarget.style.background=C.paper; e.currentTarget.style.color=C.ink; } }}
+                onMouseLeave={e=>{ if(!isActive){ e.currentTarget.style.background="transparent"; e.currentTarget.style.color=C.paper; } }}
+              >{label}</a>
+            );
+          })}
+        </nav>
+      </div>
+    </div>
   );
 }
 
-/* ── CTA (kept for case study pages) ─────────────────── */
-export function CTA() {
+/* ── SCROLL TO TOP ────────────────────────────────────── */
+export function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible((window.scrollY || document.documentElement.scrollTop) > 300);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <section id="contact" className="cta-section" style={{background:C.darkBg,padding:"120px 80px 80px",textAlign:"center",borderTop:"1px solid #333333"}}>
-      <h2 style={{...serif,fontSize:"clamp(52px,8vw,96px)",color:C.white,lineHeight:1.0,letterSpacing:"-0.03em",margin:"0 0 48px"}}>
-        Talk design<br/>to me.
-      </h2>
-      <a href={`mailto:${EMAIL}`}
-        style={{fontFamily:"'Inter',sans-serif",fontSize:"12px",letterSpacing:"0.18em",color:C.textMuted,textDecoration:"none",textTransform:"uppercase",borderBottom:`1px solid ${C.textMuted}`,paddingBottom:"3px"}}
-        onMouseEnter={e=>{e.target.style.color=C.white;e.target.style.borderBottomColor=C.white}}
-        onMouseLeave={e=>{e.target.style.color=C.textMuted;e.target.style.borderBottomColor=C.textMuted}}>
-        Get in touch →
-      </a>
-    </section>
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      aria-label="Scroll to top"
+      style={{
+        position:"fixed",bottom:"32px",right:"32px",zIndex:400,
+        width:"52px",height:"52px",borderRadius:"50%",
+        background:hovered ? C.pink : C.paper,
+        border:`1.5px solid ${C.ink}`,
+        display:"flex",alignItems:"center",justifyContent:"center",
+        cursor:`url('/assets/cursor-pink.png') 2 2, pointer`,
+        opacity:visible?1:0,
+        transition:"opacity .35s ease, background .15s ease",
+        pointerEvents:visible?"auto":"none",
+      }}
+    >
+      <span style={{fontSize:"20px",color:C.ink,lineHeight:1,fontFamily:"'Inter Tight',sans-serif"}}>↑</span>
+    </button>
   );
 }
 
-/* ── FOOTER (kept for case study pages) ──────────────── */
-export function Footer({ isCaseStudy = false }) {
-  const linkHref = (l) => {
-    if (l === "linkedin") return LINKEDIN;
-    if (isCaseStudy) return l === "home" ? "/" : `/#${l}`;
-    return `#${l}`;
-  };
+/* ── SITE FOOTER ─────────────────────────────────────── */
+export function SiteFooter() {
   return (
-    <footer className="site-footer">
-      <div style={{background:C.darkerBg,padding:"50px 80px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:"12px"}}>
-        <div style={{display:"flex",gap:"20px",flexWrap:"wrap"}}>
-          {[...NAV,"linkedin"].map(l => (
-            <a key={l} href={linkHref(l)}
-              style={{fontFamily:"'Inter',sans-serif",fontSize:"16px",color:"#E6DFF1",textDecoration:"none",letterSpacing:"0.05em",transition:"opacity 0.2s"}}
-              onMouseEnter={e=>e.target.style.opacity="0.7"}
-              onMouseLeave={e=>e.target.style.opacity="1"}>{l}</a>
-          ))}
+    <footer style={{background:C.blue,color:C.paper,position:"relative"}}>
+      <ScrollToTop/>
+      <div style={{maxWidth:"1700px",margin:"0 auto",padding:"72px 28px 48px"}}>
+        <a href={`mailto:${EMAIL}`}
+          style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"88px",lineHeight:.98,letterSpacing:"-2.6px",color:C.paper,textDecoration:"none",display:"inline-block"}}
+          onMouseEnter={e=>e.currentTarget.style.color=C.ink}
+          onMouseLeave={e=>e.currentTarget.style.color=C.paper}
+        >
+          talk design to me{" "}
+          <img src="/assets/doodle-arrow-ne-pink.png" alt="" style={{display:"inline-block",verticalAlign:"middle",width:".9em",height:".9em",imageRendering:"pixelated",transform:"translateY(-.06em)",border:"none"}} onError={e=>e.currentTarget.style.display="none"}/>
+        </a>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"56px",font:`400 12px 'IBM Plex Mono',monospace`,color:C.footerDim,flexWrap:"wrap",gap:"12px"}}>
+          <div style={{display:"flex",gap:"20px"}}>
+            <a href={`mailto:${EMAIL}`} style={{color:C.footerDim}}
+              onMouseEnter={e=>e.currentTarget.style.color=C.paper}
+              onMouseLeave={e=>e.currentTarget.style.color=C.footerDim}
+            >email</a>
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" style={{color:C.footerDim}}
+              onMouseEnter={e=>e.currentTarget.style.color=C.paper}
+              onMouseLeave={e=>e.currentTarget.style.color=C.footerDim}
+            >linkedin</a>
+          </div>
+          <span>©2026 stephanie guarino ✳</span>
         </div>
-      </div>
-      <div style={{background:"#333333",padding:"20px 80px"}}>
-        <p style={{fontFamily:"'Inter',sans-serif",fontSize:"10px",color:"#EBE6E0",margin:0,textAlign:"center"}}>
-          ©2025 Stephanie Guarino. All Rights Reserved. Designed and developed by Stephanie Guarino.
-        </p>
       </div>
     </footer>
   );
