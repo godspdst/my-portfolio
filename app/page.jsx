@@ -27,7 +27,6 @@ const PAGE_CSS = `
     .top5-inner{grid-template-columns:repeat(2,1fr)!important}
   }
   @media(max-width:760px){
-    .hero-h1{font-size:clamp(40px,12vw,228px)!important}
     .cta-row{flex-direction:column;align-items:center}
     .top5-inner{grid-template-columns:1fr!important}
   }
@@ -40,9 +39,9 @@ function Hero() {
       <div style={{maxWidth:"1700px",margin:"0 auto",padding:"64px 28px 56px",position:"relative"}}>
         <h1 className="hero-h1" style={{
           margin:0,fontWeight:800,
-          fontSize:"clamp(64px,13.2vw,228px)",
+          fontSize:"min(10.5vw,228px)",
           lineHeight:1.02,letterSpacing:"-.032em",
-          textAlign:"center",
+          textAlign:"center",whiteSpace:"nowrap",
           fontFamily:"'Bricolage Grotesque',sans-serif",
           color:C.ink,
         }}>
