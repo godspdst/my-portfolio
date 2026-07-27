@@ -47,7 +47,7 @@ function Hero() {
               onError={e=>e.currentTarget.style.display="none"}
             />{" "}with{" "}
             <img src="/assets/doodle-sparkle.png" alt=""
-              style={{display:"inline-block",verticalAlign:"middle",width:".72em",height:".72em",imageRendering:"pixelated",margin:"0 0 0 .05em",transform:"translateY(-.05em) rotate(6deg)",border:"none"}}
+              style={{display:"inline-block",verticalAlign:"middle",width:".72em",height:".72em",imageRendering:"pixelated",margin:"0 .15em 0 .05em",transform:"translateY(-.05em) rotate(6deg)",border:"none"}}
               onError={e=>e.currentTarget.style.display="none"}
             />
           </span>
