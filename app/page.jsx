@@ -12,7 +12,13 @@ const PROJECTS = [
 
 const PAGE_CSS = `
   ${BASE_CSS}
-  .dz-spin{animation:dz-spin 9s linear infinite}
+  .dz-spin:hover{animation:dz-spin 1.5s linear infinite}
+  @keyframes dz-sparkle{
+    0%,100%{transform:translateY(-.05em) rotate(6deg) scale(1)}
+    30%{transform:translateY(-.05em) rotate(28deg) scale(1.25)}
+    65%{transform:translateY(-.05em) rotate(-12deg) scale(0.85)}
+  }
+  .dz-sparkle:hover{animation:dz-sparkle 0.6s ease-in-out infinite}
   .cta-btn-fill:hover{background:#ee6fb5!important;color:#2b1f1c!important}
   .cta-btn-outline:hover{background:#f4611c!important;color:#2b1f1c!important}
   .top5-link:hover .top5-title{color:#c23d86}
@@ -21,7 +27,7 @@ const PAGE_CSS = `
     .top5-inner{grid-template-columns:repeat(2,1fr)!important}
   }
   @media(max-width:760px){
-    .hero-h1{white-space:normal!important;font-size:clamp(40px,12vw,228px)!important}
+    .hero-h1{font-size:clamp(40px,12vw,228px)!important}
     .cta-row{flex-direction:column;align-items:center}
     .top5-inner{grid-template-columns:1fr!important}
   }
@@ -36,7 +42,7 @@ function Hero() {
           margin:0,fontWeight:800,
           fontSize:"clamp(64px,13.2vw,228px)",
           lineHeight:1.02,letterSpacing:"-.032em",
-          textAlign:"center",whiteSpace:"nowrap",
+          textAlign:"center",
           fontFamily:"'Bricolage Grotesque',sans-serif",
           color:C.ink,
         }}>
@@ -46,7 +52,7 @@ function Hero() {
               style={{display:"inline-block",verticalAlign:"middle",width:".78em",height:".78em",imageRendering:"pixelated",margin:"0 .05em",transform:"translateY(-.05em) rotate(-8deg)",border:"none"}}
               onError={e=>e.currentTarget.style.display="none"}
             />{" "}with{" "}
-            <img src="/assets/doodle-sparkle.png" alt=""
+            <img src="/assets/doodle-sparkle.png" alt="" className="dz-sparkle"
               style={{display:"inline-block",verticalAlign:"middle",width:".72em",height:".72em",imageRendering:"pixelated",margin:"0 .15em 0 .05em",transform:"translateY(-.05em) rotate(6deg)",border:"none"}}
               onError={e=>e.currentTarget.style.display="none"}
             />
