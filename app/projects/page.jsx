@@ -5,7 +5,7 @@ import { C, BASE_CSS, Header, SiteFooter } from "../shared";
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    img:"/images/jd-after.png", pos:"center 30%",
+    img:"/images/jd-imac-mockup.png", pos:"center 48%", scale:1.4,
     title:"John Deere Work Queue Follow-Up Date",
     desc:"Validated a follow-up date column to stop applications from stalling in equipment lender's queue. Reduced friction for loan officers and improved turnaround time.",
     tags:["UX Design","Research","Enterprise","Figma"],
@@ -13,7 +13,7 @@ const PROJECTS = [
   },
   {
     n:"02", id:"jd-credit-hub-guarantor",
-    img:"/images/jd-guarantor-04-inline.png",
+    img:"/images/jd-imac-mockup.png", pos:"center 48%", scale:1.4,
     title:"John Deere Credit Hub — Guarantor",
     desc:"Four design directions for surfacing guarantee type selection in a dense, daily-use credit interface — one recommended, one shipped.",
     tags:["UX Design","Enterprise","Interaction Design"],
@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
       {/* Image */}
       <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`}}>
         <img src={project.img} alt={project.title}
-          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",transform:project.scale?`scale(${project.scale})`:"none",transformOrigin:"center top"}}
+          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",transform:project.scale?`scale(${project.scale})`:"none",transformOrigin:"center center",filter:"sepia(0.7) contrast(1.05) brightness(0.96)"}}
         />
       </div>
       {/* Content */}
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:0}}>
             <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`}}>
               <img src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title}
-                style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}
+                style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"sepia(0.7) contrast(1.05) brightness(0.96)"}}
               />
             </div>
             <div style={{padding:"32px",display:"flex",flexDirection:"column",justifyContent:"center"}}>
