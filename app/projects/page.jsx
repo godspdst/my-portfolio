@@ -5,7 +5,7 @@ import { C, BASE_CSS, Header, SiteFooter } from "../shared";
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    img:"/images/jd-wq-imac-mockup.png", pos:"center 28%", scale:1.4,
+    img:"/images/jd-wq-imac-mockup.png", pos:"center 22%",
     title:"John Deere Work Queue Follow-Up Date",
     desc:"Validated a follow-up date column to stop applications from stalling in equipment lender's queue. Reduced friction for loan officers and improved turnaround time.",
     tags:["UX Design","Research","Enterprise","Figma"],
@@ -13,7 +13,7 @@ const PROJECTS = [
   },
   {
     n:"02", id:"jd-credit-hub-guarantor",
-    img:"/images/jd-imac-mockup.png", pos:"center 28%", scale:1.4,
+    img:"/images/jd-imac-mockup.png", pos:"center 22%",
     title:"John Deere Credit Hub — Guarantor",
     desc:"Four design directions for surfacing guarantee type selection in a dense, daily-use credit interface — one recommended, one shipped.",
     tags:["UX Design","Enterprise","Interaction Design"],
@@ -21,7 +21,7 @@ const PROJECTS = [
   },
   {
     n:"03", id:"plume-homepass-online-store",
-    img:"/images/plume-store-hero.jpg", pos:"center 30%", scale:1.25,
+    img:"/images/plume-store-hero.jpg", pos:"center 30%",
     title:"Plume HomePass Ecommerce Store",
     desc:"End-to-end redesign of the HomePass ecommerce store, improving conversion and streamlining the checkout flow for smart home hardware.",
     tags:["UI Design","Ecommerce","Prototyping"],
@@ -29,7 +29,7 @@ const PROJECTS = [
   },
   {
     n:"04", id:"plume-homepass-landing-page",
-    img:"/images/plume-landing-hero.jpg", pos:"center 20%", scale:1.3,
+    img:"/images/plume-landing-hero.jpg", pos:"center 20%",
     title:"Plume HomePass Landing Page",
     desc:"Landing page redesign timed to the release of the SuperPod G6, balancing marketing needs with a clean, conversion-focused layout.",
     tags:["Landing Page","UI Design","Marketing"],
@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
       {/* Image */}
       <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`}}>
         <img src={project.img} alt={project.title}
-          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",transform:project.scale?`scale(${project.scale})`:"none",transformOrigin:"center center",filter:"sepia(0.35) contrast(1.05) brightness(0.88)"}}
+          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",filter:"sepia(0.2) contrast(1.02) brightness(0.95)"}}
         />
       </div>
       {/* Content */}
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:0}}>
             <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`}}>
               <img src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title}
-                style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"sepia(0.35) contrast(1.05) brightness(0.88)"}}
+                style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"sepia(0.2) contrast(1.02) brightness(0.95)"}}
               />
             </div>
             <div style={{padding:"32px",display:"flex",flexDirection:"column",justifyContent:"center"}}>
