@@ -9,7 +9,6 @@ const STUDIES = {
     responsibilities: ["research","prototyping","branding","design system"],
     outcome: "a 0→1 social platform for music lovers — brand, system & product",
     goal: "The Pit is a social media platform built for music lovers that allows users to discover music, share what they're listening to, and connect with other fans who share the same musical interests and passions around the world.",
-    featureImages: ["the-pit-feature-1.png","the-pit-feature-2.jpg","the-pit-feature-3.jpg"],
     heroImage: null,
     contextPhoto: null,
     process: ["STRATEGY","RESEARCH","WIREFRAME","BRANDING","PROTOTYPE","TEST"],
@@ -34,7 +33,6 @@ const STUDIES = {
     responsibilities: ["competitive research","design system","prototype","developer handoff"],
     outcome: "A/B testing confirmed users preferred guided recommendations over unassisted browsing—moving through decisions faster and with more confidence.",
     goal: "With the launch of Plume HomePass's newest product, the SuperPod G6, the landing page needed to do two things: introduce the new product and help users understand which SuperPod was right for them. Awareness alone wasn't enough. Users needed guidance to make a confident purchase.",
-    featureImages: ["plume-landing-feature-1.jpg","plume-landing-feature-2.jpg","plume-landing-feature-3.jpg"],
     heroImage: null,
     contextPhoto: null,
     process: ["STRATEGY","RESEARCH","WIREFRAME","PROTOTYPE","TEST","IMPLEMENT"],
@@ -64,7 +62,6 @@ const STUDIES = {
     responsibilities: ["shopify redesign","competitive research","prototype","developer handoff"],
     outcome: "conversion rose enough that Plume rolled the approach across its other brands",
     goal: "Plume HomePass had an existing e-commerce store that wasn't working hard enough. The visual design felt off-brand, the navigation was difficult to move through and the product display was cluttered enough to slow users down before they ever reached checkout. Plume needed the store migrated to Shopify and simplified in a way that actually converted.",
-    featureImages: ["plume-store-feature-1.jpg","plume-store-feature-2.jpg","plume-store-feature-3.jpg"],
     heroImage: null,
     contextPhoto: null,
     process: ["STRATEGY","RESEARCH","WIREFRAME","PROTOTYPE","TEST","IMPLEMENT"],
@@ -104,7 +101,6 @@ const STUDIES = {
     responsibilities: ["UX & UI design","Research","Brand guide","Design system","Prototype","Implement"],
     outcome: "A portfolio that reflects my design philosophy and showcases my process end-to-end.",
     goal: "Creating a portfolio for any designer is an intimidating yet exciting task. This is the documentation of my design vision and process. I wanted to create something elegant, refined and approachable. My goal was to take all I had from the past few years and mold it into a website. A big deal, right?",
-    featureImages: ["portfolio-feature-1.jpg","portfolio-feature-2.jpg","portfolio-feature-3.jpg"],
     heroImage: "portfolio-hero.jpg",
     contextPhoto: "portfolio-context.jpg",
     process: ["STRATEGY","RESEARCH","WIREFRAME","BRANDING","PROTOTYPE","IMPLEMENT"],
@@ -141,7 +137,7 @@ const PAGE_CSS = `
   @media(max-width:768px){
     .cs-page-wrap{padding:32px 24px!important}
     .proc-strip{grid-template-columns:1fr 1fr!important}
-    .feature-row{flex-direction:column!important;gap:16px!important}
+
     .feature-row>div{width:100%!important;margin-top:0!important}
     .before-after-grid{grid-template-columns:1fr!important}
     .wf-row{flex-direction:column!important;gap:16px!important}
@@ -187,21 +183,6 @@ function FullImg({ src, alt="", height="480px", grayscale=false }) {
   );
 }
 
-function FeatureRow({ images }) {
-  if (!images?.length) return null;
-  const offsets = [0, 40, 16];
-  return (
-    <div className="feature-row" style={{display:"flex",gap:"16px",justifyContent:"center",alignItems:"flex-start",padding:"8px 0 24px"}}>
-      {images.map((src,i) => (
-        <div key={i} style={{flex:"0 0 30%",marginTop:`${offsets[i]||0}px`}}>
-          <div className="cs-img" style={{aspectRatio:"6/5",overflow:"hidden"}}>
-            <img src={`/images/${src}`} alt={`Feature ${i+1}`} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block",border:"none",borderRadius:0}}/>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 /* ── MAIN PAGE ────────────────────────────────────────── */
 export default function CaseStudyPage({ params }) {
