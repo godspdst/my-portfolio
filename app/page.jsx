@@ -4,11 +4,11 @@ import Image from "next/image";
 import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN } from "./shared";
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-after.png",                    title:"john deere work queue",           cat:"enterprise ux", pos:"center 20%" },
-  { id:"jd-credit-hub-guarantor",        img:"/images/jd-guarantor-04-inline.png",      title:"john deere credit hub — guarantor", cat:"enterprise ux", pos:"center 25%" },
-  { id:"plume-homepass-online-store",     img:"/images/plume-store-hero.jpg",            title:"plume online store",              cat:"e-commerce", pos:"center 30%" },
-  { id:"plume-homepass-landing-page",     img:"/images/plume-landing-hero.jpg",          title:"plume landing page",              cat:"web · launch", pos:"center 20%" },
-  { id:"the-pit",                         img:"/images/the-pit-hero.jpg",                title:"the pit",                         cat:"app · branding" },
+  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-wq-imac-mockup.png",  title:"john deere work queue",            cat:"enterprise ux",  pos:"center 28%", zoom:1.3 },
+  { id:"jd-credit-hub-guarantor",        img:"/images/jd-imac-mockup.png",     title:"john deere credit hub — guarantor", cat:"enterprise ux", pos:"center 28%", zoom:1.3 },
+  { id:"plume-homepass-online-store",    img:"/images/plume-store-hero.jpg",   title:"plume online store",               cat:"e-commerce",    pos:"center 30%" },
+  { id:"plume-homepass-landing-page",    img:"/images/plume-landing-hero.jpg", title:"plume landing page",               cat:"web · launch",  pos:"center 20%" },
+  { id:"the-pit",                        img:"/images/the-pit-hero.jpg",       title:"the pit",                          cat:"app · branding" },
 ];
 
 const PAGE_CSS = `
@@ -183,9 +183,11 @@ function ProfileSection() {
                   <a key={p.id} href={`/case-study/${p.id}`} className="top5-link"
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",height:"130px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
-                      <Image src={p.img} alt={p.title} fill sizes="300px"
-                        style={{objectFit:"cover",objectPosition:p.pos||"center center"}}
-                      />
+                      <div style={{position:"absolute",inset:0,transform:p.zoom?`scale(${p.zoom})`:"none",transformOrigin:`center ${p.pos?.split(" ")[1]||"center"}`}}>
+                        <Image src={p.img} alt={p.title} fill sizes="400px"
+                          style={{objectFit:"cover",objectPosition:p.pos||"center center"}}
+                        />
+                      </div>
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>
                     <span style={{display:"block",font:`400 10.5px 'IBM Plex Mono',monospace`,color:C.muted,marginTop:"2px"}}>{p.cat}</span>
