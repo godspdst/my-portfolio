@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
       {/* Image */}
       <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`}}>
         <img src={project.img} alt={project.title}
-          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",filter:"sepia(0.2) contrast(1.02) brightness(0.95)"}}
+          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",filter:"none"}}
         />
       </div>
       {/* Content */}
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:0}}>
             <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`}}>
               <img src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title}
-                style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"sepia(0.2) contrast(1.02) brightness(0.95)"}}
+                style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"none"}}
               />
             </div>
             <div style={{padding:"32px",display:"flex",flexDirection:"column",justifyContent:"center"}}>

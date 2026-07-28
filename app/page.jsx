@@ -183,7 +183,7 @@ function ProfileSection() {
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",height:"130px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                       <img src={p.img} alt={p.title}
-                        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:p.pos||"center center",display:"block",filter:"sepia(0.2) contrast(1.02) brightness(0.95)"}}
+                        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:p.pos||"center center",display:"block"}}
                       />
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>
