@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { C, BASE_CSS, Header, SiteFooter } from "../shared";
 
 const PROJECTS = [
@@ -74,9 +75,9 @@ function ProjectCard({ project }) {
         <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"12px",fontWeight:500,color:C.white,opacity:0.8}}>view case study ↗</span>
       </div>
       {/* Image */}
-      <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`}}>
-        <img src={project.img} alt={project.title}
-          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",filter:"none"}}
+      <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`,position:"relative"}}>
+        <Image src={project.img} alt={project.title} fill sizes="900px"
+          style={{objectFit:"cover",objectPosition:project.pos||"center center"}}
         />
       </div>
       {/* Content */}
@@ -121,9 +122,9 @@ export default function ProjectsPage() {
             <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"12px",fontWeight:500,color:C.white,opacity:0.8}}>view case study ↗</span>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:0}}>
-            <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`}}>
-              <img src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title}
-                style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"none"}}
+            <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`,position:"relative"}}>
+              <Image src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title} fill sizes="900px"
+                style={{objectFit:"cover"}}
               />
             </div>
             <div style={{padding:"32px",display:"flex",flexDirection:"column",justifyContent:"center"}}>

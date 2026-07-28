@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN } from "./shared";
 
 const PROJECTS = [
@@ -182,8 +183,8 @@ function ProfileSection() {
                   <a key={p.id} href={`/case-study/${p.id}`} className="top5-link"
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",height:"130px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
-                      <img src={p.img} alt={p.title}
-                        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:p.pos||"center center",display:"block"}}
+                      <Image src={p.img} alt={p.title} fill sizes="300px"
+                        style={{objectFit:"cover",objectPosition:p.pos||"center center"}}
                       />
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>
