@@ -150,6 +150,7 @@ function ProfileSection() {
             <div style={{background:C.pink,color:C.ink,padding:"10px 16px",fontWeight:800,fontSize:"14px",letterSpacing:"-.2px"}}>details</div>
             <div style={{padding:"16px",display:"flex",flexDirection:"column",gap:"9px",font:`400 12.5px 'IBM Plex Mono',monospace`}}>
               <div><span style={{color:C.muted}}>location:</span> chicago</div>
+              <div><span style={{color:C.muted}}>listening to:</span> ♫ the smashing pumpkins</div>
             </div>
           </div>
         </div>

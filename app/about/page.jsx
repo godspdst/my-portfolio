@@ -60,9 +60,6 @@ export default function AboutPage() {
                   <div style={{position:"absolute",inset:0,pointerEvents:"none",background:C.pink,mixBlendMode:"color",opacity:.14}}/>
                   <div style={{position:"absolute",inset:0,pointerEvents:"none",opacity:.22,backgroundImage:"repeating-linear-gradient(0deg,rgba(43,31,28,.5) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(43,31,28,.5) 0 1px,transparent 1px 4px)"}}/>
                 </div>
-                <div style={{textAlign:"center",padding:"10px 0 2px",font:`400 11px 'IBM Plex Mono',monospace`,color:C.pink,letterSpacing:"4px",overflow:"hidden",whiteSpace:"nowrap"}}>
-                  ♫ the smashing pumpkins
-                </div>
               </div>
             </div>
 
