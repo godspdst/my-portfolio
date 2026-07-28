@@ -260,7 +260,7 @@ export default function CECCaseStudy() {
         </div>
 
         {/* NEXT UP */}
-        <a href="/case-study/plume-homepass-online-store" style={{display:"block",textDecoration:"none"}}>
+        <a href="/case-study/jd-credit-hub-guarantor" style={{display:"block",textDecoration:"none"}}>
           <div style={{background:C.card,borderRadius:"12px",border:`1.5px solid ${C.ink}`,overflow:"hidden",transition:"transform 0.22s, box-shadow 0.22s"}}
             onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow=`5px 5px 0 ${C.ink}`;}}
             onMouseLeave={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="none";}}>
@@ -268,7 +268,7 @@ export default function CECCaseStudy() {
               <span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"11px",fontWeight:500,color:C.white,letterSpacing:"0.1em",textTransform:"uppercase"}}>next up</span>
             </div>
             <div style={{padding:"24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"16px"}}>
-              <h3 style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"24px",fontWeight:700,color:C.ink,margin:0,letterSpacing:"-0.02em"}}>Plume HomePass Ecommerce Store</h3>
+              <h3 style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"24px",fontWeight:700,color:C.ink,margin:0,letterSpacing:"-0.02em"}}>John Deere Credit Hub — Guarantor</h3>
               <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"22px",color:C.blue,flexShrink:0}}>→</span>
             </div>
           </div>

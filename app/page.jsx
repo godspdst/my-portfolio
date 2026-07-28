@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN } from "./shared";
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-hero.jpg",                     title:"john deere work queue",   cat:"enterprise ux", pos:"center 40%" },
-  { id:"plume-homepass-online-store",     img:"/images/plume-store-hero.jpg",            title:"plume online store",       cat:"e-commerce" },
-  { id:"plume-homepass-landing-page",     img:"/images/plume-homepass-landing-page.jpg", title:"plume landing page",       cat:"web · launch" },
-  { id:"the-pit",                         img:"/images/the-pit-hero.jpg",                title:"the pit",                  cat:"app · branding" },
-  { id:"personal-portfolio",              img:"/images/portfolio-hero.jpg",              title:"personal portfolio",       cat:"ux · ui" },
+  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-hero.jpg",                     title:"john deere work queue",           cat:"enterprise ux", pos:"center 40%" },
+  { id:"jd-credit-hub-guarantor",        img:"/images/jd-guarantor-04-inline.png",      title:"john deere credit hub — guarantor", cat:"enterprise ux" },
+  { id:"plume-homepass-online-store",     img:"/images/plume-store-hero.jpg",            title:"plume online store",              cat:"e-commerce", pos:"center 40%" },
+  { id:"plume-homepass-landing-page",     img:"/images/plume-homepass-landing-page.jpg", title:"plume landing page",              cat:"web · launch" },
+  { id:"the-pit",                         img:"/images/the-pit-hero.jpg",                title:"the pit",                         cat:"app · branding" },
 ];
 
 const PAGE_CSS = `
@@ -182,7 +182,7 @@ function ProfileSection() {
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",height:"130px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                       <img src={p.img} alt={p.title}
-                        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:p.pos||"center center",display:"block",filter:"sepia(0.35) contrast(1.05) brightness(0.97)"}}
+                        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:p.pos||"center center",display:"block"}}
                       />
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>

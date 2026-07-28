@@ -3,7 +3,15 @@
     "allow": [
       "Bash(sips -g pixelWidth -g pixelHeight \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/nuleaf-wf-1.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/nuleaf-wf-2.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/portfolio-wf-1.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/portfolio-wf-2.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/the-pit-wf-1.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/the-pit-wf-2.png\" \\\\\n  \"/Users/stephanieguarino/my-portfolio/public/images/the-pit-wf-3.png\")",
       "Bash(curl -s http://localhost:3000 | grep -i \"icon\\\\|favicon\")",
-      "Bash(curl -s http://localhost:3000 | grep -o 'link[^>]*icon[^>]*\\\\|link[^>]*favicon[^>]*')"
+      "Bash(curl -s http://localhost:3000 | grep -o 'link[^>]*icon[^>]*\\\\|link[^>]*favicon[^>]*')",
+      "Bash(git push origin main)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/Users/stephanieguarino/Downloads/johndeere-logo.png\")",
+      "Bash(cd /Users/stephanieguarino/my-portfolio/public/images && \\\\\n  mv cec-combine.jpg jd-combine.jpg && \\\\\n  mv cec-excavators.jpg jd-excavators.jpg && \\\\\n  mv cec-farmer.jpg jd-farmer.jpg && \\\\\n  mv cec-comparison.png jd-comparison.png && \\\\\n  mv cec-hero.jpg jd-hero.jpg && \\\\\n  mv cec-work-queue-follow-up-date.png jd-work-queue-follow-up-date.png)",
+      "Bash(\\\\\n  git rm public/images/nuleaf-hero.jpg public/images/nuleaf-feature-1.jpg public/images/nuleaf-feature-2.jpg public/images/nuleaf-feature-3.jpg public/images/nuleaf-context.jpg public/images/nuleaf-research.jpg public/images/nuleaf-moodboard.jpg public/images/nuleaf-branding.png public/images/nuleaf-closing.jpg public/images/nuleaf-styleguide.png public/images/nuleaf-competitor-1.png public/images/nuleaf-competitor-2.png public/images/nuleaf-competitor-3.png public/images/nuleaf-wf-1.png public/images/nuleaf-wf-2.png && \\\\\n  git add app/case-study/\\\\[slug\\\\]/page.jsx && \\\\\n  git commit -m \"$\\(cat <<'EOF'\nRemove all nuleaf images and code references\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push origin main)",
+      "Bash(git add app/case-study/\\\\[slug\\\\]/page.jsx app/page.jsx && git status)",
+      "Bash(test -f /Users/stephanieguarino/my-portfolio/app/about/page.jsx && echo \"EXISTS\" || echo \"NOT FOUND\"; test -f /Users/stephanieguarino/my-portfolio/app/projects/page.jsx && echo \"EXISTS\" || echo \"NOT FOUND\"; test -f /Users/stephanieguarino/my-portfolio/app/contact/page.jsx && echo \"EXISTS\" || echo \"NOT FOUND\")",
+      "Bash(ls -la /Users/stephanieguarino/my-portfolio/app/case-study/\\\\[slug\\\\]/ 2>/dev/null || ls -la \"/Users/stephanieguarino/my-portfolio/app/case-study/\")",
+      "Bash(npm run build 2>&1 | tail -60)"
     ]
   }
 }

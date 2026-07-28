@@ -26,7 +26,7 @@ const STUDIES = {
     prototypeTitle: "follow and message a user",
     screens: ["the-pit-screen-1.png","the-pit-screen-2.png","the-pit-screen-3.png"],
     closingPhoto: null,
-    nextSlug: "plume-homepass-landing-page", nextTitle: "Plume HomePass Landing Page",
+    nextSlug: "jd-work-queue-follow-up-date", nextTitle: "John Deere Work Queue Follow-Up Date",
   },
   "plume-homepass-landing-page": {
     title: "plume homepass landing page",
@@ -56,7 +56,7 @@ const STUDIES = {
     testText: "Plume's user research team ran A/B testing with real users, comparing the configurator experience against unassisted browsing. Users strongly preferred the guided approach; they were given a recommendation and no longer had to compare specs on their own. They moved through their decision faster and with more confidence. The data validated the core strategic bet: guidance over browsing.",
     implementText: "I handed off the designs to the development team, talking through the prototype, clarifying interaction details and aligning on what would ship. The landing page launched with a modified configurator section—a common constraint of the development process. The guided recommendation approach remained the foundation of the final landing page.",
     closingPhoto: null,
-    nextSlug: "plume-homepass-online-store", nextTitle: "Plume HomePass Ecommerce Store",
+    nextSlug: "the-pit", nextTitle: "The Pit App",
   },
   "plume-homepass-online-store": {
     title: "plume homepass ecommerce store",
@@ -96,7 +96,7 @@ const STUDIES = {
     afterImage: "plume-store-after.png",
     takeawayText: "The instinct in e-commerce is often to show products, options and information. This project was a case for the opposite. Removing friction and reducing choices gave users a faster, clearer path. Sometimes the most effective decision is knowing what to take away.",
     closingPhoto: null,
-    nextSlug: "the-pit", nextTitle: "The Pit App",
+    nextSlug: "plume-homepass-landing-page", nextTitle: "Plume HomePass Landing Page",
   },
   "personal-portfolio": {
     title: "personal portfolio",

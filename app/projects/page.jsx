@@ -12,37 +12,37 @@ const PROJECTS = [
     headerColor:C.blue,
   },
   {
-    n:"02", id:"plume-homepass-online-store",
+    n:"02", id:"jd-credit-hub-guarantor",
+    img:"/images/jd-guarantor-04-inline.png",
+    title:"John Deere Credit Hub — Guarantor",
+    desc:"Four design directions for surfacing guarantee type selection in a dense, daily-use credit interface — one recommended, one shipped.",
+    tags:["UX Design","Enterprise","Interaction Design"],
+    headerColor:C.pink,
+  },
+  {
+    n:"03", id:"plume-homepass-online-store",
     img:"/images/plume-store-hero.jpg", pos:"center 40%",
     title:"Plume HomePass Ecommerce Store",
     desc:"End-to-end redesign of the HomePass ecommerce store, improving conversion and streamlining the checkout flow for smart home hardware.",
     tags:["UI Design","Ecommerce","Prototyping"],
-    headerColor:C.pink,
+    headerColor:C.tangerine,
   },
   {
-    n:"03", id:"plume-homepass-landing-page",
+    n:"04", id:"plume-homepass-landing-page",
     img:"/images/plume-homepass-landing-page.jpg",
     title:"Plume HomePass Landing Page",
     desc:"Landing page redesign timed to the release of the SuperPod G6, balancing marketing needs with a clean, conversion-focused layout.",
     tags:["Landing Page","UI Design","Marketing"],
-    headerColor:C.tangerine,
-  },
-  {
-    n:"04", id:"the-pit",
-    img:"/images/the-pit-hero.jpg",
-    title:"The Pit App",
-    desc:"A social media platform built for music lovers — discover music, share what you're listening to, and connect with fans worldwide.",
-    tags:["App Design","Branding","Design System","Research"],
     headerColor:C.pink,
   },
 ];
 
 const PORTFOLIO_PROJECT = {
-  n:"05", id:"personal-portfolio",
-  img:"/images/portfolio-hero.jpg",
-  title:"Personal Portfolio",
-  desc:"Updated UX and UI of my personal portfolio website — the very site you're looking at now.",
-  tags:["UX Design","Development","Next.js"],
+  n:"05", id:"the-pit",
+  img:"/images/the-pit-hero.jpg",
+  title:"The Pit App",
+  desc:"A social media platform built for music lovers — discover music, share what you're listening to, and connect with fans worldwide.",
+  tags:["App Design","Branding","Design System","Research"],
   headerColor:C.blue,
 };
 
@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
       {/* Image */}
       <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`}}>
         <img src={project.img} alt={project.title}
-          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",filter:"sepia(0.35) contrast(1.05) brightness(0.97)"}}
+          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block"}}
         />
       </div>
       {/* Content */}
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:0}}>
             <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`}}>
               <img src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title}
-                style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"sepia(0.35) contrast(1.05) brightness(0.97)"}}
+                style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}
               />
             </div>
             <div style={{padding:"32px",display:"flex",flexDirection:"column",justifyContent:"center"}}>
