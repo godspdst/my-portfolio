@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN } from "./shared";
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-hero.jpg",                     title:"john deere work queue",           cat:"enterprise ux", pos:"center 40%" },
+  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-after.png",                    title:"john deere work queue",           cat:"enterprise ux", pos:"center 30%" },
   { id:"jd-credit-hub-guarantor",        img:"/images/jd-guarantor-04-inline.png",      title:"john deere credit hub — guarantor", cat:"enterprise ux" },
-  { id:"plume-homepass-online-store",     img:"/images/plume-store-hero.jpg",            title:"plume online store",              cat:"e-commerce", pos:"center 40%" },
-  { id:"plume-homepass-landing-page",     img:"/images/plume-homepass-landing-page.jpg", title:"plume landing page",              cat:"web · launch" },
+  { id:"plume-homepass-online-store",     img:"/images/plume-store-hero.jpg",            title:"plume online store",              cat:"e-commerce", pos:"center 30%", scale:1.25 },
+  { id:"plume-homepass-landing-page",     img:"/images/plume-landing-hero.jpg",          title:"plume landing page",              cat:"web · launch", pos:"center 20%", scale:1.3 },
   { id:"the-pit",                         img:"/images/the-pit-hero.jpg",                title:"the pit",                         cat:"app · branding" },
 ];
 
@@ -182,7 +182,7 @@ function ProfileSection() {
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",height:"130px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                       <img src={p.img} alt={p.title}
-                        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:p.pos||"center center",display:"block"}}
+                        style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:p.pos||"center center",display:"block",transform:p.scale?`scale(${p.scale})`:"none",transformOrigin:p.pos?.includes("20%")||p.pos?.includes("30%")?"center top":"center center"}}
                       />
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>

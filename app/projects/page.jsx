@@ -5,7 +5,7 @@ import { C, BASE_CSS, Header, SiteFooter } from "../shared";
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    img:"/images/jd-hero.jpg", pos:"center 40%",
+    img:"/images/jd-after.png", pos:"center 30%",
     title:"John Deere Work Queue Follow-Up Date",
     desc:"Validated a follow-up date column to stop applications from stalling in equipment lender's queue. Reduced friction for loan officers and improved turnaround time.",
     tags:["UX Design","Research","Enterprise","Figma"],
@@ -21,7 +21,7 @@ const PROJECTS = [
   },
   {
     n:"03", id:"plume-homepass-online-store",
-    img:"/images/plume-store-hero.jpg", pos:"center 40%",
+    img:"/images/plume-store-hero.jpg", pos:"center 30%", scale:1.25,
     title:"Plume HomePass Ecommerce Store",
     desc:"End-to-end redesign of the HomePass ecommerce store, improving conversion and streamlining the checkout flow for smart home hardware.",
     tags:["UI Design","Ecommerce","Prototyping"],
@@ -29,7 +29,7 @@ const PROJECTS = [
   },
   {
     n:"04", id:"plume-homepass-landing-page",
-    img:"/images/plume-homepass-landing-page.jpg",
+    img:"/images/plume-landing-hero.jpg", pos:"center 20%", scale:1.3,
     title:"Plume HomePass Landing Page",
     desc:"Landing page redesign timed to the release of the SuperPod G6, balancing marketing needs with a clean, conversion-focused layout.",
     tags:["Landing Page","UI Design","Marketing"],
@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
       {/* Image */}
       <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`}}>
         <img src={project.img} alt={project.title}
-          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block"}}
+          style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:project.pos||"center center",display:"block",transform:project.scale?`scale(${project.scale})`:"none",transformOrigin:"center top"}}
         />
       </div>
       {/* Content */}

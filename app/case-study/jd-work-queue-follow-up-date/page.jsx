@@ -149,11 +149,6 @@ export default function CECCaseStudy() {
           </div>
         </div>
 
-        {/* HERO PHOTO */}
-        <div className="jd-cs-img" style={{height:"520px"}}>
-          <img src="/images/jd-hero.jpg" alt="Work Queue — the shipped design" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 30%",display:"block",border:"none",borderRadius:0}}/>
-        </div>
-
         {/* BRIEF */}
         <SectionCard headerColor={C.blue} eyebrow="1 — strategy · the brief">
           <BodyText>John Deere needed a way to stop applications from stalling in analysts' queues. A solution had already been scoped. As the sole UX designer embedded with the product and engineering team, I set out to validate it before building it.</BodyText>
