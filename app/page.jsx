@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN } from "./shared";
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-wq-imac-mockup.png",           title:"john deere work queue",           cat:"enterprise ux", pos:"center 22%" },
-  { id:"jd-credit-hub-guarantor",        img:"/images/jd-imac-mockup.png",              title:"john deere credit hub — guarantor", cat:"enterprise ux", pos:"center 22%" },
+  { id:"jd-work-queue-follow-up-date",   img:"/images/jd-after.png",                    title:"john deere work queue",           cat:"enterprise ux", pos:"center 20%" },
+  { id:"jd-credit-hub-guarantor",        img:"/images/jd-guarantor-04-inline.png",      title:"john deere credit hub — guarantor", cat:"enterprise ux", pos:"center 25%" },
   { id:"plume-homepass-online-store",     img:"/images/plume-store-hero.jpg",            title:"plume online store",              cat:"e-commerce", pos:"center 30%" },
   { id:"plume-homepass-landing-page",     img:"/images/plume-landing-hero.jpg",          title:"plume landing page",              cat:"web · launch", pos:"center 20%" },
   { id:"the-pit",                         img:"/images/the-pit-hero.jpg",                title:"the pit",                         cat:"app · branding" },

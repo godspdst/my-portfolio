@@ -5,7 +5,7 @@ import { C, BASE_CSS, Header, SiteFooter } from "../shared";
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    img:"/images/jd-wq-imac-mockup.png", pos:"center 22%",
+    img:"/images/jd-after.png", pos:"center 20%",
     title:"John Deere Work Queue Follow-Up Date",
     desc:"Validated a follow-up date column to stop applications from stalling in equipment lender's queue. Reduced friction for loan officers and improved turnaround time.",
     tags:["UX Design","Research","Enterprise","Figma"],
@@ -13,7 +13,7 @@ const PROJECTS = [
   },
   {
     n:"02", id:"jd-credit-hub-guarantor",
-    img:"/images/jd-imac-mockup.png", pos:"center 22%",
+    img:"/images/jd-guarantor-04-inline.png", pos:"center 25%",
     title:"John Deere Credit Hub — Guarantor",
     desc:"Four design directions for surfacing guarantee type selection in a dense, daily-use credit interface — one recommended, one shipped.",
     tags:["UX Design","Enterprise","Interaction Design"],
