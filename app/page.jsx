@@ -183,7 +183,7 @@ function ProfileSection() {
                   <a key={p.id} href={`/case-study/${p.id}`} className="top5-link"
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",height:"130px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
-                      <div style={{position:"absolute",inset:0,transform:p.zoom?`scale(${p.zoom})`:"none",transformOrigin:`center ${p.pos?.split(" ")[1]||"center"}`}}>
+                      <div style={{position:"absolute",inset:0,transform:p.zoom?`scale(${p.zoom})`:"none",transformOrigin:`center ${p.pos?.split(" ")[1]||"center"}`,filter:"sepia(0.5) contrast(1.05) brightness(0.92)"}}>
                         <Image src={p.img} alt={p.title} fill sizes="400px"
                           style={{objectFit:"cover",objectPosition:p.pos||"center center"}}
                         />

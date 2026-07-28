@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
       </div>
       {/* Image */}
       <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`,position:"relative"}}>
-        <div style={{position:"absolute",inset:0,transform:project.zoom?`scale(${project.zoom})`:"none",transformOrigin:`center ${project.pos?.split(" ")[1]||"center"}`}}>
+        <div style={{position:"absolute",inset:0,transform:project.zoom?`scale(${project.zoom})`:"none",transformOrigin:`center ${project.pos?.split(" ")[1]||"center"}`,filter:"sepia(0.5) contrast(1.05) brightness(0.92)"}}>
           <Image src={project.img} alt={project.title} fill sizes="900px"
             style={{objectFit:"cover",objectPosition:project.pos||"center center"}}
           />
@@ -125,9 +125,11 @@ export default function ProjectsPage() {
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:0}}>
             <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`,position:"relative"}}>
-              <Image src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title} fill sizes="900px"
-                style={{objectFit:"cover"}}
-              />
+              <div style={{position:"absolute",inset:0,filter:"sepia(0.5) contrast(1.05) brightness(0.92)"}}>
+                <Image src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title} fill sizes="900px"
+                  style={{objectFit:"cover"}}
+                />
+              </div>
             </div>
             <div style={{padding:"32px",display:"flex",flexDirection:"column",justifyContent:"center"}}>
               <h2 style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"26px",fontWeight:700,color:C.ink,marginBottom:"12px",letterSpacing:"-0.02em"}}>{PORTFOLIO_PROJECT.title}</h2>
