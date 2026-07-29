@@ -60,9 +60,9 @@ export default function AboutPage() {
               </div>
               <div style={{padding:"14px"}}>
                 <div className="umbphoto" style={{height:"300px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
-                  <img src="/assets/about-portrait.png" alt="Stephanie Guarino"
-                    style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
-                    onError={e=>{e.currentTarget.src="/images/about.png";}}
+                  <img src="/assets/about-about-me.png" alt="Stephanie Guarino"
+                    style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
+                    onError={e=>{e.currentTarget.src="/assets/about-portrait.png";}}
                   />
                   <div style={{position:"absolute",inset:0,pointerEvents:"none",background:C.pink,mixBlendMode:"color",opacity:.14}}/>
                   <div style={{position:"absolute",inset:0,pointerEvents:"none",opacity:.22,backgroundImage:"repeating-linear-gradient(0deg,rgba(43,31,28,.5) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(43,31,28,.5) 0 1px,transparent 1px 4px)"}}/>
