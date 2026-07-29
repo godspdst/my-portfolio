@@ -1,93 +1,169 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import { C, BASE_CSS, Header, SiteFooter } from "../shared";
 
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    img:"/images/jd-wq-imac-mockup.png", pos:"center 28%", zoom:1.2,
-    title:"John Deere Work Queue Follow-Up Date",
-    desc:"Validated a follow-up date column to stop applications from stalling in equipment lender's queue. Reduced friction for loan officers and improved turnaround time.",
-    tags:["UX Design","Research","Enterprise","Figma"],
+    type:"jd",
+    title:"john deere work queue follow-up date",
+    cat:"enterprise ux",
+    desc:"reframed a scoped layout fix as a change-management problem and shipped follow-up tracking analysts could trust",
+    tags:[{label:"design systems",bg:C.tangerine,color:C.ink},{label:"workflows",bg:C.blue,color:C.paper}],
     headerColor:C.blue,
+    headerCatColor:"#d9e0ff",
+    hoverShadow:C.pink,
+    hoverRot:"-0.5deg",
   },
   {
     n:"02", id:"jd-credit-hub-guarantor",
-    img:"/images/jd-imac-mockup.png", pos:"center 28%", zoom:1.2,
-    title:"John Deere Credit Hub — Guarantor",
-    desc:"Four design directions for surfacing guarantee type selection in a dense, daily-use credit interface — one recommended, one shipped.",
-    tags:["UX Design","Enterprise","Interaction Design"],
-    headerColor:C.pink,
+    type:"jd",
+    title:"john deere credit hub · guarantor",
+    cat:"enterprise ux",
+    desc:"designed the guarantor detail and inline guarantee-type selection inside credit hub's involved-parties view",
+    tags:[{label:"forms",bg:C.tangerine,color:C.ink},{label:"data density",bg:C.blue,color:C.paper}],
+    headerColor:C.blue,
+    headerCatColor:"#d9e0ff",
+    hoverShadow:C.blue,
+    hoverRot:"0.5deg",
   },
   {
     n:"03", id:"plume-homepass-online-store",
-    img:"/images/plume-store-hero.jpg", pos:"center 30%",
-    title:"Plume HomePass Ecommerce Store",
-    desc:"End-to-end redesign of the HomePass ecommerce store, improving conversion and streamlining the checkout flow for smart home hardware.",
-    tags:["UI Design","Ecommerce","Prototyping"],
-    headerColor:C.tangerine,
+    type:"plume",
+    title:"plume homepass online store",
+    cat:"e-commerce",
+    desc:"migrated a store to shopify with a cleaner path to buy, resulting in higher conversion rates",
+    tags:[{label:"checkout ux",bg:C.pink,color:C.ink},{label:"research",bg:C.tangerine,color:C.ink}],
+    headerColor:C.pink,
+    headerCatColor:C.ink,
+    hoverShadow:C.blue,
+    hoverRot:"-0.5deg",
   },
   {
     n:"04", id:"plume-homepass-landing-page",
-    img:"/images/plume-landing-hero.jpg", pos:"center 20%",
-    title:"Plume HomePass Landing Page",
-    desc:"Landing page redesign timed to the release of the SuperPod G6, balancing marketing needs with a clean, conversion-focused layout.",
-    tags:["Landing Page","UI Design","Marketing"],
+    type:"plume",
+    title:"plume homepass landing page",
+    cat:"web · launch",
+    desc:"a superpod g6 launch page with a product configurator that guides shoppers to the right setup",
+    tags:[{label:"ux strategy",bg:C.blue,color:C.paper},{label:"a/b testing",bg:C.tangerine,color:C.ink}],
+    headerColor:C.tangerine,
+    headerCatColor:C.ink,
+    hoverShadow:C.pink,
+    hoverRot:"0.5deg",
+  },
+  {
+    n:"05", id:"the-pit",
+    type:"pit",
+    title:"the pit",
+    cat:"app · branding",
+    desc:"a 0→1 music social app, with a follow-and-message flow",
+    tags:[{label:"branding",bg:C.tangerine,color:C.ink},{label:"prototyping",bg:C.blue,color:C.paper}],
     headerColor:C.pink,
+    headerCatColor:C.ink,
+    hoverShadow:C.blue,
+    hoverRot:"-0.5deg",
   },
 ];
 
-const PORTFOLIO_PROJECT = {
-  n:"05", id:"the-pit",
-  img:"/images/the-pit-hero.jpg",
-  title:"The Pit App",
-  desc:"A social media platform built for music lovers — discover music, share what you're listening to, and connect with fans worldwide.",
-  tags:["App Design","Branding","Design System","Research"],
-  headerColor:C.blue,
-};
-
 const PAGE_CSS = `
   ${BASE_CSS}
-  .proj-card{transition:transform 0.22s ease, box-shadow 0.22s ease;}
-  .proj-card:nth-child(odd):hover{transform:rotate(-0.5deg) translateY(-4px);box-shadow:6px 6px 0 ${C.blue};}
-  .proj-card:nth-child(even):hover{transform:rotate(0.5deg) translateY(-4px);box-shadow:6px 6px 0 ${C.pink};}
-  .tag-pill{display:inline-block;border-radius:999px;border:1.5px solid ${C.ink};padding:3px 10px;font-family:'Inter Tight','Inter',sans-serif;font-size:12px;font-weight:500;color:${C.ink};}
-  @media(max-width:900px){
-    .projects-grid{grid-template-columns:1fr!important}
-  }
-  @media(max-width:600px){
-    .projects-page-wrap{padding:40px 24px!important}
-  }
+  .pc-deere:hover .jd-logo{animation:hop .8s ease-in-out}
+  .pc-plume:hover .plume-logo{animation:twirl .9s linear}
+  .pc-pit:hover .eq-bar{animation:eqDance .6s ease-in-out infinite alternate}
+  .pc-pit:hover .eq-bar:nth-child(2){animation-delay:.1s}
+  .pc-pit:hover .eq-bar:nth-child(3){animation-delay:.2s}
+  .pc-pit:hover .eq-bar:nth-child(4){animation-delay:.3s}
+  .proj-card{transition:transform .22s ease,box-shadow .22s ease;}
+  @media(max-width:900px){.projects-grid{grid-template-columns:1fr!important}}
 `;
+
+/* ── THUMBNAILS ─────────────────────────────────────────── */
+function JdThumb() {
+  return (
+    <div style={{height:"240px",position:"relative",background:C.ink,display:"flex",alignItems:"center",justifyContent:"center",borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
+      <div style={{position:"absolute",bottom:"18px",right:"18px",opacity:.08,fontSize:"64px",fontWeight:800,color:"#fff",lineHeight:1,userSelect:"none",pointerEvents:"none",fontFamily:"serif"}}>JD</div>
+      <div className="jd-logo" style={{width:"104px",height:"104px",borderRadius:"50%",background:"#367c2b",border:"1.5px solid rgba(255,255,255,.15)",display:"flex",alignItems:"center",justifyContent:"center",position:"relative",zIndex:1}}>
+        <span style={{color:"#fff",fontWeight:800,fontSize:"30px",fontFamily:"'Bricolage Grotesque',sans-serif",letterSpacing:"-.5px"}}>JD</span>
+      </div>
+      <div style={{position:"absolute",top:"12px",right:"12px",background:"#367c2b",color:"#fff",padding:"4px 10px",borderRadius:"999px",font:`600 10.5px 'IBM Plex Mono',monospace`}}>John Deere</div>
+    </div>
+  );
+}
+
+function PlumeThumb() {
+  const brandColor = "#7c5cf1";
+  return (
+    <div style={{height:"240px",position:"relative",background:C.ink,display:"flex",alignItems:"center",justifyContent:"center",borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
+      <div style={{position:"absolute",bottom:"18px",right:"18px",opacity:.08,userSelect:"none",pointerEvents:"none"}}>
+        <svg width="64" height="52" viewBox="0 0 64 52" fill="none">
+          <path d="M6 34 Q32 6 58 34" stroke="#fff" strokeWidth="5" fill="none" strokeLinecap="round"/>
+          <path d="M16 44 Q32 18 48 44" stroke="#fff" strokeWidth="5" fill="none" strokeLinecap="round"/>
+          <circle cx="32" cy="49" r="5" fill="#fff"/>
+        </svg>
+      </div>
+      <div className="plume-logo" style={{width:"104px",height:"104px",borderRadius:"50%",background:brandColor,border:"1.5px solid rgba(255,255,255,.15)",display:"flex",alignItems:"center",justifyContent:"center",position:"relative",zIndex:1}}>
+        <svg width="52" height="42" viewBox="0 0 52 42" fill="none">
+          <path d="M6 26 Q26 4 46 26" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round"/>
+          <path d="M14 36 Q26 14 38 36" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round"/>
+          <circle cx="26" cy="39" r="4" fill="#fff"/>
+        </svg>
+      </div>
+      <div style={{position:"absolute",top:"12px",right:"12px",background:brandColor,color:"#fff",padding:"4px 10px",borderRadius:"999px",font:`600 10.5px 'IBM Plex Mono',monospace`}}>Plume</div>
+    </div>
+  );
+}
+
+function PitThumb() {
+  const bars = [
+    { height:30 }, { height:48 }, { height:22 }, { height:40 },
+  ];
+  return (
+    <div style={{height:"240px",position:"relative",background:C.ink,display:"flex",alignItems:"center",justifyContent:"center",borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
+      <div style={{position:"absolute",bottom:"14px",right:"14px",opacity:.13,display:"flex",gap:"4px",alignItems:"flex-end",pointerEvents:"none"}}>
+        {bars.map((b,i) => <div key={i} style={{width:"8px",height:`${b.height}px`,background:C.lime,borderRadius:"2px 2px 0 0"}}/>)}
+      </div>
+      <div style={{width:"104px",height:"104px",borderRadius:"50%",background:C.lime,border:"1.5px solid rgba(0,0,0,.15)",display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"5px",paddingBottom:"18px",boxSizing:"border-box",position:"relative",zIndex:1,overflow:"hidden"}}>
+        {bars.map((b,i) => (
+          <div key={i} className="eq-bar" style={{width:"8px",height:`${b.height}px`,background:C.ink,borderRadius:"2px 2px 0 0",transformOrigin:"bottom"}}/>
+        ))}
+      </div>
+      <div style={{position:"absolute",top:"12px",right:"12px",background:C.lime,color:C.ink,padding:"4px 10px",borderRadius:"999px",font:`600 10.5px 'IBM Plex Mono',monospace`}}>The Pit</div>
+    </div>
+  );
+}
 
 function ProjectCard({ project }) {
   return (
-    <a href={`/case-study/${project.id}`} className="proj-card"
+    <a href={`/case-study/${project.id}`}
+      className={`proj-card pc-${project.type}`}
       style={{
         display:"block",textDecoration:"none",
         background:C.card,borderRadius:"12px",border:`1.5px solid ${C.ink}`,
         overflow:"hidden",
-      }}>
-      {/* Colored header bar */}
-      <div style={{background:project.headerColor,padding:"12px 20px",borderBottom:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-        <span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"12px",fontWeight:500,color:C.white,letterSpacing:"0.06em"}}>{project.n}</span>
-        <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"12px",fontWeight:500,color:C.white,opacity:0.8}}>view case study ↗</span>
+        "--hover-shadow":project.hoverShadow,
+        "--hover-rot":project.hoverRot,
+      }}
+      onMouseEnter={e=>{ e.currentTarget.style.transform=`rotate(${project.hoverRot}) translateY(-4px)`; e.currentTarget.style.boxShadow=`6px 6px 0 ${project.hoverShadow}`; }}
+      onMouseLeave={e=>{ e.currentTarget.style.transform=""; e.currentTarget.style.boxShadow=""; }}
+    >
+      {/* Header bar */}
+      <div style={{background:project.headerColor,padding:"10px 16px",fontWeight:800,fontSize:"14px",letterSpacing:"-.2px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <span style={{color:project.headerColor===C.blue ? C.paper : C.ink}}>
+          {project.n} · {project.title}
+        </span>
+        <span style={{font:`500 11px 'IBM Plex Mono',monospace`,color:project.headerCatColor,opacity:.9}}>{project.cat}</span>
       </div>
-      {/* Image */}
-      <div style={{height:"260px",overflow:"hidden",borderBottom:`1.5px solid ${C.ink}`,position:"relative"}}>
-        <div style={{position:"absolute",inset:0,transform:project.zoom?`scale(${project.zoom})`:"none",transformOrigin:`center ${project.pos?.split(" ")[1]||"center"}`,filter:"sepia(0.5) contrast(1.05) brightness(0.92)"}}>
-          <Image src={project.img} alt={project.title} fill sizes="900px"
-            style={{objectFit:"cover",objectPosition:project.pos||"center center"}}
-          />
-        </div>
-      </div>
-      {/* Content */}
-      <div style={{padding:"24px"}}>
-        <h2 style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"22px",fontWeight:700,color:C.ink,marginBottom:"12px",letterSpacing:"-0.02em",lineHeight:1.2}}>{project.title}</h2>
-        <p style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"14px",color:C.muted,lineHeight:1.6,marginBottom:"16px"}}>{project.desc}</p>
-        <div style={{display:"flex",flexWrap:"wrap",gap:"6px"}}>
-          {project.tags.map(t => <span key={t} className="tag-pill">{t}</span>)}
+      {/* Thumbnail */}
+      {project.type === "jd"    && <JdThumb/>}
+      {project.type === "plume" && <PlumeThumb/>}
+      {project.type === "pit"   && <PitThumb/>}
+      {/* Body */}
+      <div style={{padding:"18px 20px"}}>
+        <p style={{margin:"0 0 14px",fontSize:"14.5px",lineHeight:1.55,color:C.ink}}>{project.desc}</p>
+        <div style={{display:"flex",gap:"6px",flexWrap:"wrap"}}>
+          {project.tags.map(t => (
+            <span key={t.label} style={{display:"inline-block",borderRadius:"999px",border:`1.5px solid ${C.ink}`,padding:"4px 11px",font:`500 12px 'IBM Plex Mono',monospace`,background:t.bg,color:t.color}}>{t.label}</span>
+          ))}
         </div>
       </div>
     </a>
@@ -100,47 +176,15 @@ export default function ProjectsPage() {
       <style>{PAGE_CSS}</style>
       <Header activePage="projects"/>
 
-      <main className="projects-page-wrap" style={{padding:"64px 28px 80px",maxWidth:"1700px",margin:"0 auto"}}>
-        <h1 style={{
-          fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",
-          fontSize:"76px",fontWeight:800,lineHeight:0.92,
-          letterSpacing:"-0.04em",color:C.ink,
-          marginBottom:"48px",
-        }}>my top five</h1>
+      <div style={{maxWidth:"1700px",margin:"0 auto",padding:"64px 28px 44px"}}>
+        <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"clamp(42px,8.5vw,96px)",lineHeight:1,letterSpacing:"-3px",color:C.ink}}>
+          my top five
+        </h1>
+      </div>
 
-        <div className="projects-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"24px",marginBottom:"24px"}}>
-          {PROJECTS.map(p => <ProjectCard key={p.id} project={p}/>)}
-        </div>
-
-        {/* Portfolio card — centered wide */}
-        <a href={`/case-study/${PORTFOLIO_PROJECT.id}`} className="proj-card"
-          style={{
-            display:"block",textDecoration:"none",
-            background:C.card,borderRadius:"12px",border:`1.5px solid ${C.ink}`,
-            overflow:"hidden",
-          }}>
-          <div style={{background:PORTFOLIO_PROJECT.headerColor,padding:"12px 20px",borderBottom:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-            <span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:"12px",fontWeight:500,color:C.white,letterSpacing:"0.06em"}}>{PORTFOLIO_PROJECT.n}</span>
-            <span style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"12px",fontWeight:500,color:C.white,opacity:0.8}}>view case study ↗</span>
-          </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:0}}>
-            <div style={{height:"220px",overflow:"hidden",borderRight:`1.5px solid ${C.ink}`,position:"relative"}}>
-              <div style={{position:"absolute",inset:0,filter:"sepia(0.5) contrast(1.05) brightness(0.92)"}}>
-                <Image src={PORTFOLIO_PROJECT.img} alt={PORTFOLIO_PROJECT.title} fill sizes="900px"
-                  style={{objectFit:"cover"}}
-                />
-              </div>
-            </div>
-            <div style={{padding:"32px",display:"flex",flexDirection:"column",justifyContent:"center"}}>
-              <h2 style={{fontFamily:"'Bricolage Grotesque','Inter Tight',sans-serif",fontSize:"26px",fontWeight:700,color:C.ink,marginBottom:"12px",letterSpacing:"-0.02em"}}>{PORTFOLIO_PROJECT.title}</h2>
-              <p style={{fontFamily:"'Inter Tight','Inter',sans-serif",fontSize:"14px",color:C.muted,lineHeight:1.6,marginBottom:"16px"}}>{PORTFOLIO_PROJECT.desc}</p>
-              <div style={{display:"flex",flexWrap:"wrap",gap:"6px"}}>
-                {PORTFOLIO_PROJECT.tags.map(t => <span key={t} className="tag-pill">{t}</span>)}
-              </div>
-            </div>
-          </div>
-        </a>
-      </main>
+      <div className="projects-grid" style={{maxWidth:"1700px",margin:"0 auto",padding:"0 28px 72px",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"24px"}}>
+        {PROJECTS.map(p => <ProjectCard key={p.id} project={p}/>)}
+      </div>
 
       <SiteFooter/>
     </div>

@@ -12,25 +12,32 @@ const SKILLS = [
 ];
 
 const PROCESS_STEPS = [
-  { n:"1", title:"discover", color:C.blue, body:"I take time to understand the user, the business goals and the competitive landscape before touching any design tools." },
-  { n:"2", title:"define",   color:C.pink, body:"Research gets synthesized into clear problem statements, personas and success metrics that guide every decision." },
-  { n:"3", title:"ideate",   color:C.tangerine, body:"Wide exploration: sketches, concepts, reference pulls. I go broad before I go deep." },
-  { n:"4", title:"design",   color:C.blue, body:"High-fidelity mockups and interactive prototypes that bring the vision to life with precision and craft." },
-  { n:"5", title:"test",     color:C.pink, body:"I put designs in front of real users and let the data speak. Assumptions get validated or challenged." },
-  { n:"6", title:"iterate",  color:C.tangerine, body:"Design is never done. I incorporate feedback, measure outcomes and keep pushing until it ships right." },
+  { n:"1", title:"strategy",  color:C.blue,      textColor:C.paper, body:"align on measurable goals before anything moves forward" },
+  { n:"2", title:"research",  color:C.pink,      textColor:C.ink,   body:"user interviews, competitive research, A/B testing, analytics. I listen to what the data shows" },
+  { n:"3", title:"ideate",    color:C.tangerine, textColor:C.ink,   body:"based on the research, I brainstorm various solutions, involving stakeholders and engineers as I go for feasibility" },
+  { n:"4", title:"design",    color:C.tangerine, textColor:C.ink,   body:"ideas become wireframes to get a sense of information hierarchy" },
+  { n:"5", title:"prototype", color:C.blue,      textColor:C.paper, body:"wireframes become clickable prototypes so I can put them in front of users" },
+  { n:"6", title:"test",      color:C.pink,      textColor:C.ink,   body:"I take the prototypes to users and make some more discoveries. based on what the numbers say, I'll continue iterating or stamp the designs as ready to ship" },
 ];
 
 const PAGE_CSS = `
   ${BASE_CSS}
   .about-grid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:24px;align-items:start}
   .process-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .umbphoto .caption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:rgba(43,31,28,.86);color:${C.paper};
+    font:600 11.5px 'IBM Plex Mono',monospace;letter-spacing:.2px;line-height:1.4;
+    padding:9px 12px;text-align:center;
+    transform:translateY(101%);transition:transform .34s cubic-bezier(.2,.7,.2,1);
+  }
+  .umbphoto:hover .caption{transform:translateY(0)}
   @media(max-width:900px){
     .about-grid{grid-template-columns:1fr!important}
     .process-grid{grid-template-columns:1fr!important}
   }
   @media(max-width:760px){
     .about-page-wrap{padding:40px 24px!important}
-    [style*="font-size:96px"]{font-size:52px!important}
   }
 `;
 
@@ -46,20 +53,22 @@ export default function AboutPage() {
           {/* LEFT COL */}
           <div style={{display:"flex",flexDirection:"column",gap:"24px"}}>
 
-            {/* Photo card — rotated */}
+            {/* Photo card — rotated, caption hover */}
             <div style={{border:`1.5px solid ${C.ink}`,borderRadius:"12px",overflow:"hidden",background:C.card,transform:"rotate(-.6deg)"}}>
-              <div style={{background:C.pink,color:C.ink,padding:"10px 16px",fontWeight:800,fontSize:"14px",letterSpacing:"-.2px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                <span>stephanie guarino ✳</span>
+              <div style={{background:C.pink,color:C.ink,padding:"10px 16px",fontWeight:800,fontSize:"14px",letterSpacing:"-.2px"}}>
+                stephanie guarino ✳
               </div>
               <div style={{padding:"14px"}}>
-                <div style={{height:"300px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
+                <div className="umbphoto" style={{height:"300px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                   <img src="/assets/about-portrait.png" alt="Stephanie Guarino"
                     style={{width:"100%",height:"100%",objectFit:"cover",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
                     onError={e=>{e.currentTarget.src="/images/about.png";}}
                   />
                   <div style={{position:"absolute",inset:0,pointerEvents:"none",background:C.pink,mixBlendMode:"color",opacity:.14}}/>
                   <div style={{position:"absolute",inset:0,pointerEvents:"none",opacity:.22,backgroundImage:"repeating-linear-gradient(0deg,rgba(43,31,28,.5) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(43,31,28,.5) 0 1px,transparent 1px 4px)"}}/>
+                  <div className="caption">walking the rainy streets of tokyo <span style={{color:"#c6f24e"}}>✳</span></div>
                 </div>
+                <div style={{marginTop:"10px",display:"flex",justifyContent:"center",font:`400 11px 'IBM Plex Mono',monospace`,letterSpacing:"4px",color:C.pink}}>♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥</div>
               </div>
             </div>
 
@@ -98,12 +107,12 @@ export default function AboutPage() {
 
             {/* Process */}
             <div id="process" style={{scrollMarginTop:"24px"}}>
-              <h2 style={{margin:"12px 0 20px",fontWeight:800,fontSize:"44px",lineHeight:1,letterSpacing:"-1.3px",fontFamily:"'Bricolage Grotesque',sans-serif"}}>my process</h2>
+              <h2 style={{margin:"12px 0 20px",fontWeight:800,fontSize:"clamp(30px,4.6vw,44px)",lineHeight:1,letterSpacing:"-1.3px",fontFamily:"'Bricolage Grotesque',sans-serif"}}>my process</h2>
               <div className="process-grid">
                 {PROCESS_STEPS.map(step => (
                   <div key={step.n} style={{border:`1.5px solid ${C.ink}`,borderRadius:"12px",overflow:"hidden",background:C.card}}>
-                    <div style={{background:step.color,color:step.color===C.blue?C.paper:C.ink,padding:"9px 16px",fontWeight:800,fontSize:"13.5px",letterSpacing:"-.2px"}}>
-                      {step.n} → {step.title}
+                    <div style={{background:step.color,color:step.textColor,padding:"9px 16px",fontWeight:800,fontSize:"13.5px",letterSpacing:"-.2px"}}>
+                      {step.n} — {step.title}
                     </div>
                     <p style={{margin:0,padding:"14px 18px",fontSize:"14px",lineHeight:1.6}}>{step.body}</p>
                   </div>

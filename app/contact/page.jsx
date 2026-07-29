@@ -1,20 +1,23 @@
 "use client";
 import React, { useState } from "react";
-import { C, BASE_CSS, Header, SiteFooter, EMAIL } from "../shared";
+import { C, BASE_CSS, Header, ScrollToTop, EMAIL } from "../shared";
 
 const PAGE_CSS = `
   ${BASE_CSS}
   .form-input{
-    width:100%;background:${C.paper};border:1.5px solid ${C.ink};border-radius:8px;
-    padding:12px 14px;font:400 14px 'Inter Tight',sans-serif;color:${C.ink};
+    width:100%;background:${C.paper};
+    border:1.5px solid rgba(43,31,28,.5);border-radius:10px;
+    padding:16px 18px;font:400 16px 'Inter Tight',sans-serif;color:${C.ink};
     outline:none;transition:border-color .2s;resize:vertical;
+    box-sizing:border-box;
   }
   .form-input:focus{border-color:${C.blue};}
   .form-submit{
     display:block;width:100%;text-align:center;
     background:${C.blue};color:${C.paper};
-    padding:12px 20px;border-radius:999px;border:none;
-    font:700 14px 'Inter Tight',sans-serif;cursor:pointer;
+    padding:17px 20px;border-radius:12px;border:none;
+    font:800 16px 'Inter Tight',sans-serif;
+    cursor:url('/assets/cursor-pink.png') 2 2,pointer;
     text-decoration:none;transition:background .15s,color .15s;
   }
   .form-submit:hover{background:${C.pink};color:${C.ink};}
@@ -38,13 +41,13 @@ export default function ContactPage() {
       <style>{PAGE_CSS}</style>
       <Header activePage="contact"/>
 
-      <div style={{flex:1,maxWidth:"680px",margin:"0 auto",width:"100%",padding:"64px 28px 56px",boxSizing:"border-box"}} className="contact-wrap">
-        <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"76px",lineHeight:1,letterSpacing:"-2.2px",color:C.ink,marginBottom:"36px"}}>
+      <div className="contact-wrap" style={{flex:1,maxWidth:"1700px",margin:"0 auto",width:"100%",padding:"56px 28px 72px",boxSizing:"border-box",display:"flex",flexDirection:"column",alignItems:"center"}}>
+        <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"clamp(44px,8.8vw,100px)",lineHeight:1,letterSpacing:"-3px",color:C.ink,marginBottom:"0",textAlign:"center"}}>
           drop a note
         </h1>
 
-        <div style={{border:`1.5px solid ${C.ink}`,borderRadius:"12px",overflow:"hidden",background:C.card,transform:"rotate(.8deg)"}}>
-          <form onSubmit={handleSubmit} style={{padding:"18px",display:"flex",flexDirection:"column",gap:"12px"}}>
+        <div style={{width:"100%",maxWidth:"860px",marginTop:"40px",border:`1.5px solid ${C.ink}`,borderRadius:"16px",background:C.card,padding:"28px",boxSizing:"border-box"}}>
+          <form onSubmit={handleSubmit} style={{display:"flex",flexDirection:"column",gap:"16px"}}>
             <input
               className="form-input" type="text"
               aria-label="your name" placeholder="your name"
@@ -67,7 +70,12 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <SiteFooter/>
+      {/* Compact strip footer — contact page only */}
+      <footer style={{background:C.blue,color:"#d9e0ff",padding:"16px 28px",font:`400 12px 'IBM Plex Mono',monospace`,display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"8px"}}>
+        <span>©2026 stephanie guarino ✳</span>
+        <span>made with sound &amp; vision</span>
+      </footer>
+      <ScrollToTop/>
     </div>
   );
 }

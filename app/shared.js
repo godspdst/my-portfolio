@@ -10,6 +10,7 @@ export const C = {
   pink:      "#ee6fb5",
   magenta:   "#c23d86",
   tangerine: "#f4611c",
+  lime:      "#c6f24e",
   muted:     "#8a7566",
   footerDim: "#d9e0ff",
   white:     "#ffffff",
@@ -36,10 +37,20 @@ export const BASE_CSS = `
   h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;}
   @keyframes mq{to{transform:translateX(-50%)}}
   @keyframes dz-spin{from{transform:translateY(-.05em) rotate(-8deg)}to{transform:translateY(-.05em) rotate(352deg)}}
+  @keyframes splashCopy{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes splashBar{from{width:0}to{width:100%}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes twinkle{0%,100%{transform:scale(.72) rotate(0deg);opacity:.6}50%{transform:scale(1.15) rotate(45deg);opacity:1}}
+  @keyframes ampBounce{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-16%) rotate(6deg)}}
+  @keyframes pop{0%{opacity:0;transform:translateY(6px) scale(0) rotate(-12deg)}35%{opacity:1;transform:translateY(-2px) scale(1.18) rotate(8deg)}70%{opacity:1;transform:translateY(-7px) scale(1) rotate(-4deg)}100%{opacity:0;transform:translateY(-16px) scale(.85) rotate(0)}}
+  @keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-40%)}}
+  @keyframes twirl{to{transform:rotate(360deg)}}
+  @keyframes eqDance{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
   @media(prefers-reduced-motion:reduce){*{animation:none!important}}
   #site-header{--hb-pad:19px;--nav-pad:12px;--nav-gap:9px;transition:transform .3s ease;}
   #site-header.shrunk{--hb-pad:12px;--nav-pad:8px;--nav-gap:6px}
   #site-header.header-hidden{transform:translateY(-110%);}
+  .footer-sweep:hover{background-size:100% 88%!important}
 `;
 
 /* ── MARQUEE ─────────────────────────────────────────── */
@@ -202,14 +213,8 @@ export function SiteFooter() {
         </a>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"56px",font:`400 12px 'IBM Plex Mono',monospace`,color:C.footerDim,flexWrap:"wrap",gap:"12px"}}>
           <div style={{display:"flex",gap:"20px"}}>
-            <a href={`mailto:${EMAIL}`} style={{color:C.footerDim}}
-              onMouseEnter={e=>e.currentTarget.style.color=C.paper}
-              onMouseLeave={e=>e.currentTarget.style.color=C.footerDim}
-            >email</a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" style={{color:C.footerDim}}
-              onMouseEnter={e=>e.currentTarget.style.color=C.paper}
-              onMouseLeave={e=>e.currentTarget.style.color=C.footerDim}
-            >linkedin</a>
+            <a href={`mailto:${EMAIL}`} className="footer-sweep" style={{color:C.footerDim,backgroundImage:`linear-gradient(${C.lime},${C.lime})`,backgroundRepeat:"no-repeat",backgroundSize:"0% 88%",backgroundPosition:"0 95%",transition:"background-size .25s ease"}}>email</a>
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="footer-sweep" style={{color:C.footerDim,backgroundImage:`linear-gradient(${C.lime},${C.lime})`,backgroundRepeat:"no-repeat",backgroundSize:"0% 88%",backgroundPosition:"0 95%",transition:"background-size .25s ease"}}>linkedin</a>
           </div>
           <span>©2026 stephanie guarino ✳</span>
         </div>
