@@ -22,6 +22,19 @@ const PAGE_CSS = `
   .aboutlink-sweep:hover{background-size:100% 88%}
   .footer-sweep:hover{background-size:100% 88%!important}
   .top5-link:hover .top5-title{color:${C.magenta}}
+  .contact-tile{position:relative;height:130px;border:1.5px dashed ${C.magenta};border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 10px;box-sizing:border-box;overflow:hidden;background:${C.card};transition:transform .25s cubic-bezier(.34,1.56,.64,1),border-color .2s,background .2s;cursor:pointer;text-decoration:none;outline:none;}
+  .contact-tile:hover,.contact-tile:focus-visible{transform:rotate(-1.5deg) scale(1.02);border-style:solid;border-color:${C.ink};background:#fdeef6;}
+  .contact-tile .ct-dd{position:absolute;opacity:0;transform:scale(.3) rotate(var(--rot,0deg));transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1);}
+  .contact-tile:hover .ct-dd,.contact-tile:focus-visible .ct-dd{opacity:1;transform:scale(1) rotate(var(--rot,0deg));}
+  .contact-tile:hover .ct-d1,.contact-tile:focus-visible .ct-d1{transition-delay:.02s}
+  .contact-tile:hover .ct-d2,.contact-tile:focus-visible .ct-d2{transition-delay:.08s}
+  .contact-tile:hover .ct-d3,.contact-tile:focus-visible .ct-d3{transition-delay:.14s}
+  .contact-tile .ct-lbl{transition:color .2s;}
+  .contact-tile:hover .ct-lbl,.contact-tile:focus-visible .ct-lbl{color:${C.ink};}
+  @media(prefers-reduced-motion:reduce){
+    .contact-tile{transition:border-color .2s,background .2s;}
+    .contact-tile .ct-dd{transition:opacity .3s;}
+  }
   @media(max-width:900px){
     .profile-grid{grid-template-columns:1fr!important}
     .top5-inner{grid-template-columns:repeat(2,1fr)!important}
@@ -265,11 +278,33 @@ function ProfileSection() {
                     <span style={{display:"block",font:`400 10.5px 'IBM Plex Mono',monospace`,color:C.muted,marginTop:"2px"}}>{p.cat}</span>
                   </a>
                 ))}
-                {/* Placeholder */}
+                {/* Contact CTA tile — doodle burst (variant 1b) */}
                 <div style={{textAlign:"center"}}>
-                  <div style={{height:"130px",border:`1.5px dashed ${C.magenta}`,borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",padding:"0 10px",boxSizing:"border-box"}}>
-                    <span style={{fontWeight:600,fontSize:"14px",color:C.magenta,lineHeight:1.3}}>your project<br/>could be here</span>
-                  </div>
+                  <a href="/contact" className="contact-tile">
+                    {/* Sprite 1: smiley — top-left */}
+                    <span className="ct-dd ct-d1" style={{width:"40px",height:"40px",top:"8px",left:"10px","--rot":"-8deg"}}>
+                      <i style={{position:"absolute",width:"4px",height:"4px",background:"transparent",fontStyle:"normal",boxShadow:"12px 0 0 0 #f4611c,16px 0 0 0 #f4611c,20px 0 0 0 #f4611c,4px 4px 0 0 #f4611c,8px 4px 0 0 #f4611c,12px 4px 0 0 #f4611c,16px 4px 0 0 #f4611c,20px 4px 0 0 #f4611c,24px 4px 0 0 #f4611c,28px 4px 0 0 #f4611c,0 8px 0 0 #f4611c,4px 8px 0 0 #f4611c,8px 8px 0 0 #f4611c,12px 8px 0 0 #f4611c,16px 8px 0 0 #f4611c,20px 8px 0 0 #f4611c,24px 8px 0 0 #f4611c,28px 8px 0 0 #f4611c,32px 8px 0 0 #f4611c,0 12px 0 0 #f4611c,4px 12px 0 0 #f4611c,12px 12px 0 0 #f4611c,16px 12px 0 0 #f4611c,20px 12px 0 0 #f4611c,28px 12px 0 0 #f4611c,32px 12px 0 0 #f4611c,0 16px 0 0 #f4611c,4px 16px 0 0 #f4611c,8px 16px 0 0 #f4611c,12px 16px 0 0 #f4611c,16px 16px 0 0 #f4611c,20px 16px 0 0 #f4611c,24px 16px 0 0 #f4611c,28px 16px 0 0 #f4611c,32px 16px 0 0 #f4611c,0 20px 0 0 #f4611c,4px 20px 0 0 #f4611c,12px 20px 0 0 #f4611c,16px 20px 0 0 #f4611c,20px 20px 0 0 #f4611c,28px 20px 0 0 #f4611c,32px 20px 0 0 #f4611c,0 24px 0 0 #f4611c,4px 24px 0 0 #f4611c,8px 24px 0 0 #f4611c,24px 24px 0 0 #f4611c,28px 24px 0 0 #f4611c,32px 24px 0 0 #f4611c,4px 28px 0 0 #f4611c,8px 28px 0 0 #f4611c,12px 28px 0 0 #f4611c,16px 28px 0 0 #f4611c,20px 28px 0 0 #f4611c,24px 28px 0 0 #f4611c,28px 28px 0 0 #f4611c,12px 32px 0 0 #f4611c,16px 32px 0 0 #f4611c,20px 32px 0 0 #f4611c"}}/>
+                      <i style={{position:"absolute",width:"4px",height:"4px",background:"transparent",fontStyle:"normal",boxShadow:"4px 16px 0 0 #ee6fb5,32px 16px 0 0 #ee6fb5"}}/>
+                    </span>
+                    {/* Sprite 2: lil dog — bottom-right */}
+                    <span className="ct-dd ct-d2" style={{width:"44px",height:"40px",bottom:"6px",right:"8px","--rot":"7deg"}}>
+                      <i style={{position:"absolute",width:"4px",height:"4px",background:"transparent",fontStyle:"normal",boxShadow:"16px 0 0 0 #2b1f1c,20px 0 0 0 #2b1f1c,24px 0 0 0 #2b1f1c,8px 4px 0 0 #2b1f1c,12px 4px 0 0 #2b1f1c,16px 4px 0 0 #2b1f1c,20px 4px 0 0 #2b1f1c,24px 4px 0 0 #2b1f1c,28px 4px 0 0 #2b1f1c,32px 4px 0 0 #2b1f1c,4px 8px 0 0 #2b1f1c,8px 8px 0 0 #2b1f1c,12px 8px 0 0 #2b1f1c,16px 8px 0 0 #2b1f1c,20px 8px 0 0 #2b1f1c,24px 8px 0 0 #2b1f1c,28px 8px 0 0 #2b1f1c,32px 8px 0 0 #2b1f1c,36px 8px 0 0 #2b1f1c,0 12px 0 0 #2b1f1c,4px 12px 0 0 #2b1f1c,8px 12px 0 0 #2b1f1c,12px 12px 0 0 #2b1f1c,16px 12px 0 0 #2b1f1c,20px 12px 0 0 #2b1f1c,24px 12px 0 0 #2b1f1c,28px 12px 0 0 #2b1f1c,32px 12px 0 0 #2b1f1c,36px 12px 0 0 #2b1f1c,40px 12px 0 0 #2b1f1c,0 16px 0 0 #2b1f1c,4px 16px 0 0 #2b1f1c,8px 16px 0 0 #2b1f1c,16px 16px 0 0 #2b1f1c,20px 16px 0 0 #2b1f1c,24px 16px 0 0 #2b1f1c,32px 16px 0 0 #2b1f1c,36px 16px 0 0 #2b1f1c,40px 16px 0 0 #2b1f1c,0 20px 0 0 #2b1f1c,4px 20px 0 0 #2b1f1c,8px 20px 0 0 #2b1f1c,12px 20px 0 0 #2b1f1c,16px 20px 0 0 #2b1f1c,20px 20px 0 0 #2b1f1c,24px 20px 0 0 #2b1f1c,28px 20px 0 0 #2b1f1c,32px 20px 0 0 #2b1f1c,36px 20px 0 0 #2b1f1c,40px 20px 0 0 #2b1f1c,4px 24px 0 0 #2b1f1c,8px 24px 0 0 #2b1f1c,12px 24px 0 0 #2b1f1c,16px 24px 0 0 #2b1f1c,20px 24px 0 0 #2b1f1c,24px 24px 0 0 #2b1f1c,28px 24px 0 0 #2b1f1c,32px 24px 0 0 #2b1f1c,36px 24px 0 0 #2b1f1c,12px 28px 0 0 #2b1f1c,16px 28px 0 0 #2b1f1c,20px 28px 0 0 #2b1f1c,24px 28px 0 0 #2b1f1c,28px 28px 0 0 #2b1f1c,16px 32px 0 0 #2b1f1c,20px 32px 0 0 #2b1f1c,24px 32px 0 0 #2b1f1c,20px 36px 0 0 #2b1f1c"}}/>
+                      <i style={{position:"absolute",width:"4px",height:"4px",background:"transparent",fontStyle:"normal",boxShadow:"20px 28px 0 0 #ee6fb5,20px 36px 0 0 #ee6fb5"}}/>
+                    </span>
+                    {/* Sprite 3: !! — top-right */}
+                    <span className="ct-dd ct-d3" style={{width:"20px",height:"26px",top:"12px",right:"16px","--rot":"-9deg",display:"flex",gap:"5px",alignItems:"flex-start"}}>
+                      <span style={{display:"flex",flexDirection:"column",alignItems:"center",gap:"4px"}}>
+                        <span style={{width:"6px",height:"16px",background:"#3d55f0",borderRadius:"2px"}}/>
+                        <span style={{width:"6px",height:"6px",background:"#3d55f0",borderRadius:"2px"}}/>
+                      </span>
+                      <span style={{display:"flex",flexDirection:"column",alignItems:"center",gap:"4px"}}>
+                        <span style={{width:"6px",height:"16px",background:"#ee6fb5",borderRadius:"2px"}}/>
+                        <span style={{width:"6px",height:"6px",background:"#ee6fb5",borderRadius:"2px"}}/>
+                      </span>
+                    </span>
+                    {/* Label */}
+                    <span className="ct-lbl" style={{fontWeight:600,fontSize:"14px",color:C.magenta,textAlign:"center",lineHeight:1.3}}>your project<br/>could be here</span>
+                  </a>
                 </div>
               </div>
             </div>
