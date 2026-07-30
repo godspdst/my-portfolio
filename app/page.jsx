@@ -38,6 +38,7 @@ const PAGE_CSS = `
   @media(max-width:900px){
     .profile-grid{grid-template-columns:1fr!important}
     .top5-inner{grid-template-columns:repeat(2,1fr)!important}
+    .facepic{height:auto!important;aspect-ratio:4/3}
   }
   @media(max-width:760px){
     .top5-inner{grid-template-columns:1fr!important}
@@ -209,7 +210,7 @@ function ProfileSection() {
             <div style={{padding:"14px"}}>
               <div className="facepic" style={{height:"280px",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                 <img src="/assets/home-about-me.png" alt="Stephanie Guarino"
-                  style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
+                  style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"50% 25%",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
                   onError={e=>{e.currentTarget.src="/assets/about-portrait.png";}}
                 />
                 <div style={{position:"absolute",inset:0,pointerEvents:"none",background:C.pink,mixBlendMode:"color",opacity:.14}}/>
