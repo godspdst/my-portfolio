@@ -61,7 +61,7 @@ export default function ContactPage() {
             <textarea
               className="form-input"
               aria-label="your message"
-              placeholder="say hi, pitch a project, defend your favorite bowie record"
+              placeholder="say hi, pitch a project, defend your favorite bowie record (sound and vision is the correct answer)"
               rows={5}
               value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
             />
