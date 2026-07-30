@@ -22,7 +22,7 @@ const PAGE_CSS = `
   }
   .form-submit:hover{background:${C.pink};color:${C.ink};}
   @media(max-width:760px){
-    .contact-wrap{padding:40px 24px!important}
+    .contact-wrap{padding:24px 24px 72px!important}
   }
 `;
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
       <style>{PAGE_CSS}</style>
       <Header activePage="contact"/>
 
-      <div className="contact-wrap" style={{flex:1,maxWidth:"1700px",margin:"0 auto",width:"100%",padding:"56px 28px 72px",boxSizing:"border-box",display:"flex",flexDirection:"column",alignItems:"center"}}>
+      <div className="contact-wrap" style={{flex:1,maxWidth:"1700px",margin:"0 auto",width:"100%",padding:"24px 28px 72px",boxSizing:"border-box",display:"flex",flexDirection:"column",alignItems:"center"}}>
         <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"clamp(44px,8.8vw,100px)",lineHeight:1,letterSpacing:"-3px",color:C.ink,marginBottom:"0",textAlign:"center"}}>
           drop a note
         </h1>

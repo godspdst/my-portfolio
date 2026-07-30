@@ -37,7 +37,7 @@ const PAGE_CSS = `
     .process-grid{grid-template-columns:1fr!important}
   }
   @media(max-width:760px){
-    .about-page-wrap{padding:40px 24px!important}
+    .about-page-wrap{padding:24px 24px 48px!important}
   }
 `;
 
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <style>{PAGE_CSS}</style>
       <Header activePage="about"/>
 
-      <div className="about-page-wrap" style={{maxWidth:"1700px",margin:"0 auto",padding:"56px 28px 48px"}}>
+      <div className="about-page-wrap" style={{maxWidth:"1700px",margin:"0 auto",padding:"24px 28px 48px"}}>
         <div className="about-grid">
 
           {/* LEFT COL */}

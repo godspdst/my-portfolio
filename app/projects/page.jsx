@@ -135,7 +135,7 @@ export default function ProjectsPage() {
       <style>{PAGE_CSS}</style>
       <Header activePage="projects"/>
 
-      <div style={{maxWidth:"1700px",margin:"0 auto",padding:"64px 28px 44px"}}>
+      <div style={{maxWidth:"1700px",margin:"0 auto",padding:"24px 28px 44px"}}>
         <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"clamp(42px,8.5vw,96px)",lineHeight:1,letterSpacing:"-3px",color:C.ink}}>
           my top five
         </h1>
