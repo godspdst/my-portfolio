@@ -61,7 +61,7 @@ export default function AboutPage() {
                 stephanie guarino ✳
               </div>
               <div style={{padding:"14px"}}>
-                <div className="umbphoto" style={{height:"clamp(260px,36vw,340px)",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
+                <div className="umbphoto" style={{height:"clamp(380px,52vw,520px)",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                   <img src="/assets/about-about-me.png" alt="Stephanie Guarino"
                     style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"50% 18%",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
                     onError={e=>{e.currentTarget.src="/assets/about-portrait.png";}}
@@ -98,7 +98,7 @@ export default function AboutPage() {
             {/* About card */}
             <div style={{border:`1.5px solid ${C.ink}`,borderRadius:"12px",overflow:"hidden",background:C.card}}>
               <div style={{background:C.blue,color:C.paper,padding:"10px 16px",fontWeight:800,fontSize:"14px",letterSpacing:"-.2px"}}>about me</div>
-              <div style={{padding:"22px 24px",display:"flex",flexDirection:"column",gap:"14px",fontSize:"15.5px",lineHeight:1.65}}>
+              <div style={{padding:"clamp(16px,2.2vw,22px) clamp(16px,2.4vw,24px)",display:"flex",flexDirection:"column",gap:"14px",fontSize:"clamp(13.5px,1.5vw,15.5px)",lineHeight:1.65}}>
                 <p style={{margin:0}}>I've been a UX designer for 6+ years, but my love for web design and user experience extends well past that.</p>
                 <p style={{margin:0}}>I started designing MySpace layouts for myself and friends when I was 13. I loved playing with the code, changing colors and font styles until the design was both functional and conveyed the personality of whoever I was designing for.</p>
                 <p style={{margin:0}}>Flash forward to college: I studied marketing. I loved getting to know customers and why they chose our brand over others. Sifting through data was energizing because it gave me insight into how our brand could do better for our customers.</p>
@@ -116,7 +116,7 @@ export default function AboutPage() {
                     <div style={{background:step.color,color:step.textColor,padding:"9px 16px",fontWeight:800,fontSize:"13.5px",letterSpacing:"-.2px"}}>
                       {step.n} — {step.title}
                     </div>
-                    <p style={{margin:0,padding:"14px 18px",fontSize:"14px",lineHeight:1.6}}>{step.body}</p>
+                    <p style={{margin:0,padding:"clamp(10px,1.4vw,14px) clamp(12px,1.6vw,18px)",fontSize:"clamp(12px,1.3vw,14px)",lineHeight:1.6}}>{step.body}</p>
                   </div>
                 ))}
               </div>
