@@ -15,14 +15,14 @@ function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, logoSiz
   if (pitStyle) {
     const bars = [20, 32, 16, 28];
     return (
-      <div style={{height:"240px",position:"relative",background:C.ink,display:"flex",alignItems:"center",justifyContent:"center",borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
-        {/* Watermark EQ bars */}
-        <div style={{position:"absolute",bottom:"20px",right:"24px",opacity:.13,display:"flex",gap:"5px",alignItems:"flex-end",pointerEvents:"none"}}>
-          {bars.map((h,i) => <div key={i} style={{width:"10px",height:`${h*2}px`,background:C.lime,borderRadius:"3px 3px 0 0"}}/>)}
+      <div style={{height:"240px",position:"relative",background:C.ink,borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
+        {/* Watermark EQ bars — right side, vertically centered (matches other watermarks) */}
+        <div style={{position:"absolute",right:"-16px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:.15,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"10px",paddingBottom:"16px",boxSizing:"border-box",pointerEvents:"none"}}>
+          {bars.map((h,i) => <div key={i} style={{width:"24px",height:`${Math.round(h/32*160)}px`,background:C.lime,borderRadius:"5px 5px 0 0"}}/>)}
         </div>
-        {/* Centered circle with EQ bars */}
-        <div className="pc-pit" style={{width:"96px",height:"96px",borderRadius:"50%",background:C.lime,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"4px",paddingBottom:"16px",boxSizing:"border-box",position:"relative",zIndex:1,overflow:"hidden"}}>
-          {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"8px",height:`${h}px`,background:C.ink,borderRadius:"2px 2px 0 0",transformOrigin:"bottom"}}/>)}
+        {/* Circle with cream bg + lime bars, left-aligned like other logos */}
+        <div className="pc-pit" style={{position:"absolute",left:"28px",top:"50%",transform:"translateY(-50%)",width:"96px",height:"96px",borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"5px",paddingBottom:"18px",boxSizing:"border-box",zIndex:1}}>
+          {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"8px",height:`${Math.round(h/32*48)}px`,background:C.lime,borderRadius:"3px 3px 0 0",transformOrigin:"bottom"}}/>)}
         </div>
       </div>
     );
