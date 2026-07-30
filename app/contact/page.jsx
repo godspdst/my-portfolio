@@ -13,7 +13,7 @@ const PAGE_CSS = `
     width:100%;background:${C.paper};
     border:1.5px solid rgba(43,31,28,.5);border-radius:10px;
     padding:16px 18px;font:400 16px 'Inter Tight',sans-serif;color:${C.ink};
-    outline:none;transition:border-color .2s;resize:vertical;overflow:hidden;
+    outline:none;transition:border-color .2s;resize:none;overflow:auto;
     box-sizing:border-box;
   }
   .form-input:focus{border-color:${C.blue};}
@@ -30,7 +30,8 @@ const PAGE_CSS = `
     .form-input{font-size:14px!important;padding:13px 14px!important}
   }
   @media(max-width:760px){
-    .contact-wrap{padding:24px 24px 72px!important}
+    .contact-wrap{padding:24px 16px 72px!important}
+    .form-card{padding:16px!important}
   }
 `;
 
@@ -65,7 +66,7 @@ export default function ContactPage() {
           drop a note
         </h1>
 
-        <div style={{width:"100%",maxWidth:"860px",marginTop:"40px",border:`1.5px solid ${C.ink}`,borderRadius:"16px",background:C.card,padding:"28px",boxSizing:"border-box"}}>
+        <div className="form-card" style={{width:"100%",maxWidth:"860px",marginTop:"40px",border:`1.5px solid ${C.ink}`,borderRadius:"16px",background:C.card,padding:"28px",boxSizing:"border-box"}}>
           <form onSubmit={handleSubmit} style={{display:"flex",flexDirection:"column",gap:"16px"}}>
             <input
               className="form-input" type="text"
