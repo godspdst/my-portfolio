@@ -51,6 +51,18 @@ export const BASE_CSS = `
   #site-header.shrunk{--hb-pad:12px;--nav-pad:8px;--nav-gap:6px}
   #site-header.header-hidden{transform:translateY(-110%);}
   .footer-sweep:hover{background-size:100% 88%!important}
+  @media(max-width:540px){
+    #site-header>div{padding-left:14px!important;padding-right:14px!important}
+    .header-brand-pill{padding:12px 16px!important}
+    .header-brand-name{font-size:13px!important}
+    .header-brand-role{font-size:13px!important}
+    .header-nav-pill{justify-content:space-between!important;gap:4px!important}
+    .header-nav-link{padding:6px 11px!important;font-size:12px!important}
+  }
+  @media(max-width:380px){
+    .header-nav-link{padding:5px 7px!important;font-size:11px!important;letter-spacing:-.3px!important}
+    .header-brand-name,.header-brand-role{font-size:12px!important}
+  }
 `;
 
 /* ── MARQUEE ─────────────────────────────────────────── */
@@ -120,20 +132,20 @@ export function Header({ activePage = "home" }) {
     <div id="site-header" style={{position:"sticky",top:0,zIndex:200,background:C.paper,maxWidth:"100%"}}>
       <div style={{maxWidth:"1700px",margin:"0 auto",padding:"12px 28px 10px"}}>
         {/* Branding pill */}
-        <div style={{
+        <div className="header-brand-pill" style={{
           display:"flex",justifyContent:"space-between",alignItems:"center",
           border:`1.5px solid ${C.ink}`,borderRadius:"999px",
           padding:`var(--hb-pad,19px) 24px`,
           transition:"padding .25s ease",
           marginBottom:"10px",
         }}>
-          <a href="/" style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",textDecoration:"none",color:C.ink}}>
+          <a href="/" className="header-brand-name" style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",textDecoration:"none",color:C.ink}}>
             stephanie guarino <span style={{color:C.tangerine}}>✳</span>
           </a>
-          <span style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",color:C.magenta}}>product designer</span>
+          <span className="header-brand-role" style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",color:C.magenta}}>product designer</span>
         </div>
         {/* Blue nav pill */}
-        <nav style={{
+        <nav className="header-nav-pill" style={{
           display:"flex",gap:"var(--nav-gap,9px)",
           background:C.blue,borderRadius:"999px",
           padding:`var(--nav-pad,12px) 10px`,
@@ -144,6 +156,7 @@ export function Header({ activePage = "home" }) {
             const isActive = activePage === label;
             return (
               <a key={label} href={href}
+                className="header-nav-link"
                 style={{
                   fontWeight: isActive ? 700 : 600,
                   fontSize:"13px",letterSpacing:"-.2px",
