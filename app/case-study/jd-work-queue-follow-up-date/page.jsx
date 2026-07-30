@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { C, BASE_CSS, Header, SiteFooter } from "../../shared";
+import { C, BASE_CSS, Header, SiteFooter, PAGE_X } from "../../shared";
 
 const PROCESS_COLORS = [C.blue, C.pink, C.tangerine, C.blue, C.pink];
 
@@ -125,7 +125,7 @@ export default function CECCaseStudy() {
       <style>{PAGE_CSS}</style>
       <Header/>
 
-      <main className="jd-page-wrap" style={{padding:"24px 28px 80px",maxWidth:"1700px",margin:"0 auto"}}>
+      <main className="jd-page-wrap" style={{padding:`24px ${PAGE_X} 80px`,maxWidth:"1700px",margin:"0 auto"}}>
 
         {/* EYEBROW + HEADLINE */}
         <div style={{font:`500 12px 'IBM Plex Mono',monospace`,letterSpacing:"2px",textTransform:"uppercase",color:C.blue,marginBottom:"16px"}}>case study № 01 · enterprise ux · john deere · 2026</div>

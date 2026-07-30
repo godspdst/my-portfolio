@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { C, BASE_CSS, Header, SiteFooter } from "../shared";
+import { C, BASE_CSS, Header, SiteFooter, PAGE_X } from "../shared";
 
 const SKILLS = [
   { label:"ux strategy",    bg:"transparent", color:C.ink,   rotate:null },
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <style>{PAGE_CSS}</style>
       <Header activePage="about"/>
 
-      <div className="about-page-wrap" style={{maxWidth:"1700px",margin:"0 auto",padding:"24px 28px 48px"}}>
+      <div className="about-page-wrap" style={{maxWidth:"1700px",margin:"0 auto",padding:`24px ${PAGE_X} 48px`}}>
         <div className="about-grid">
 
           {/* LEFT COL */}

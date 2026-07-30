@@ -20,6 +20,10 @@ export const C = {
 export const EMAIL = "stephanie.a.guarino@gmail.com";
 export const LINKEDIN = "https://www.linkedin.com/in/stephanie-guarino/";
 
+/* ── RESPONSIVE HORIZONTAL PADDING ───────────────────── */
+// 28px at ≤800px, scales to 64px at ≥1828px — keeps proportions consistent across viewport widths
+export const PAGE_X = "clamp(28px, 3.5vw, 64px)";
+
 /* ── BASE CSS ────────────────────────────────────────── */
 export const BASE_CSS = `
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -130,7 +134,7 @@ export function Header({ activePage = "home" }) {
 
   return (
     <div id="site-header" style={{position:"sticky",top:0,zIndex:200,background:C.paper,maxWidth:"100%"}}>
-      <div style={{maxWidth:"1700px",margin:"0 auto",padding:"12px 28px 10px"}}>
+      <div style={{maxWidth:"1700px",margin:"0 auto",padding:`12px ${PAGE_X} 10px`}}>
         {/* Branding pill */}
         <div className="header-brand-pill" style={{
           display:"flex",justifyContent:"space-between",alignItems:"center",
@@ -215,7 +219,7 @@ export function SiteFooter() {
   return (
     <footer style={{background:C.blue,color:C.paper,position:"relative"}}>
       <ScrollToTop/>
-      <div style={{maxWidth:"1700px",margin:"0 auto",padding:"72px 28px 48px"}}>
+      <div style={{maxWidth:"1700px",margin:"0 auto",padding:`72px ${PAGE_X} 48px`}}>
         <a href={`mailto:${EMAIL}`}
           style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"88px",lineHeight:.98,letterSpacing:"-2.6px",color:C.paper,textDecoration:"none",display:"inline-block"}}
           onMouseEnter={e=>e.currentTarget.style.color=C.ink}

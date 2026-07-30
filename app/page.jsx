@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN } from "./shared";
+import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN, PAGE_X } from "./shared";
 
 const PAGE_CSS = `
   ${BASE_CSS}
@@ -135,7 +135,7 @@ const SKILLS_PILLS = [
 /* ── PROFILE SECTION ───────────────────────────────────── */
 function ProfileSection() {
   return (
-    <div id="good-stuff" style={{scrollMarginTop:"24px",maxWidth:"1700px",margin:"0 auto",padding:"24px 28px 72px"}}>
+    <div id="good-stuff" style={{scrollMarginTop:"24px",maxWidth:"1700px",margin:"0 auto",padding:`24px ${PAGE_X} 72px`}}>
       <div className="profile-grid" style={{display:"grid",gridTemplateColumns:"340px minmax(0,1fr)",gap:"24px",alignItems:"start"}}>
 
         {/* LEFT COL */}

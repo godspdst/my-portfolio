@@ -18,7 +18,12 @@
       "Bash(git add app/shared.js app/page.jsx app/projects/page.jsx app/about/page.jsx app/contact/page.jsx public/assets/doodle-arrow-ne.png public/assets/doodle-bolt.png public/assets/field-bw-grain.png public/assets/about-portrait.png && git status)",
       "Bash(git commit -m \"$\\(cat <<'EOF'\nApply design system update from comp review\n\n- Add splash screen on home \\(sessionStorage-gated, slides away after 3.2s\\)\n- Remove static Hero; splash carries the \"design with sound vision\" moment\n- Replace photo thumbnails with CSS-only illustrations \\(JD badge, Plume WiFi arc, Pit EQ bars\\)\n- Projects page: all 5 cards in 2-col grid with animated CSS thumbnails\n- About page: photo caption hover slide-up, updated process steps copy\n- Contact page: larger centered heading, compact strip footer\n- Add lime \\(#c6f24e\\) to palette; new keyframes \\(splash, pop, hop, twirl, eqDance\\)\n- Footer links use lime highlight-sweep hover\n- New assets: doodle-arrow-ne, doodle-bolt, field-bw-grain, updated about-portrait\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(unzip -l \"/Users/stephanieguarino/Downloads/Portfolio design system review.zip\" | grep -E \"\\\\.\\(png|jpg|jpeg|webp|gif|svg\\)\")",
-      "Bash(npx next build 2>&1 | tail -20)"
+      "Bash(npx next build 2>&1 | tail -20)",
+      "Bash(git add app/page.jsx && git commit -m \"Fix Plume logo spin: use calc centering to free transform for twirl animation\" && git push)",
+      "Bash(git add app/shared.js && git commit -m \"Fix mobile nav: responsive padding/font-size so links fit on small screens\" && git push)",
+      "Bash(git add app/globals.css app/layout.tsx && git commit -m \"Fix cross-browser font consistency: font-smoothing, text-size-adjust, load missing Inter Tight weights 700/800\" && git push)",
+      "Bash(git add app/layout.tsx app/globals.css && git commit -m \"Cross-browser consistency: add viewport meta, explicit 16px base, scrollbar-gutter stable\" && git push)",
+      "Bash(git add -A && git commit -m \"Proportional horizontal padding \\(clamp 28-64px\\) across all pages for cross-viewport consistency\" && git push)"
     ]
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { C, BASE_CSS, Header, ScrollToTop, EMAIL } from "../shared";
+import { C, BASE_CSS, Header, ScrollToTop, EMAIL, PAGE_X } from "../shared";
 
 const PAGE_CSS = `
   ${BASE_CSS}
@@ -41,7 +41,7 @@ export default function ContactPage() {
       <style>{PAGE_CSS}</style>
       <Header activePage="contact"/>
 
-      <div className="contact-wrap" style={{flex:1,maxWidth:"1700px",margin:"0 auto",width:"100%",padding:"24px 28px 72px",boxSizing:"border-box",display:"flex",flexDirection:"column",alignItems:"center"}}>
+      <div className="contact-wrap" style={{flex:1,maxWidth:"1700px",margin:"0 auto",width:"100%",padding:`24px ${PAGE_X} 72px`,boxSizing:"border-box",display:"flex",flexDirection:"column",alignItems:"center"}}>
         <h1 style={{fontFamily:"'Bricolage Grotesque',sans-serif",fontWeight:800,fontSize:"clamp(44px,8.8vw,100px)",lineHeight:1,letterSpacing:"-3px",color:C.ink,marginBottom:"0",textAlign:"center"}}>
           drop a note
         </h1>
