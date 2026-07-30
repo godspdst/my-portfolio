@@ -110,7 +110,7 @@ function MiniThumb({ bg, logoPath, logoClass, wmColor, logoShape = "bare" }) {
         <LogoSVG path={logoPath} color={wmColor||C.ink}/>
       </div>
       {/* Bare logo */}
-      <div className={logoClass||undefined} style={{position:"absolute",left:"22px",top:"50%",transform:"translateY(-50%)",width:"52px",height:"52px",zIndex:1}}>
+      <div className={logoClass||undefined} style={{position:"absolute",left:"22px",top:"calc(50% - 26px)",width:"52px",height:"52px",zIndex:1}}>
         <LogoSVG path={logoPath} color={C.paper}/>
       </div>
     </div>
