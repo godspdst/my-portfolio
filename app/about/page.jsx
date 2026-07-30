@@ -35,6 +35,7 @@ const PAGE_CSS = `
   @media(max-width:900px){
     .about-grid{grid-template-columns:1fr!important}
     .process-grid{grid-template-columns:1fr!important}
+    .umbphoto{height:auto!important;aspect-ratio:4/3}
   }
   @media(max-width:760px){
     .about-page-wrap{padding:24px 24px 48px!important}
@@ -61,7 +62,7 @@ export default function AboutPage() {
               <div style={{padding:"14px"}}>
                 <div className="umbphoto" style={{height:"clamp(320px,42vw,480px)",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                   <img src="/assets/about-about-me.png" alt="Stephanie Guarino"
-                    style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"50% 18%",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
+                    style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"50% 25%",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
                     onError={e=>{e.currentTarget.src="/assets/about-portrait.png";}}
                   />
                   <div style={{position:"absolute",inset:0,pointerEvents:"none",background:C.pink,mixBlendMode:"color",opacity:.14}}/>
