@@ -125,6 +125,37 @@ const PROJECTS = [
   { id:"the-pit",                       cls:"pc-pit",                            bg:C.ink,                       logoPath:null,       logoShape:"pit",  title:"the pit",                          cat:"app · branding" },
 ];
 
+const ALBUMS = [
+  "siamese dream — the smashing pumpkins",
+  "in rainbows — radiohead",
+  "ten — pearl jam",
+  "cost of living adjustment — cola",
+  "slanted & enchanted: luxe & reduxe — pavement",
+  "brotherhood — new order",
+  "brighten the corners: nicene creedence ed. — pavement",
+  "american water — silver jews",
+  "grace — jeff buckley",
+  "this is happening — lcd soundsystem",
+  "reading, writing and arithmetic — the sundays",
+  "a moon shaped pool — radiohead",
+  "the glow, pt. 2 — the microphones",
+  "music, fashion, film — charli xcx",
+  "republic — new order",
+  "the queen is dead — the smiths",
+  "nothing's about to happen to me — mitski",
+  "trying times — james blake",
+  "bloodless — samia",
+  "so tonight that i might see — mazzy star",
+  "goo — sonic youth",
+  "tnt — tortoise",
+  "different class — pulp",
+  "the river — bruce springsteen",
+  "spiderland — slint",
+  "the velvet underground — the velvet underground",
+  "disintegration — the cure",
+  "nevermind — nirvana",
+];
+
 const SKILLS_PILLS = [
   { label:"ux strategy",    bg:"transparent", color:C.ink,   rotate:null },
   { label:"research ✳",     bg:C.pink,        color:C.ink,   rotate:"-1deg" },
@@ -134,6 +165,7 @@ const SKILLS_PILLS = [
 
 /* ── PROFILE SECTION ───────────────────────────────────── */
 function ProfileSection() {
+  const [album] = useState(() => ALBUMS[Math.floor(Math.random() * ALBUMS.length)]);
   return (
     <div id="good-stuff" style={{scrollMarginTop:"24px",maxWidth:"1700px",margin:"0 auto",padding:`24px ${PAGE_X} 72px`}}>
       <div className="profile-grid" style={{display:"grid",gridTemplateColumns:"340px minmax(0,1fr)",gap:"24px",alignItems:"start"}}>
@@ -182,7 +214,7 @@ function ProfileSection() {
             <div style={{background:C.pink,color:C.ink,padding:"10px 16px",fontWeight:800,fontSize:"14px",letterSpacing:"-.2px"}}>details</div>
             <div style={{padding:"16px",display:"flex",flexDirection:"column",gap:"9px",font:`400 12.5px 'IBM Plex Mono',monospace`}}>
               <div><span style={{color:C.muted}}>location:</span> chicago</div>
-              <div><span style={{color:C.muted}}>currently listening:</span> siamese dream — the smashing pumpkins</div>
+              <div><span style={{color:C.muted}}>currently listening:</span> {album}</div>
             </div>
           </div>
         </div>
