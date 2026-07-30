@@ -11,7 +11,14 @@
       "Bash(git add app/case-study/\\\\[slug\\\\]/page.jsx app/page.jsx && git status)",
       "Bash(test -f /Users/stephanieguarino/my-portfolio/app/about/page.jsx && echo \"EXISTS\" || echo \"NOT FOUND\"; test -f /Users/stephanieguarino/my-portfolio/app/projects/page.jsx && echo \"EXISTS\" || echo \"NOT FOUND\"; test -f /Users/stephanieguarino/my-portfolio/app/contact/page.jsx && echo \"EXISTS\" || echo \"NOT FOUND\")",
       "Bash(ls -la /Users/stephanieguarino/my-portfolio/app/case-study/\\\\[slug\\\\]/ 2>/dev/null || ls -la \"/Users/stephanieguarino/my-portfolio/app/case-study/\")",
-      "Bash(npm run build 2>&1 | tail -60)"
+      "Bash(npm run build 2>&1 | tail -60)",
+      "Bash(python3 -c \"\nwith open\\('/tmp/portfolio-design-review/portfolio-site/Home.dc.html', 'r'\\) as f:\n    content = f.read\\(\\)\n\n# Remove all inline SVG data URIs to make it readable\nimport re\ncontent = re.sub\\(r\\\\\"url\\\\\\('data:image/svg\\\\+xml[^']*'\\\\\\)\\\\\", \\\\\"url\\('[SVG]'\\)\\\\\", content\\)\ncontent = re.sub\\(r'url\\\\\\(\\\\\"data:image/svg\\\\+xml[^\\\\\"]*\\\\\"\\\\\\)', 'url\\(\\\\\"[SVG]\\\\\"\\)', content\\)\n\nlines = content.split\\('\\\\n'\\)\nfor i, line in enumerate\\(lines[59:], start=60\\):\n    print\\(f'{i}: {line[:300]}'\\)\n\" 2>&1 | head -150)",
+      "Bash(python3 -c \"\nimport re, sys\nwith open\\('/tmp/portfolio-design-review/portfolio-site/Home.dc.html'\\) as f:\n    content = f.read\\(\\)\ncontent = re.sub\\(r\\\\\"url\\\\\\('data:image/svg\\\\+xml[^']*'\\\\\\)\\\\\", \\\\\"url\\('[SVG]'\\)\\\\\", content\\)\nlines = content.split\\('\\\\n'\\)\nfor i,l in enumerate\\(lines[59:120], start=60\\):\n    print\\(str\\(i\\)+':', l[:300]\\)\n\")",
+      "Bash(npx next build 2>&1 | tail -30)",
+      "Bash(git add app/shared.js app/page.jsx app/projects/page.jsx app/about/page.jsx app/contact/page.jsx public/assets/doodle-arrow-ne.png public/assets/doodle-bolt.png public/assets/field-bw-grain.png public/assets/about-portrait.png && git status)",
+      "Bash(git commit -m \"$\\(cat <<'EOF'\nApply design system update from comp review\n\n- Add splash screen on home \\(sessionStorage-gated, slides away after 3.2s\\)\n- Remove static Hero; splash carries the \"design with sound vision\" moment\n- Replace photo thumbnails with CSS-only illustrations \\(JD badge, Plume WiFi arc, Pit EQ bars\\)\n- Projects page: all 5 cards in 2-col grid with animated CSS thumbnails\n- About page: photo caption hover slide-up, updated process steps copy\n- Contact page: larger centered heading, compact strip footer\n- Add lime \\(#c6f24e\\) to palette; new keyframes \\(splash, pop, hop, twirl, eqDance\\)\n- Footer links use lime highlight-sweep hover\n- New assets: doodle-arrow-ne, doodle-bolt, field-bw-grain, updated about-portrait\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(unzip -l \"/Users/stephanieguarino/Downloads/Portfolio design system review.zip\" | grep -E \"\\\\.\\(png|jpg|jpeg|webp|gif|svg\\)\")",
+      "Bash(npx next build 2>&1 | tail -20)"
     ]
   }
 }

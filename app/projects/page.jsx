@@ -47,7 +47,7 @@ function FullThumb({ bg, logoPath, wmOpacity = 0.12, wmColor, logoShape = "bare"
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    bg:C.ink, logoPath:JD_PATH, wmOpacity:.13, logoShape:"jd", pill:"John Deere",
+    bg:C.ink, logoPath:JD_PATH, wmOpacity:.13,
     title:"john deere work queue follow-up date", cat:"enterprise ux",
     desc:"reframed a scoped layout fix as a change-management problem and shipped follow-up tracking analysts could trust",
     tags:[{label:"design systems",bg:C.tangerine,color:C.ink},{label:"workflows",bg:C.blue,color:C.paper}],
@@ -56,7 +56,7 @@ const PROJECTS = [
   },
   {
     n:"02", id:"jd-credit-hub-guarantor",
-    bg:C.blue, logoPath:JD_PATH, wmOpacity:.18, logoShape:"jd", pill:"John Deere",
+    bg:C.blue, logoPath:JD_PATH, wmOpacity:.18,
     title:"john deere credit hub · guarantor", cat:"enterprise ux",
     desc:"designed the guarantor detail and inline guarantee-type selection inside credit hub's involved-parties view",
     tags:[{label:"forms",bg:C.tangerine,color:C.ink},{label:"data density",bg:C.blue,color:C.paper}],
@@ -65,7 +65,7 @@ const PROJECTS = [
   },
   {
     n:"03", id:"plume-homepass-online-store",
-    bg:C.pink, logoPath:PLUME_PATH, wmOpacity:.18, wmColor:C.ink, logoShape:"bare", pill:"Plume HomePass",
+    bg:C.pink, logoPath:PLUME_PATH, wmOpacity:.18, wmColor:C.ink,
     title:"plume homepass online store", cat:"e-commerce",
     desc:"migrated a store to shopify with a cleaner path to buy, resulting in higher conversion rates",
     tags:[{label:"checkout ux",bg:C.pink,color:C.ink},{label:"research",bg:C.tangerine,color:C.ink}],
@@ -74,7 +74,7 @@ const PROJECTS = [
   },
   {
     n:"04", id:"plume-homepass-landing-page",
-    bg:C.tangerine, logoPath:PLUME_PATH, wmOpacity:.18, wmColor:C.ink, logoShape:"bare", pill:"Plume HomePass",
+    bg:C.tangerine, logoPath:PLUME_PATH, wmOpacity:.18, wmColor:C.ink,
     title:"plume homepass landing page", cat:"web · launch",
     desc:"a superpod g6 launch page with a product configurator that guides shoppers to the right setup",
     tags:[{label:"ux strategy",bg:C.blue,color:C.paper},{label:"a/b testing",bg:C.tangerine,color:C.ink}],
@@ -83,7 +83,7 @@ const PROJECTS = [
   },
   {
     n:"05", id:"the-pit",
-    bg:C.ink, logoPath:null, wmOpacity:0, logoShape:"pit", pill:"The Pit",
+    bg:C.ink, logoPath:null, logoShape:"pit",
     title:"the pit", cat:"app · branding",
     desc:"a 0→1 music social app, with a follow-and-message flow",
     tags:[{label:"branding",bg:C.tangerine,color:C.ink},{label:"prototyping",bg:C.blue,color:C.paper}],

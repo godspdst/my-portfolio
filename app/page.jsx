@@ -118,11 +118,11 @@ function MiniThumb({ bg, logoPath, logoClass, wmColor, logoShape = "bare" }) {
 }
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.ink,      logoPath:JD_PATH,    logoShape:"jd",   title:"john deere work queue",            cat:"enterprise ux"  },
-  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.blue,     logoPath:JD_PATH,    logoShape:"jd",   title:"john deere credit hub — guarantor", cat:"enterprise ux" },
-  { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.pink,     logoPath:PLUME_PATH, logoShape:"bare", title:"plume online store",               cat:"e-commerce"     },
-  { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.tangerine,logoPath:PLUME_PATH, logoShape:"bare", title:"plume landing page",               cat:"web · launch"   },
-  { id:"the-pit",                       cls:"pc-pit",   logoClass:null,         wmColor:null,    bg:C.ink,      logoPath:null,       logoShape:"pit",  title:"the pit",                          cat:"app · branding" },
+  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.ink,      logoPath:JD_PATH,    title:"john deere work queue",            cat:"enterprise ux"  },
+  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.blue,     logoPath:JD_PATH,    title:"john deere credit hub — guarantor", cat:"enterprise ux" },
+  { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.pink,     logoPath:PLUME_PATH, title:"plume online store",               cat:"e-commerce"     },
+  { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.tangerine,logoPath:PLUME_PATH, title:"plume landing page",               cat:"web · launch"   },
+  { id:"the-pit",                       cls:"pc-pit",                            bg:C.ink,                       logoPath:null,       logoShape:"pit",  title:"the pit",                          cat:"app · branding" },
 ];
 
 const SKILLS_PILLS = [
