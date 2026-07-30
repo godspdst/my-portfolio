@@ -84,7 +84,7 @@ function LogoSVG({ path, color = "currentColor" }) {
 }
 
 /* ── MINI THUMBNAIL (top-5 home cards, h=130) ───────────── */
-function MiniThumb({ bg, logoPath, logoColor, logoClass, pill, pitStyle = false }) {
+function MiniThumb({ bg, logoPath, logoColor, logoClass, wmColor, pill, pitStyle = false }) {
   const circleSize = 56;
   const logoSize = 32;
 
@@ -92,6 +92,10 @@ function MiniThumb({ bg, logoPath, logoColor, logoClass, pill, pitStyle = false 
     const bars = [13,19,10,16];
     return (
       <div style={{height:"130px",position:"relative",background:C.ink,display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
+        {/* Watermark EQ bars */}
+        <div style={{position:"absolute",bottom:"10px",right:"10px",opacity:.13,display:"flex",gap:"3px",alignItems:"flex-end",pointerEvents:"none"}}>
+          {bars.map((h,i) => <div key={i} style={{width:"7px",height:`${h*1.6}px`,background:C.lime,borderRadius:"2px 2px 0 0"}}/>)}
+        </div>
         <div style={{width:"56px",height:"48px",borderRadius:"8px",background:C.lime,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"3px",padding:"6px 8px 6px",boxSizing:"border-box",position:"relative",zIndex:1}}>
           {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"5px",height:`${h}px`,background:C.ink,borderRadius:"2px 2px 0 0",transformOrigin:"bottom"}}/>)}
         </div>
@@ -102,6 +106,10 @@ function MiniThumb({ bg, logoPath, logoColor, logoClass, pill, pitStyle = false 
 
   return (
     <div style={{height:"130px",position:"relative",background:bg,display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
+      {/* Watermark logo */}
+      <div style={{position:"absolute",right:"-10px",top:"50%",transform:"translateY(-50%)",width:"90px",height:"90px",opacity:.13,color:wmColor||C.paper,pointerEvents:"none"}}>
+        <LogoSVG path={logoPath} color={wmColor||C.paper}/>
+      </div>
       {/* Circle with logo */}
       <div style={{width:`${circleSize}px`,height:`${circleSize}px`,borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative",zIndex:1}}>
         <div className={logoClass||undefined} style={{width:`${logoSize}px`,height:`${logoSize}px`,color:logoColor}}>
@@ -109,17 +117,17 @@ function MiniThumb({ bg, logoPath, logoColor, logoClass, pill, pitStyle = false 
         </div>
       </div>
       {/* Brand pill */}
-      <div style={{position:"absolute",top:"8px",right:"8px",background:C.paper,color:C.ink,border:`1.5px solid ${C.ink}`,padding:"2px 8px",borderRadius:"999px",font:`600 8.5px 'IBM Plex Mono',monospace`,whiteSpace:"nowrap"}}>{pill}</div>
+      <div style={{position:"absolute",top:"8px",right:"8px",background:C.paper,color:C.ink,border:`1.5px solid ${C.ink}`,padding:"2px 8px",borderRadius:"999px",font:`600 8.5px 'IBM Plex Mono',monospace`,whiteSpace:"nowrap",zIndex:2}}>{pill}</div>
     </div>
   );
 }
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo",    bg:C.ink,      logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere work queue",            cat:"enterprise ux"  },
-  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo",    bg:C.blue,     logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere credit hub — guarantor", cat:"enterprise ux" },
-  { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", bg:C.pink,     logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume online store",               cat:"e-commerce"     },
-  { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", bg:C.tangerine,logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume landing page",               cat:"web · launch"   },
-  { id:"the-pit",                       cls:"pc-pit",   logoClass:null,         bg:C.ink,      logoPath:null,       logoColor:null,      pill:"The Pit",       title:"the pit",                          cat:"app · branding", pitStyle:true },
+  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.ink,      logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere work queue",            cat:"enterprise ux"  },
+  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.blue,     logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere credit hub — guarantor", cat:"enterprise ux" },
+  { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.pink,     logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume online store",               cat:"e-commerce"     },
+  { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.tangerine,logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume landing page",               cat:"web · launch"   },
+  { id:"the-pit",                       cls:"pc-pit",   logoClass:null,         wmColor:null,    bg:C.ink,      logoPath:null,       logoColor:null,      pill:"The Pit",       title:"the pit",                          cat:"app · branding", pitStyle:true },
 ];
 
 const SKILLS_PILLS = [
@@ -208,7 +216,7 @@ function ProfileSection() {
                   <a key={p.id} href={`/case-study/${p.id}`} className={`top5-link ${p.cls}`}
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
-                      <MiniThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} logoClass={p.logoClass} pill={p.pill} pitStyle={!!p.pitStyle}/>
+                      <MiniThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} logoClass={p.logoClass} wmColor={p.wmColor} pill={p.pill} pitStyle={!!p.pitStyle}/>
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>
                     <span style={{display:"block",font:`400 10.5px 'IBM Plex Mono',monospace`,color:C.muted,marginTop:"2px"}}>{p.cat}</span>

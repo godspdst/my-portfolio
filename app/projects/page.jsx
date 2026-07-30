@@ -11,7 +11,7 @@ function LogoSVG({ path, color }) {
 }
 
 /* ── FULL THUMBNAIL (projects page, h=240) ──────────────── */
-function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, pill, pitStyle = false }) {
+function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, pill, pitStyle = false }) {
   if (pitStyle) {
     const bars = [20, 32, 16, 28];
     return (
@@ -32,8 +32,8 @@ function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, pill, pitStyle =
   return (
     <div style={{height:"240px",position:"relative",background:bg,display:"flex",alignItems:"center",borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
       {/* Watermark (large, right side) */}
-      <div style={{position:"absolute",right:"-20px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:wmOpacity,color:C.paper,pointerEvents:"none",flexShrink:0}}>
-        <LogoSVG path={logoPath} color={C.paper}/>
+      <div style={{position:"absolute",right:"-20px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:wmOpacity,color:wmColor||C.paper,pointerEvents:"none",flexShrink:0}}>
+        <LogoSVG path={logoPath} color={wmColor||C.paper}/>
       </div>
       {/* Circle with logo (left) */}
       <div style={{position:"absolute",left:"28px",width:"96px",height:"96px",borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,zIndex:1}}>
@@ -50,7 +50,7 @@ function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, pill, pitStyle =
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    bg:C.ink, logoPath:JD_PATH, logoColor:"#367c2b", wmOpacity:.13, pill:"John Deere", pitStyle:false,
+    bg:C.ink, logoPath:JD_PATH, logoColor:"#367c2b", wmOpacity:.13, wmColor:C.paper, pill:"John Deere", pitStyle:false,
     title:"john deere work queue follow-up date", cat:"enterprise ux",
     desc:"reframed a scoped layout fix as a change-management problem and shipped follow-up tracking analysts could trust",
     tags:[{label:"design systems",bg:C.tangerine,color:C.ink},{label:"workflows",bg:C.blue,color:C.paper}],
@@ -59,7 +59,7 @@ const PROJECTS = [
   },
   {
     n:"02", id:"jd-credit-hub-guarantor",
-    bg:C.blue, logoPath:JD_PATH, logoColor:"#367c2b", wmOpacity:.18, pill:"John Deere", pitStyle:false,
+    bg:C.blue, logoPath:JD_PATH, logoColor:"#367c2b", wmOpacity:.18, wmColor:C.paper, pill:"John Deere", pitStyle:false,
     title:"john deere credit hub · guarantor", cat:"enterprise ux",
     desc:"designed the guarantor detail and inline guarantee-type selection inside credit hub's involved-parties view",
     tags:[{label:"forms",bg:C.tangerine,color:C.ink},{label:"data density",bg:C.blue,color:C.paper}],
@@ -68,7 +68,7 @@ const PROJECTS = [
   },
   {
     n:"03", id:"plume-homepass-online-store",
-    bg:C.pink, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.2, pill:"Plume HomePass", pitStyle:false,
+    bg:C.pink, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, pill:"Plume HomePass", pitStyle:false,
     title:"plume homepass online store", cat:"e-commerce",
     desc:"migrated a store to shopify with a cleaner path to buy, resulting in higher conversion rates",
     tags:[{label:"checkout ux",bg:C.pink,color:C.ink},{label:"research",bg:C.tangerine,color:C.ink}],
@@ -77,7 +77,7 @@ const PROJECTS = [
   },
   {
     n:"04", id:"plume-homepass-landing-page",
-    bg:C.tangerine, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.2, pill:"Plume HomePass", pitStyle:false,
+    bg:C.tangerine, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, pill:"Plume HomePass", pitStyle:false,
     title:"plume homepass landing page", cat:"web · launch",
     desc:"a superpod g6 launch page with a product configurator that guides shoppers to the right setup",
     tags:[{label:"ux strategy",bg:C.blue,color:C.paper},{label:"a/b testing",bg:C.tangerine,color:C.ink}],
@@ -118,7 +118,7 @@ function ProjectCard({ project: p }) {
         <span style={{font:`500 11px 'IBM Plex Mono',monospace`,color:p.headerCatColor,flexShrink:0}}>{p.cat}</span>
       </div>
       {/* Thumbnail */}
-      <FullThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} wmOpacity={p.wmOpacity} pill={p.pill} pitStyle={p.pitStyle}/>
+      <FullThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} wmOpacity={p.wmOpacity} wmColor={p.wmColor} pill={p.pill} pitStyle={p.pitStyle}/>
       {/* Body */}
       <div style={{padding:"18px 20px"}}>
         <p style={{margin:"0 0 14px",fontSize:"14.5px",lineHeight:1.55,color:C.ink}}>{p.desc}</p>
