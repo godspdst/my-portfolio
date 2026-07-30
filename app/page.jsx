@@ -125,6 +125,20 @@ const PROJECTS = [
   { id:"the-pit",                       cls:"pc-pit",                            bg:C.ink,                       logoPath:null,       logoShape:"pit",  title:"the pit",                          cat:"app · branding" },
 ];
 
+const LIKES = [
+  "when the smell of my soap fills up my room after showering",
+  "when my pomeranian snuggles into my lap (a rare occurrence)",
+  "petrichor",
+  "opening a package even though I probably know what it is",
+  "when I bake sourdough and the scent fills my house",
+  "serendipitously catching the sunset",
+  "ice cream in the summer after dinner",
+  "seeing a baby duck swim",
+  "sitting in the grass with my dog and reading in the summer",
+  "a warm bowl of spaghetti and meatballs",
+  "art that captures how I feel",
+];
+
 const ALBUMS = [
   "siamese dream — the smashing pumpkins",
   "in rainbows — radiohead",
@@ -166,6 +180,7 @@ const SKILLS_PILLS = [
 /* ── PROFILE SECTION ───────────────────────────────────── */
 function ProfileSection() {
   const [album] = useState(() => ALBUMS[Math.floor(Math.random() * ALBUMS.length)]);
+  const [like] = useState(() => LIKES[Math.floor(Math.random() * LIKES.length)]);
   return (
     <div id="good-stuff" style={{scrollMarginTop:"24px",maxWidth:"1700px",margin:"0 auto",padding:`24px ${PAGE_X} 72px`}}>
       <div className="profile-grid" style={{display:"grid",gridTemplateColumns:"340px minmax(0,1fr)",gap:"24px",alignItems:"start"}}>
@@ -215,6 +230,7 @@ function ProfileSection() {
             <div style={{padding:"16px",display:"flex",flexDirection:"column",gap:"9px",font:`400 12.5px 'IBM Plex Mono',monospace`}}>
               <div><span style={{color:C.muted}}>location:</span> chicago</div>
               <div><span style={{color:C.muted}}>currently listening:</span> {album} ♪</div>
+              <div><span style={{color:C.muted}}>likes:</span> {like}</div>
             </div>
           </div>
         </div>
