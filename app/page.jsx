@@ -99,7 +99,6 @@ function MiniThumb({ bg, logoPath, logoColor, logoClass, wmColor, pill, pitStyle
         <div style={{width:"56px",height:"48px",borderRadius:"8px",background:C.lime,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"3px",padding:"6px 8px 6px",boxSizing:"border-box",position:"relative",zIndex:1}}>
           {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"5px",height:`${h}px`,background:C.ink,borderRadius:"2px 2px 0 0",transformOrigin:"bottom"}}/>)}
         </div>
-        <div style={{position:"absolute",top:"8px",right:"8px",background:C.lime,color:C.ink,border:`1.5px solid ${C.ink}`,padding:"2px 8px",borderRadius:"999px",font:`600 8.5px 'IBM Plex Mono',monospace`}}>The Pit</div>
       </div>
     );
   }
@@ -116,8 +115,6 @@ function MiniThumb({ bg, logoPath, logoColor, logoClass, wmColor, pill, pitStyle
           <LogoSVG path={logoPath} color={logoColor}/>
         </div>
       </div>
-      {/* Brand pill */}
-      <div style={{position:"absolute",top:"8px",right:"8px",background:C.paper,color:C.ink,border:`1.5px solid ${C.ink}`,padding:"2px 8px",borderRadius:"999px",font:`600 8.5px 'IBM Plex Mono',monospace`,whiteSpace:"nowrap",zIndex:2}}>{pill}</div>
     </div>
   );
 }

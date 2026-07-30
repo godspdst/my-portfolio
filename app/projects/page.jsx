@@ -24,7 +24,6 @@ function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, pill, p
         <div className="pc-pit" style={{width:"96px",height:"96px",borderRadius:"50%",background:C.lime,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"4px",paddingBottom:"16px",boxSizing:"border-box",position:"relative",zIndex:1,overflow:"hidden"}}>
           {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"8px",height:`${h}px`,background:C.ink,borderRadius:"2px 2px 0 0",transformOrigin:"bottom"}}/>)}
         </div>
-        <div style={{position:"absolute",top:"12px",right:"12px",background:C.lime,color:C.ink,border:`1.5px solid ${C.ink}`,padding:"4px 11px",borderRadius:"999px",font:`600 10.5px 'IBM Plex Mono',monospace`}}>The Pit</div>
       </div>
     );
   }
@@ -41,8 +40,6 @@ function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, pill, p
           <LogoSVG path={logoPath} color={logoColor}/>
         </div>
       </div>
-      {/* Brand pill */}
-      <div style={{position:"absolute",top:"12px",right:"12px",background:C.paper,color:C.ink,border:`1.5px solid ${C.ink}`,padding:"4px 11px",borderRadius:"999px",font:`600 10.5px 'IBM Plex Mono',monospace`,whiteSpace:"nowrap",zIndex:2}}>{pill}</div>
     </div>
   );
 }
