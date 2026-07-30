@@ -1,5 +1,9 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   background: #f5efe3;
@@ -7,6 +11,9 @@ body {
   font-family: 'Inter Tight', 'Inter', sans-serif;
   overflow-x: hidden;
   cursor: url('/assets/cursor-pink.png') 2 2, auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
 }
 
 a, button {
