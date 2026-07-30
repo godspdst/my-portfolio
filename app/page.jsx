@@ -8,6 +8,8 @@ const PAGE_CSS = `
   .facepic:hover .pop1{animation:pop 1.15s ease-in-out infinite}
   .facepic:hover .pop2{animation:pop 1.15s ease-in-out infinite .38s}
   .facepic:hover .pop3{animation:pop 1.15s ease-in-out infinite .72s}
+  .pc-deere:hover .jd-logo{animation:hop .8s ease-in-out infinite}
+  .pc-plume:hover .plume-logo{animation:twirl .9s linear infinite}
   .pc-pit:hover .eq-bar{animation:eqDance .6s ease-in-out infinite alternate}
   .pc-pit:hover .eq-bar:nth-child(2){animation-delay:.1s}
   .pc-pit:hover .eq-bar:nth-child(3){animation-delay:.2s}
@@ -82,7 +84,7 @@ function LogoSVG({ path, color = "currentColor" }) {
 }
 
 /* ── MINI THUMBNAIL (top-5 home cards, h=130) ───────────── */
-function MiniThumb({ bg, logoPath, logoColor, pill, pitStyle = false }) {
+function MiniThumb({ bg, logoPath, logoColor, logoClass, pill, pitStyle = false }) {
   const circleSize = 56;
   const logoSize = 32;
 
@@ -102,7 +104,7 @@ function MiniThumb({ bg, logoPath, logoColor, pill, pitStyle = false }) {
     <div style={{height:"130px",position:"relative",background:bg,display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
       {/* Circle with logo */}
       <div style={{width:`${circleSize}px`,height:`${circleSize}px`,borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative",zIndex:1}}>
-        <div style={{width:`${logoSize}px`,height:`${logoSize}px`,color:logoColor}}>
+        <div className={logoClass||undefined} style={{width:`${logoSize}px`,height:`${logoSize}px`,color:logoColor}}>
           <LogoSVG path={logoPath} color={logoColor}/>
         </div>
       </div>
@@ -113,11 +115,11 @@ function MiniThumb({ bg, logoPath, logoColor, pill, pitStyle = false }) {
 }
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", bg:C.ink,      logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere work queue",            cat:"enterprise ux"  },
-  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", bg:C.blue,     logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere credit hub — guarantor", cat:"enterprise ux" },
-  { id:"plume-homepass-online-store",   cls:"pc-plume", bg:C.pink,     logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume online store",               cat:"e-commerce"     },
-  { id:"plume-homepass-landing-page",   cls:"pc-plume", bg:C.tangerine,logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume landing page",               cat:"web · launch"   },
-  { id:"the-pit",                       cls:"pc-pit",   bg:C.ink,      logoPath:null,       logoColor:null,      pill:"The Pit",       title:"the pit",                          cat:"app · branding", pitStyle:true },
+  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo",    bg:C.ink,      logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere work queue",            cat:"enterprise ux"  },
+  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo",    bg:C.blue,     logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere credit hub — guarantor", cat:"enterprise ux" },
+  { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", bg:C.pink,     logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume online store",               cat:"e-commerce"     },
+  { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", bg:C.tangerine,logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume landing page",               cat:"web · launch"   },
+  { id:"the-pit",                       cls:"pc-pit",   logoClass:null,         bg:C.ink,      logoPath:null,       logoColor:null,      pill:"The Pit",       title:"the pit",                          cat:"app · branding", pitStyle:true },
 ];
 
 const SKILLS_PILLS = [
@@ -206,7 +208,7 @@ function ProfileSection() {
                   <a key={p.id} href={`/case-study/${p.id}`} className={`top5-link ${p.cls}`}
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
-                      <MiniThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} pill={p.pill} pitStyle={!!p.pitStyle}/>
+                      <MiniThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} logoClass={p.logoClass} pill={p.pill} pitStyle={!!p.pitStyle}/>
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>
                     <span style={{display:"block",font:`400 10.5px 'IBM Plex Mono',monospace`,color:C.muted,marginTop:"2px"}}>{p.cat}</span>
