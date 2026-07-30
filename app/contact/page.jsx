@@ -26,6 +26,9 @@ const PAGE_CSS = `
     text-decoration:none;transition:background .15s,color .15s;
   }
   .form-submit:hover{background:${C.pink};color:${C.ink};}
+  @media(max-width:900px){
+    .form-input{font-size:14px!important;padding:13px 14px!important}
+  }
   @media(max-width:760px){
     .contact-wrap{padding:24px 24px 72px!important}
   }
@@ -77,8 +80,8 @@ export default function ContactPage() {
             <textarea
               className="form-input"
               aria-label="your message"
-              placeholder="say hi, pitch a project, defend your favorite bowie record (sound and vision is the correct answer)"
-              rows={5}
+              placeholder="say hi, pitch a project, defend your favorite bowie record (low is the correct answer)"
+              rows={7}
               value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
             />
             <button type="submit" className="form-submit" disabled={status==="sending"||status==="sent"}>
