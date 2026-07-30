@@ -11,34 +11,52 @@ function LogoSVG({ path, color }) {
 }
 
 /* ── FULL THUMBNAIL (projects page, h=240) ──────────────── */
-function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, logoSize = 54, pill, pitStyle = false }) {
-  if (pitStyle) {
-    const bars = [20, 32, 16, 28];
+function FullThumb({ bg, logoPath, wmOpacity = 0.12, wmColor, logoShape = "bare" }) {
+  // The Pit — bare lime EQ bars, no container
+  if (logoShape === "pit") {
+    const bars = [13, 22, 32, 24, 15];
     return (
       <div style={{height:"240px",position:"relative",background:C.ink,borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
-        {/* Watermark EQ bars — right side, vertically centered (matches other watermarks) */}
-        <div style={{position:"absolute",right:"-16px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:.15,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"10px",paddingBottom:"16px",boxSizing:"border-box",pointerEvents:"none"}}>
-          {bars.map((h,i) => <div key={i} style={{width:"24px",height:`${Math.round(h/32*160)}px`,background:C.lime,borderRadius:"5px 5px 0 0"}}/>)}
+        {/* Watermark bars — right, vertically centered */}
+        <div style={{position:"absolute",right:"-10px",top:"50%",transform:"translateY(-50%)",opacity:.12,display:"flex",alignItems:"flex-end",gap:"9px",pointerEvents:"none"}}>
+          {bars.map((h,i) => <div key={i} style={{width:"26px",height:`${Math.round(h*6.8)}px`,background:C.lime,borderRadius:"5px 5px 0 0"}}/>)}
         </div>
-        {/* Circle with cream bg + lime bars, left-aligned like other logos */}
-        <div className="pc-pit" style={{position:"absolute",left:"28px",top:"50%",transform:"translateY(-50%)",width:"96px",height:"96px",borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"flex-end",justifyContent:"center",gap:"5px",paddingBottom:"18px",boxSizing:"border-box",zIndex:1}}>
-          {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"8px",height:`${Math.round(h/32*48)}px`,background:C.lime,borderRadius:"3px 3px 0 0",transformOrigin:"bottom"}}/>)}
+        {/* Bright EQ bars */}
+        <div className="pc-pit" style={{position:"absolute",left:"28px",top:"50%",transform:"translateY(-50%)",display:"flex",alignItems:"flex-end",gap:"7px"}}>
+          {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"13px",height:`${Math.round(h*3.5)}px`,background:C.lime,borderRadius:"4px 4px 0 0",transformOrigin:"bottom"}}/>)}
         </div>
       </div>
     );
   }
 
-  return (
-    <div style={{height:"240px",position:"relative",background:bg,display:"flex",alignItems:"center",borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
-      {/* Watermark (large, right side) */}
-      <div style={{position:"absolute",right:"-20px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:wmOpacity,color:wmColor||C.paper,pointerEvents:"none",flexShrink:0}}>
-        <LogoSVG path={logoPath} color={wmColor||C.paper}/>
-      </div>
-      {/* Circle with logo (left) */}
-      <div style={{position:"absolute",left:"28px",width:"96px",height:"96px",borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,zIndex:1}}>
-        <div style={{width:`${logoSize}px`,height:`${logoSize}px`,color:logoColor}}>
-          <LogoSVG path={logoPath} color={logoColor}/>
+  // JD — cream rounded square with ink deer
+  if (logoShape === "jd") {
+    return (
+      <div style={{height:"240px",position:"relative",background:bg,borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
+        {/* Watermark deer */}
+        <div style={{position:"absolute",right:"-30px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:wmOpacity,pointerEvents:"none"}}>
+          <LogoSVG path={logoPath} color={C.paper}/>
         </div>
+        {/* Rounded square */}
+        <div style={{position:"absolute",left:"28px",top:"50%",transform:"translateY(-50%)",width:"110px",height:"110px",borderRadius:"16px",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",zIndex:1}}>
+          <div style={{width:"72px",height:"72px"}}>
+            <LogoSVG path={logoPath} color={C.ink}/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Plume — bare white logo, no container
+  return (
+    <div style={{height:"240px",position:"relative",background:bg,borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
+      {/* Watermark */}
+      <div style={{position:"absolute",right:"-30px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:wmOpacity,pointerEvents:"none"}}>
+        <LogoSVG path={logoPath} color={wmColor||C.ink}/>
+      </div>
+      {/* Bare logo */}
+      <div style={{position:"absolute",left:"28px",top:"50%",transform:"translateY(-50%)",width:"90px",height:"90px",zIndex:1}}>
+        <LogoSVG path={logoPath} color={C.paper}/>
       </div>
     </div>
   );
@@ -47,7 +65,7 @@ function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, logoSiz
 const PROJECTS = [
   {
     n:"01", id:"jd-work-queue-follow-up-date",
-    bg:C.ink, logoPath:JD_PATH, logoColor:"#367c2b", wmOpacity:.13, wmColor:C.paper, pill:"John Deere", pitStyle:false,
+    bg:C.ink, logoPath:JD_PATH, wmOpacity:.13, logoShape:"jd", pill:"John Deere",
     title:"john deere work queue follow-up date", cat:"enterprise ux",
     desc:"reframed a scoped layout fix as a change-management problem and shipped follow-up tracking analysts could trust",
     tags:[{label:"design systems",bg:C.tangerine,color:C.ink},{label:"workflows",bg:C.blue,color:C.paper}],
@@ -56,7 +74,7 @@ const PROJECTS = [
   },
   {
     n:"02", id:"jd-credit-hub-guarantor",
-    bg:C.blue, logoPath:JD_PATH, logoColor:"#367c2b", wmOpacity:.18, wmColor:C.paper, pill:"John Deere", pitStyle:false,
+    bg:C.blue, logoPath:JD_PATH, wmOpacity:.18, logoShape:"jd", pill:"John Deere",
     title:"john deere credit hub · guarantor", cat:"enterprise ux",
     desc:"designed the guarantor detail and inline guarantee-type selection inside credit hub's involved-parties view",
     tags:[{label:"forms",bg:C.tangerine,color:C.ink},{label:"data density",bg:C.blue,color:C.paper}],
@@ -65,7 +83,7 @@ const PROJECTS = [
   },
   {
     n:"03", id:"plume-homepass-online-store",
-    bg:C.pink, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, logoSize:72, pill:"Plume HomePass", pitStyle:false,
+    bg:C.pink, logoPath:PLUME_PATH, wmOpacity:.18, wmColor:C.ink, logoShape:"bare", pill:"Plume HomePass",
     title:"plume homepass online store", cat:"e-commerce",
     desc:"migrated a store to shopify with a cleaner path to buy, resulting in higher conversion rates",
     tags:[{label:"checkout ux",bg:C.pink,color:C.ink},{label:"research",bg:C.tangerine,color:C.ink}],
@@ -74,7 +92,7 @@ const PROJECTS = [
   },
   {
     n:"04", id:"plume-homepass-landing-page",
-    bg:C.tangerine, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, logoSize:72, pill:"Plume HomePass", pitStyle:false,
+    bg:C.tangerine, logoPath:PLUME_PATH, wmOpacity:.18, wmColor:C.ink, logoShape:"bare", pill:"Plume HomePass",
     title:"plume homepass landing page", cat:"web · launch",
     desc:"a superpod g6 launch page with a product configurator that guides shoppers to the right setup",
     tags:[{label:"ux strategy",bg:C.blue,color:C.paper},{label:"a/b testing",bg:C.tangerine,color:C.ink}],
@@ -83,7 +101,7 @@ const PROJECTS = [
   },
   {
     n:"05", id:"the-pit",
-    bg:C.ink, logoPath:null, logoColor:null, wmOpacity:0, pill:"The Pit", pitStyle:true,
+    bg:C.ink, logoPath:null, wmOpacity:0, logoShape:"pit", pill:"The Pit",
     title:"the pit", cat:"app · branding",
     desc:"a 0→1 music social app, with a follow-and-message flow",
     tags:[{label:"branding",bg:C.tangerine,color:C.ink},{label:"prototyping",bg:C.blue,color:C.paper}],
@@ -115,7 +133,7 @@ function ProjectCard({ project: p }) {
         <span style={{font:`500 11px 'IBM Plex Mono',monospace`,color:p.headerCatColor,flexShrink:0}}>{p.cat}</span>
       </div>
       {/* Thumbnail */}
-      <FullThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} wmOpacity={p.wmOpacity} wmColor={p.wmColor} logoSize={p.logoSize} pill={p.pill} pitStyle={p.pitStyle}/>
+      <FullThumb bg={p.bg} logoPath={p.logoPath} wmOpacity={p.wmOpacity} wmColor={p.wmColor} logoShape={p.logoShape}/>
       {/* Body */}
       <div style={{padding:"18px 20px"}}>
         <p style={{margin:"0 0 14px",fontSize:"14.5px",lineHeight:1.55,color:C.ink}}>{p.desc}</p>
