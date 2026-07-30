@@ -8,7 +8,7 @@ const PAGE_CSS = `
     width:100%;background:${C.paper};
     border:1.5px solid rgba(43,31,28,.5);border-radius:10px;
     padding:16px 18px;font:400 16px 'Inter Tight',sans-serif;color:${C.ink};
-    outline:none;transition:border-color .2s;resize:vertical;
+    outline:none;transition:border-color .2s;resize:vertical;overflow:hidden;
     box-sizing:border-box;
   }
   .form-input:focus{border-color:${C.blue};}
