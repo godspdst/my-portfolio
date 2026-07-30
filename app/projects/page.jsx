@@ -11,7 +11,7 @@ function LogoSVG({ path, color }) {
 }
 
 /* ── FULL THUMBNAIL (projects page, h=240) ──────────────── */
-function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, pill, pitStyle = false }) {
+function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, logoSize = 54, pill, pitStyle = false }) {
   if (pitStyle) {
     const bars = [20, 32, 16, 28];
     return (
@@ -36,7 +36,7 @@ function FullThumb({ bg, logoPath, logoColor, wmOpacity = 0.12, wmColor, pill, p
       </div>
       {/* Circle with logo (left) */}
       <div style={{position:"absolute",left:"28px",width:"96px",height:"96px",borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,zIndex:1}}>
-        <div style={{width:"54px",height:"54px",color:logoColor}}>
+        <div style={{width:`${logoSize}px`,height:`${logoSize}px`,color:logoColor}}>
           <LogoSVG path={logoPath} color={logoColor}/>
         </div>
       </div>
@@ -65,7 +65,7 @@ const PROJECTS = [
   },
   {
     n:"03", id:"plume-homepass-online-store",
-    bg:C.pink, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, pill:"Plume HomePass", pitStyle:false,
+    bg:C.pink, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, logoSize:72, pill:"Plume HomePass", pitStyle:false,
     title:"plume homepass online store", cat:"e-commerce",
     desc:"migrated a store to shopify with a cleaner path to buy, resulting in higher conversion rates",
     tags:[{label:"checkout ux",bg:C.pink,color:C.ink},{label:"research",bg:C.tangerine,color:C.ink}],
@@ -74,7 +74,7 @@ const PROJECTS = [
   },
   {
     n:"04", id:"plume-homepass-landing-page",
-    bg:C.tangerine, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, pill:"Plume HomePass", pitStyle:false,
+    bg:C.tangerine, logoPath:PLUME_PATH, logoColor:"#6d2ef1", wmOpacity:.18, wmColor:C.ink, logoSize:72, pill:"Plume HomePass", pitStyle:false,
     title:"plume homepass landing page", cat:"web · launch",
     desc:"a superpod g6 launch page with a product configurator that guides shoppers to the right setup",
     tags:[{label:"ux strategy",bg:C.blue,color:C.paper},{label:"a/b testing",bg:C.tangerine,color:C.ink}],
@@ -115,7 +115,7 @@ function ProjectCard({ project: p }) {
         <span style={{font:`500 11px 'IBM Plex Mono',monospace`,color:p.headerCatColor,flexShrink:0}}>{p.cat}</span>
       </div>
       {/* Thumbnail */}
-      <FullThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} wmOpacity={p.wmOpacity} wmColor={p.wmColor} pill={p.pill} pitStyle={p.pitStyle}/>
+      <FullThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} wmOpacity={p.wmOpacity} wmColor={p.wmColor} logoSize={p.logoSize} pill={p.pill} pitStyle={p.pitStyle}/>
       {/* Body */}
       <div style={{padding:"18px 20px"}}>
         <p style={{margin:"0 0 14px",fontSize:"14.5px",lineHeight:1.55,color:C.ink}}>{p.desc}</p>

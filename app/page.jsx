@@ -84,9 +84,8 @@ function LogoSVG({ path, color = "currentColor" }) {
 }
 
 /* ── MINI THUMBNAIL (top-5 home cards, h=130) ───────────── */
-function MiniThumb({ bg, logoPath, logoColor, logoClass, wmColor, pill, pitStyle = false }) {
+function MiniThumb({ bg, logoPath, logoColor, logoClass, wmColor, logoSize = 32, pill, pitStyle = false }) {
   const circleSize = 56;
-  const logoSize = 32;
 
   if (pitStyle) {
     const bars = [13,19,10,16];
@@ -104,13 +103,13 @@ function MiniThumb({ bg, logoPath, logoColor, logoClass, wmColor, pill, pitStyle
   }
 
   return (
-    <div style={{height:"130px",position:"relative",background:bg,display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
+    <div style={{height:"130px",position:"relative",background:bg,overflow:"hidden"}}>
       {/* Watermark logo */}
       <div style={{position:"absolute",right:"-10px",top:"50%",transform:"translateY(-50%)",width:"90px",height:"90px",opacity:.13,color:wmColor||C.paper,pointerEvents:"none"}}>
         <LogoSVG path={logoPath} color={wmColor||C.paper}/>
       </div>
-      {/* Circle with logo */}
-      <div style={{width:`${circleSize}px`,height:`${circleSize}px`,borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative",zIndex:1}}>
+      {/* Circle with logo (left-aligned, matching full thumbnails) */}
+      <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",width:`${circleSize}px`,height:`${circleSize}px`,borderRadius:"50%",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",zIndex:1}}>
         <div className={logoClass||undefined} style={{width:`${logoSize}px`,height:`${logoSize}px`,color:logoColor}}>
           <LogoSVG path={logoPath} color={logoColor}/>
         </div>
@@ -122,8 +121,8 @@ function MiniThumb({ bg, logoPath, logoColor, logoClass, wmColor, pill, pitStyle
 const PROJECTS = [
   { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.ink,      logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere work queue",            cat:"enterprise ux"  },
   { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.blue,     logoPath:JD_PATH,    logoColor:"#367c2b", pill:"John Deere",    title:"john deere credit hub — guarantor", cat:"enterprise ux" },
-  { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.pink,     logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume online store",               cat:"e-commerce"     },
-  { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.tangerine,logoPath:PLUME_PATH, logoColor:"#6d2ef1", pill:"Plume HomePass", title:"plume landing page",               cat:"web · launch"   },
+  { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.pink,     logoPath:PLUME_PATH, logoColor:"#6d2ef1", logoSize:44, pill:"Plume HomePass", title:"plume online store",               cat:"e-commerce"     },
+  { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.tangerine,logoPath:PLUME_PATH, logoColor:"#6d2ef1", logoSize:44, pill:"Plume HomePass", title:"plume landing page",               cat:"web · launch"   },
   { id:"the-pit",                       cls:"pc-pit",   logoClass:null,         wmColor:null,    bg:C.ink,      logoPath:null,       logoColor:null,      pill:"The Pit",       title:"the pit",                          cat:"app · branding", pitStyle:true },
 ];
 
@@ -213,7 +212,7 @@ function ProfileSection() {
                   <a key={p.id} href={`/case-study/${p.id}`} className={`top5-link ${p.cls}`}
                     style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
                     <span style={{display:"block",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
-                      <MiniThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} logoClass={p.logoClass} wmColor={p.wmColor} pill={p.pill} pitStyle={!!p.pitStyle}/>
+                      <MiniThumb bg={p.bg} logoPath={p.logoPath} logoColor={p.logoColor} logoClass={p.logoClass} wmColor={p.wmColor} logoSize={p.logoSize} pill={p.pill} pitStyle={!!p.pitStyle}/>
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>
                     <span style={{display:"block",font:`400 10.5px 'IBM Plex Mono',monospace`,color:C.muted,marginTop:"2px"}}>{p.cat}</span>
