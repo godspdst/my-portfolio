@@ -12,42 +12,24 @@ function LogoSVG({ path, color }) {
 
 /* ── FULL THUMBNAIL (projects page, h=240) ──────────────── */
 function FullThumb({ bg, logoPath, wmOpacity = 0.12, wmColor, logoShape = "bare" }) {
-  // The Pit — bare lime EQ bars, no container
+  // The Pit — bare lime EQ bars, no container, same size as other logos (~90px max)
   if (logoShape === "pit") {
     const bars = [13, 22, 32, 24, 15];
     return (
       <div style={{height:"240px",position:"relative",background:C.ink,borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
         {/* Watermark bars — right, vertically centered */}
         <div style={{position:"absolute",right:"-10px",top:"50%",transform:"translateY(-50%)",opacity:.12,display:"flex",alignItems:"flex-end",gap:"9px",pointerEvents:"none"}}>
-          {bars.map((h,i) => <div key={i} style={{width:"26px",height:`${Math.round(h*6.8)}px`,background:C.lime,borderRadius:"5px 5px 0 0"}}/>)}
+          {bars.map((h,i) => <div key={i} style={{width:"26px",height:`${Math.round(h*5.4)}px`,background:C.lime,borderRadius:"5px 5px 0 0"}}/>)}
         </div>
-        {/* Bright EQ bars */}
+        {/* Bright EQ bars — max height ~90px matching other logos */}
         <div className="pc-pit" style={{position:"absolute",left:"28px",top:"50%",transform:"translateY(-50%)",display:"flex",alignItems:"flex-end",gap:"7px"}}>
-          {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"13px",height:`${Math.round(h*3.5)}px`,background:C.lime,borderRadius:"4px 4px 0 0",transformOrigin:"bottom"}}/>)}
+          {bars.map((h,i) => <div key={i} className="eq-bar" style={{width:"13px",height:`${Math.round(h*2.8)}px`,background:C.lime,borderRadius:"4px 4px 0 0",transformOrigin:"bottom"}}/>)}
         </div>
       </div>
     );
   }
 
-  // JD — cream rounded square with ink deer
-  if (logoShape === "jd") {
-    return (
-      <div style={{height:"240px",position:"relative",background:bg,borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
-        {/* Watermark deer */}
-        <div style={{position:"absolute",right:"-30px",top:"50%",transform:"translateY(-50%)",width:"200px",height:"200px",opacity:wmOpacity,pointerEvents:"none"}}>
-          <LogoSVG path={logoPath} color={C.paper}/>
-        </div>
-        {/* Rounded square */}
-        <div style={{position:"absolute",left:"28px",top:"50%",transform:"translateY(-50%)",width:"110px",height:"110px",borderRadius:"16px",background:C.paper,border:`1.5px solid ${C.ink}`,display:"flex",alignItems:"center",justifyContent:"center",zIndex:1}}>
-          <div style={{width:"72px",height:"72px"}}>
-            <LogoSVG path={logoPath} color={C.ink}/>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Plume — bare white logo, no container
+  // JD + Plume — bare white logo, no container (same treatment)
   return (
     <div style={{height:"240px",position:"relative",background:bg,borderBottom:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
       {/* Watermark */}
