@@ -35,11 +35,9 @@ const PAGE_CSS = `
   @media(max-width:900px){
     .about-grid{grid-template-columns:1fr!important}
     .process-grid{grid-template-columns:1fr!important}
-    .photo-card{max-width:460px;margin-left:auto;margin-right:auto}
   }
   @media(max-width:760px){
     .about-page-wrap{padding:24px 24px 48px!important}
-    .photo-card{max-width:100%}
   }
 `;
 
@@ -61,7 +59,7 @@ export default function AboutPage() {
                 stephanie guarino ✳
               </div>
               <div style={{padding:"14px"}}>
-                <div className="umbphoto" style={{height:"clamp(380px,52vw,520px)",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
+                <div className="umbphoto" style={{height:"clamp(320px,42vw,480px)",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                   <img src="/assets/about-about-me.png" alt="Stephanie Guarino"
                     style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"50% 18%",display:"block",filter:"saturate(.92) contrast(1.05)",border:"none",borderRadius:0}}
                     onError={e=>{e.currentTarget.src="/assets/about-portrait.png";}}
