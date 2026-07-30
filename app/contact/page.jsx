@@ -1,6 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { C, BASE_CSS, Header, ScrollToTop, EMAIL, PAGE_X } from "../shared";
+import emailjs from "@emailjs/browser";
+import { C, BASE_CSS, Header, ScrollToTop, PAGE_X } from "../shared";
+
+const EMAILJS_SERVICE  = "service_6rg2drg";
+const EMAILJS_TEMPLATE = "template_lbhj07g";
+const EMAILJS_KEY      = "Y6zgNqbz_3v7LGOz9";
 
 const PAGE_CSS = `
   ${BASE_CSS}
@@ -28,12 +33,23 @@ const PAGE_CSS = `
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name:"", email:"", message:"" });
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Message from ${form.name || "portfolio visitor"}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE,
+        EMAILJS_TEMPLATE,
+        { name: form.name, email: form.email, message: form.message },
+        EMAILJS_KEY
+      );
+      setStatus("sent");
+      setForm({ name:"", email:"", message:"" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -65,7 +81,14 @@ export default function ContactPage() {
               rows={5}
               value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
             />
-            <button type="submit" className="form-submit">send →</button>
+            <button type="submit" className="form-submit" disabled={status==="sending"||status==="sent"}>
+              {status==="sending" ? "sending…" : status==="sent" ? "sent ✓" : status==="error" ? "failed — try again" : "send →"}
+            </button>
+            {status==="error" && (
+              <p style={{textAlign:"center",color:C.tangerine,fontSize:"14px",margin:0}}>
+                something went wrong — please try again or email directly.
+              </p>
+            )}
           </form>
         </div>
       </div>
