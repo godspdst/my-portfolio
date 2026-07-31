@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { C, BASE_CSS, Header, Marquee, SiteFooter, EMAIL, LINKEDIN, PAGE_X } from "./shared";
+import { LockBadge, LockOverlay, PasswordGateModal } from "./password-gate";
 
 const PAGE_CSS = `
   ${BASE_CSS}
@@ -22,6 +23,10 @@ const PAGE_CSS = `
   .aboutlink-sweep:hover{background-size:100% 88%}
   .footer-sweep:hover{background-size:100% 88%!important}
   .top5-link:hover .top5-title{color:${C.magenta}}
+  .jd-locked .lock-ovl{opacity:0;transition:opacity .2s ease;}
+  .jd-locked .lock-circ{transform:scale(.7);transition:transform .2s ease;}
+  .jd-locked:hover .lock-ovl{opacity:1;}
+  .jd-locked:hover .lock-circ{transform:scale(1);}
   .contact-tile{position:relative;height:130px;border:1.5px dashed ${C.magenta};border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 10px;box-sizing:border-box;overflow:hidden;background:${C.card};transition:transform .25s cubic-bezier(.34,1.56,.64,1),border-color .2s,background .2s;cursor:pointer;text-decoration:none;outline:none;}
   .contact-tile:hover,.contact-tile:focus-visible{transform:rotate(-1.5deg) scale(1.02);border-style:solid;border-color:${C.ink};background:#fdeef6;}
   .contact-tile .ct-dd{position:absolute;opacity:0;transform:scale(.3) rotate(var(--rot,0deg));transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1);}
@@ -132,8 +137,8 @@ function MiniThumb({ bg, logoPath, logoClass, wmColor, logoShape = "bare" }) {
 }
 
 const PROJECTS = [
-  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.ink,      logoPath:JD_PATH,    title:"john deere work queue",            cat:"enterprise ux"  },
-  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo",    wmColor:C.paper, bg:C.blue,     logoPath:JD_PATH,    title:"john deere credit hub — guarantor", cat:"enterprise ux" },
+  { id:"jd-work-queue-follow-up-date",  cls:"pc-deere", logoClass:"jd-logo", wmColor:C.paper, bg:C.ink,  logoPath:JD_PATH, title:"john deere work queue",             cat:"enterprise ux", locked:true, password:"designedx-byyy-st3phani3?", num:"01" },
+  { id:"jd-credit-hub-guarantor",       cls:"pc-deere", logoClass:"jd-logo", wmColor:C.paper, bg:C.blue, logoPath:JD_PATH, title:"john deere credit hub — guarantor",  cat:"enterprise ux", locked:true, password:"made-byyy-st3phani3!",       num:"02" },
   { id:"plume-homepass-online-store",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.pink,     logoPath:PLUME_PATH, title:"plume online store",               cat:"e-commerce"     },
   { id:"plume-homepass-landing-page",   cls:"pc-plume", logoClass:"plume-logo", wmColor:C.ink,   bg:C.tangerine,logoPath:PLUME_PATH, title:"plume landing page",               cat:"web · launch"   },
   { id:"the-pit",                       cls:"pc-pit",                            bg:C.ink,                       logoPath:null,       logoShape:"pit",  title:"the pit",                          cat:"app · branding" },
@@ -194,8 +199,10 @@ const SKILLS_PILLS = [
 /* ── PROFILE SECTION ───────────────────────────────────── */
 function ProfileSection() {
   const [album] = useState(() => ALBUMS[Math.floor(Math.random() * ALBUMS.length)]);
-  const [like] = useState(() => LIKES[Math.floor(Math.random() * LIKES.length)]);
+  const [like]  = useState(() => LIKES[Math.floor(Math.random() * LIKES.length)]);
+  const [modal, setModal] = useState(null); // { id, title, num, password }
   return (
+  <>
     <div id="good-stuff" style={{scrollMarginTop:"24px",maxWidth:"1700px",margin:"0 auto",padding:`24px ${PAGE_X} 72px`}}>
       <div className="profile-grid" style={{display:"grid",gridTemplateColumns:"340px minmax(0,1fr)",gap:"24px",alignItems:"start"}}>
 
@@ -270,10 +277,16 @@ function ProfileSection() {
             <div style={{padding:"20px"}}>
               <div className="top5-inner" style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"16px"}}>
                 {PROJECTS.map(p => (
-                  <a key={p.id} href={`/case-study/${p.id}`} className={`top5-link ${p.cls}`}
-                    style={{textDecoration:"none",color:C.ink,textAlign:"center"}}>
-                    <span style={{display:"block",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
+                  <a key={p.id}
+                    href={`/case-study/${p.id}`}
+                    className={`top5-link ${p.cls}${p.locked ? " jd-locked" : ""}`}
+                    style={{textDecoration:"none",color:C.ink,textAlign:"center"}}
+                    onClick={p.locked ? e => { e.preventDefault(); setModal(p); } : undefined}
+                  >
+                    <span style={{display:"block",position:"relative",border:`1.5px solid ${C.ink}`,borderRadius:"8px",overflow:"hidden"}}>
                       <MiniThumb bg={p.bg} logoPath={p.logoPath} logoClass={p.logoClass} wmColor={p.wmColor} logoShape={p.logoShape}/>
+                      {p.locked && <LockBadge fontSize={7}/>}
+                      {p.locked && <LockOverlay circleSize={38}/>}
                     </span>
                     <span className="top5-title" style={{display:"block",fontWeight:700,fontSize:"13.5px",letterSpacing:"-.2px",marginTop:"8px",transition:"color .15s"}}>{p.title}</span>
                     <span style={{display:"block",font:`400 10.5px 'IBM Plex Mono',monospace`,color:C.muted,marginTop:"2px"}}>{p.cat}</span>
@@ -313,6 +326,17 @@ function ProfileSection() {
         </div>
       </div>
     </div>
+    {modal && (
+      <PasswordGateModal
+        open={!!modal}
+        onClose={() => setModal(null)}
+        title={modal.title}
+        num={modal.num}
+        password={modal.password}
+        href={`/case-study/${modal.id}`}
+      />
+    )}
+  </>
   );
 }
 
