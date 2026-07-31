@@ -43,12 +43,8 @@ export function LockOverlay({ circleSize = 38 }) {
       position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",
       pointerEvents:"none",
     }}>
-      <div className="lock-circ" style={{
-        width:`${circleSize}px`,height:`${circleSize}px`,borderRadius:"999px",
-        background:"rgba(43,31,28,.62)",
-        display:"flex",alignItems:"center",justifyContent:"center",
-      }}>
-        <PadlockSVG size={Math.round(circleSize * 0.5)} color={C.paper}/>
+      <div className="lock-circ">
+        <PadlockSVG size={Math.round(circleSize * 0.6)} color={C.paper}/>
       </div>
     </div>
   );
@@ -87,7 +83,6 @@ export function PasswordGateModal({ open, onClose, title, num, href }) {
     } else {
       setValue("");
       setError(true);
-      setTimeout(() => setError(false), 600);
     }
   };
 
@@ -127,7 +122,7 @@ export function PasswordGateModal({ open, onClose, title, num, href }) {
                 ref={inputRef}
                 type="password"
                 value={value}
-                onChange={e => setValue(e.target.value)}
+                onChange={e => { setValue(e.target.value); setError(false); }}
                 style={{background:"#fff",border:`1.5px solid ${C.ink}`,borderRadius:"8px",padding:"12px 14px",font:`400 14px 'IBM Plex Mono',monospace`,color:C.ink,outline:"none",width:"100%",boxSizing:"border-box"}}
               />
               {error && (
