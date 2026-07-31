@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { C } from "./shared";
+import { validateCaseStudyPassword } from "./actions";
 
 /* ── Pixel-art padlock (8×8 grid) ─────────────────────── */
 function PadlockSVG({ size = 16, color = "#f5efe3" }) {
@@ -54,10 +55,11 @@ export function LockOverlay({ circleSize = 38 }) {
 }
 
 /* ── Password gate modal ──────────────────────────────── */
-export function PasswordGateModal({ open, onClose, title, num, password, href }) {
+export function PasswordGateModal({ open, onClose, title, num, href }) {
   const [value, setValue]     = useState("");
   const [error, setError]     = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -75,9 +77,12 @@ export function PasswordGateModal({ open, onClose, title, num, password, href })
 
   if (!open) return null;
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    if (value.trim().toLowerCase() === password.toLowerCase()) {
+    setLoading(true);
+    const ok = await validateCaseStudyPassword(num, value);
+    setLoading(false);
+    if (ok) {
       setSuccess(true);
     } else {
       setValue("");
@@ -132,11 +137,12 @@ export function PasswordGateModal({ open, onClose, title, num, password, href })
               )}
               <button
                 type="submit"
-                style={{background:C.blue,color:C.paper,border:"none",borderRadius:"999px",padding:"12px 20px",font:`700 14px 'Inter Tight',sans-serif`,cursor:"pointer",transition:"background .15s"}}
-                onMouseEnter={e => e.currentTarget.style.background = C.ink}
-                onMouseLeave={e => e.currentTarget.style.background = C.blue}
+                disabled={loading}
+                style={{background:C.blue,color:C.paper,border:"none",borderRadius:"999px",padding:"12px 20px",font:`700 14px 'Inter Tight',sans-serif`,cursor:loading?"default":"pointer",transition:"background .15s",opacity:loading?.7:1}}
+                onMouseEnter={e => { if (!loading) e.currentTarget.style.background = C.ink; }}
+                onMouseLeave={e => { e.currentTarget.style.background = C.blue; }}
               >
-                unlock case study →
+                {loading ? "checking…" : "unlock case study →"}
               </button>
             </form>
           ) : (

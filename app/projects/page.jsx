@@ -166,7 +166,6 @@ export default function ProjectsPage() {
           onClose={() => setModal(null)}
           title={modal.title}
           num={modal.num}
-          password={modal.password}
           href={`/case-study/${modal.id}`}
         />
       )}
