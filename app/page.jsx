@@ -259,7 +259,7 @@ function ProfileSection() {
           <div style={{border:`1.5px solid ${C.ink}`,borderRadius:"12px",overflow:"hidden",background:C.card}}>
             <div style={{background:C.pink,color:C.ink,padding:"10px 16px",fontWeight:800,fontSize:"14px",letterSpacing:"-.2px"}}>about me</div>
             <div style={{padding:"22px 24px",display:"flex",flexDirection:"column",gap:"14px",fontSize:"15.5px",lineHeight:1.65}}>
-              <p style={{margin:0}}>I'm Stephanie, a ux designer and data nerd. I've been designing on the internet since I was 13, because my MySpace profile didn't look as cool as the other kids'. I turn messy data into products people can use no matter their technology comfortability: conversion pages, e-commerce flows and enterprise tools. I've worked with startups, agencies and Fortune 500s.</p>
+              <p style={{margin:0}}>I'm Stephanie, a product designer and data nerd. I've been designing on the internet since I was 13, because my MySpace profile didn't look as cool as the other kids'. I turn messy data into products people can use no matter their technology comfortability: conversion pages, e-commerce flows and enterprise tools. I've worked with startups, agencies and Fortune 500s.</p>
               <p style={{margin:0}}><a href="/about" className="aboutlink-sweep">the long version →</a></p>
             </div>
           </div>
