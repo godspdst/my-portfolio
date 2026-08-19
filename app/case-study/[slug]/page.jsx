@@ -215,7 +215,7 @@ export default function CaseStudyPage({ params }) {
         {/* 2 · META CARDS */}
         <div className="meta-cards" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"16px",marginBottom:"32px",maxWidth:"920px"}}>
           {[
-            { label:"role", value:cs.role || "product designer", headerColor:C.blue, textColor:C.paper },
+            { label:"role", value:cs.role || "ux designer", headerColor:C.blue, textColor:C.paper },
             { label:"responsibilities", value:cs.responsibilities.join(", "), headerColor:C.pink, textColor:C.ink },
             { label:"outcome", value:cs.outcome || cs.goal.slice(0,120)+"…", headerColor:C.tangerine, textColor:C.ink },
           ].map(({label,value,headerColor,textColor},i) => (

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Stephanie Guarino | Portfolio",
-  description: "Personal portfolio of Stephanie Guarino — product designer",
+  description: "Personal portfolio of Stephanie Guarino — ux designer",
 };
 
 export default function RootLayout({

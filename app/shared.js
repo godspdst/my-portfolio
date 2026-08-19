@@ -146,7 +146,7 @@ export function Header({ activePage = "home" }) {
           <a href="/" className="header-brand-name" style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",textDecoration:"none",color:C.ink}}>
             stephanie guarino <span style={{color:C.tangerine}}>✳</span>
           </a>
-          <span className="header-brand-role" style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",color:C.magenta}}>product designer</span>
+          <span className="header-brand-role" style={{fontWeight:700,fontSize:"15px",letterSpacing:"-.3px",color:C.magenta}}>ux designer</span>
         </div>
         {/* Blue nav pill */}
         <nav className="header-nav-pill" style={{

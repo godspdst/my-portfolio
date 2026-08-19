@@ -65,7 +65,7 @@ export default function JDCreditHubGuarantor() {
         <div className="jd2-meta" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"16px",marginBottom:"32px",maxWidth:"920px"}}>
           <div style={{background:C.card,borderRadius:"10px",border:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
             <div style={{background:C.blue,color:C.paper,padding:"7px 14px",fontWeight:800,fontSize:"12px"}}>role</div>
-            <div style={{padding:"12px 14px",fontSize:"13.5px",lineHeight:1.5}}>sole product designer, embedded with product & engineering</div>
+            <div style={{padding:"12px 14px",fontSize:"13.5px",lineHeight:1.5}}>sole ux designer, embedded with product & engineering</div>
           </div>
           <div style={{background:C.card,borderRadius:"10px",border:`1.5px solid ${C.ink}`,overflow:"hidden"}}>
             <div style={{background:C.pink,padding:"7px 14px",fontWeight:800,fontSize:"12px"}}>responsibilities</div>
